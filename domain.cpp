@@ -1,6 +1,6 @@
 #include "domain.h"
 
-Domain::Domain()
+Domain::Domain()    // Constructor, les úr gagnagrunninum í vektorana
 {
     v = DB.readScientistFromDb();
     ve = DB.readComputerFromDb();
@@ -36,7 +36,7 @@ void Domain::addNewComputer(string name, int buildYear, string type, bool wasBui
 }
 
 vector<Computer> Domain::getCompFromLinks(int pID)
-{
+{   // Sæki tölvu úr link-vektornum fyrir viðeigandi ID á Person
     vector<Computer> comp;
     for(unsigned int i = 0; i < vLink.size(); i++) {
         if(pID == vLink[i].first.getId()) {
@@ -46,7 +46,7 @@ vector<Computer> Domain::getCompFromLinks(int pID)
     return comp;
 }
 vector<Person> Domain::getSciFromLinks(int cID)
-{
+{   // Sæki hér vísindamann úr link-vektornum fyrir viðeigandi ID á Computer
     vector<Person> comp;
     for(unsigned int i = 0; i < vLink.size(); i++) {
         if(cID == vLink[i].second.getId()) {
@@ -56,21 +56,21 @@ vector<Person> Domain::getSciFromLinks(int cID)
     return comp;
 }
 
-vector<Person> Domain::returnAllScientists()
+vector<Person> Domain::returnAllScientists()    // Skilar öllum Person-vektornum
 {
     return v;
 }
 
-vector<Computer> Domain::returnAllComputers()
+vector<Computer> Domain::returnAllComputers()   // Skilar öllum Computer-vektornum
 {
     return ve;
 }
-vector<pair<Person, Computer> > Domain::returnAllLinks()
+vector<pair<Person, Computer> > Domain::returnAllLinks()       // Skilar öllum tengingunum
 {
     return vLink;
 }
 
-pair<Person, Computer> Domain::addNewLink(int pInd, int cInd)   // Setur linknar saman Person og Computer fyrir database og pair vektor!
+pair<Person, Computer> Domain::addNewLink(int pInd, int cInd)   // Linknar saman Person og Computer fyrir gagnagrunninn og pair-vektorinn...
 {
     pair<Person, Computer> link = make_pair(v[pInd],ve[cInd]);
     for(unsigned int i = 0; i < vLink.size(); i++)

@@ -2,7 +2,6 @@
 #include "data.h"
 #include <QString>
 
-// Database layer (ifstream/ofstream,read/write,...)
 
 Database::Database()        // Database búinn til/opnaður í constructor
 {
@@ -11,19 +10,17 @@ Database::Database()        // Database búinn til/opnaður í constructor
     db.setDatabaseName(dbSoC);
 
     db.open();
-    //cout << "opening db..." << endl;
 }
 
-Database::~Database()
+Database::~Database()       // Destructor, gagnagrunninum lokwð
 {
     if(db.isOpen())
     {
         db.close();
-        //cout << "closing db..." << endl;
     }
 }
 
-unsigned int Database::addNewScientist(Person P)
+int Database::addNewScientist(Person P)    // Bæti við vísindamanni í scientist-töfluna í SQL
 {
     QSqlQuery query(db);
     QString q = "CREATE TABLE IF NOT EXISTS scientists ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Gender' TEXT NOT NULL , 'DOB' INTEGER, 'DOD' INTEGER, 'Bio' TEXT)";
@@ -43,10 +40,10 @@ unsigned int Database::addNewScientist(Person P)
     if(query.next())
     {
         return query.value("ID").toInt();
-   }
+    }
 }
 
-unsigned int Database::addNewComputer(Computer C)
+int Database::addNewComputer(Computer C)       // Bæti við tölvu í computers-töfluna í SQL
 {
     QSqlQuery query(db);
     QString q = "CREATE TABLE IF NOT EXISTS computers ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Type' TEXT NOT NULL, 'WB' BOOL NOT NULL, 'BuildYear' INTEGER, 'Info' TEXT NOT NULL)";
@@ -67,10 +64,10 @@ unsigned int Database::addNewComputer(Computer C)
     if(query.next())
     {
         return query.value("ID").toInt();
-   }
+    }
 }
 
-void Database::addNewLink(pair<Person, Computer> link)
+void Database::addNewLink(pair<Person, Computer> link)  // Bætir við tengingu (link) milli tölvu og vísindamanns í tengitöflu í gagnagrunninum
 {
     QSqlQuery query(db);
     QString q = "CREATE TABLE IF NOT EXISTS links ('SID' INTEGER, 'CID' INTEGER, FOREIGN KEY (SID) REFERENCES scientists(ID), FOREIGN KEY (CID) REFERENCES computers(ID), PRIMARY KEY(SID, CID))";
@@ -83,7 +80,7 @@ void Database::addNewLink(pair<Person, Computer> link)
     query.exec();
 }
 
-vector<Person> Database::readScientistFromDb()
+vector<Person> Database::readScientistFromDb()      // Skilar vector af Person-klösum úr gagnagrunninum
 {
     vector<Person> scientists;
     QSqlQuery query(db);
@@ -93,7 +90,7 @@ vector<Person> Database::readScientistFromDb()
     {
         while(query.next())
         {
-            scientists.push_back(Person(query));        // So beautiful..
+            scientists.push_back(Person(query));        // So beautiful syntax..
         }
     }
     else
@@ -104,7 +101,7 @@ vector<Person> Database::readScientistFromDb()
     return scientists;
 }
 
-vector<Computer> Database::readComputerFromDb()
+vector<Computer> Database::readComputerFromDb()     // Gerir það sama hér fyrir tölvurnar...
 {
     vector<Computer> computer;
 
@@ -292,7 +289,7 @@ vector<Computer> Database::searchComputerFromDb(string num, string search) // le
     return computers;
 }
 
-vector<pair<Person, Computer> > Database::readLinkFromDb()
+vector<pair<Person, Computer> > Database::readLinkFromDb()      // Les upp úr tengitöflunni og skilar viðeigandi Person og computer-klasa
 {
     vector<pair<Person, Computer> > vlink;
 

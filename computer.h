@@ -9,7 +9,7 @@
 #include <QtSql>
 
 using namespace std;
-
+// Klasi sem geymir upplýsingar um hverja einustu tölvu, þ.e. nafn, týpu, hvort hún var búin til eða ekki, ártal og fleira merkilegt.
 class Computer
 {
     private:
@@ -26,16 +26,6 @@ class Computer
         Computer();
         Computer(string name, string type, bool wasBuilt, int buildYear, string info);
         Computer(QSqlQuery q);
-        string getname();
-        int getbuildyear();
-        string gettype();
-        bool getwasbuilt();
-        string getinfo();
-
-        friend bool sortbyyearofbuilt(const Computer& a, const Computer &b);
-        friend bool sortbytype(const Computer& a, const Computer &b);
-        friend bool sortbywasBuilt(const Computer& a, const Computer &b);
-
 
         string getName();
         int getBuildYear();
@@ -44,10 +34,6 @@ class Computer
         string getInfo();
         int getId();
         void setId(int id);
-
-        friend bool sortByYearOfBuilt(const Computer& a, const Computer &b);
-        friend bool sortByType(const Computer& a, const Computer &b);
-        friend bool sortByWasBuilt(const Computer& a, const Computer &b);
 
         bool operator < (const Computer& r);
 

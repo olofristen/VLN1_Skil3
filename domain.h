@@ -8,8 +8,9 @@
 class Domain
 {
 
-// Domain-klasinn geymir vektor með Person-klösum og sér um að umraða, leita í og bæta í hann.  Geymir Database-klasa og
-// kemur gögnunum þannig á milli notendaviðmótsins og gagnagrunnsins.
+// Domain-klasinn geymir vektor með Person-klösum, vektor af Computer-klösum og vektor af pari af Person og Computer (link).
+// Hann sér um að skila umröðunum og leitunum úr gagnagrunninum og upp í UI og einnig að bæta í grunninn.
+// Geymir Database-klasa og kemur gögnunum þannig á milli notendaviðmótsins og gagnagrunnsins.
 
 private:
 

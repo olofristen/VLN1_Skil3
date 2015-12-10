@@ -11,16 +11,16 @@
 class Database
 {
 
-// Klasi fyrir gagnalagið.  Skrifar út í skrá frá vektor og úr skrá í vektor.
-// Vektorinn síðan tekinn og sendur inn í domain-lagið.
+// Klasi fyrir gagnalagið.  Bætir Person, link og computer út í gagnagrunn og skilar úr grunninum í vektor.
+// Hér fer umröðun og leitun fram, SQL skipanir notaðar til að stýra gagnagrunninum.
 
 private:
     QSqlDatabase db;
 public:
     Database();
     ~Database();
-    unsigned int addNewScientist(Person P);
-    unsigned int addNewComputer(Computer C);
+    int addNewScientist(Person P);
+    int addNewComputer(Computer C);
     void addNewLink(pair<Person, Computer> link);
 
     vector<Person> readScientistFromDb();
