@@ -1,0 +1,7 @@
+/build-*
+*.exe
+*.o
+*.user
+*.obj
+*.autosave
+/build-*
