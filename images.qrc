@@ -7,5 +7,9 @@
         <file>Buttons/skil3-database_orange.png</file>
         <file>Buttons/skil3-edit_blue.png</file>
         <file>Buttons/skil3-search_green.png</file>
+        <file>Buttons/skil3-addCom_pink.png</file>
+        <file>Buttons/skil3-addLink_purple.png</file>
+        <file>Buttons/skil3-addSci_lblue.png</file>
+        <file>Buttons/skil3-erase_ngreen.png</file>
     </qresource>
 </RCC>

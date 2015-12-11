@@ -78,101 +78,164 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QTabWidget" name="Search">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>370</y>
-      <width>521</width>
-      <height>31</height>
+      <x>0</x>
+      <y>90</y>
+      <width>1511</width>
+      <height>751</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 11pt &quot;Agency FB&quot;;</string>
+     <string notr="true">QTabBar::tab  {
+  border: 0;
+}</string>
     </property>
-    <property name="text">
-     <string>In this program you will be able to register and go through the most important</string>
+    <property name="tabPosition">
+     <enum>QTabWidget::West</enum>
     </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>270</y>
-      <width>51</width>
-      <height>41</height>
-     </rect>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
-    <property name="styleSheet">
-     <string notr="true">font: 24pt &quot;Agency FB&quot;;</string>
+    <property name="iconSize">
+     <size>
+      <width>60</width>
+      <height>60</height>
+     </size>
     </property>
-    <property name="text">
-     <string>the</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>400</y>
-      <width>501</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 11pt &quot;Agency FB&quot;;</string>
-    </property>
-    <property name="text">
-     <string>the most important computer scientists AND computers OF ALL TIME!!</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>170</y>
-      <width>231</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 36pt &quot;Agency FB&quot;;</string>
-    </property>
-    <property name="text">
-     <string>WELCOME</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>230</y>
-      <width>31</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 24pt &quot;Agency FB&quot;;</string>
-    </property>
-    <property name="text">
-     <string>to</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>310</y>
-      <width>501</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 36pt &quot;Agency FB&quot;;</string>
-    </property>
-    <property name="text">
-     <string>COMPUTING DATABASE</string>
-    </property>
+    <widget class="QWidget" name="Home">
+     <attribute name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/Buttons/skil3-home_red.png</normaloff>:/Buttons/skil3-home_red.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string/>
+     </attribute>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>170</y>
+        <width>51</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;Agency FB&quot;;</string>
+      </property>
+      <property name="text">
+       <string>the</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>300</y>
+        <width>501</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 11pt &quot;Agency FB&quot;;</string>
+      </property>
+      <property name="text">
+       <string>the most important computer scientists AND computers OF ALL TIME!!</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>130</y>
+        <width>31</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 24pt &quot;Agency FB&quot;;</string>
+      </property>
+      <property name="text">
+       <string>to</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>270</y>
+        <width>521</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 11pt &quot;Agency FB&quot;;</string>
+      </property>
+      <property name="text">
+       <string>In this program you will be able to register and go through the most important</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>210</y>
+        <width>501</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 36pt &quot;Agency FB&quot;;</string>
+      </property>
+      <property name="text">
+       <string>COMPUTING DATABASE</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>70</y>
+        <width>231</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 36pt &quot;Agency FB&quot;;</string>
+      </property>
+      <property name="text">
+       <string>WELCOME</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Edit">
+     <attribute name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/Buttons/skil3-edit_blue.png</normaloff>:/Buttons/skil3-edit_blue.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string/>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="Database">
+     <attribute name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/Buttons/skil3-database_orange.png</normaloff>:/Buttons/skil3-database_orange.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string/>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="Search">
+     <attribute name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/Buttons/skil3-search_green.png</normaloff>:/Buttons/skil3-search_green.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string/>
+     </attribute>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -186,70 +249,6 @@
    </property>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QToolBar" name="mainToolBar">
-   <property name="autoFillBackground">
-    <bool>true</bool>
-   </property>
-   <property name="movable">
-    <bool>false</bool>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>55</width>
-     <height>55</height>
-    </size>
-   </property>
-   <property name="floatable">
-    <bool>true</bool>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>LeftToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionHome"/>
-   <addaction name="actionEdit"/>
-   <addaction name="actionDatabase"/>
-   <addaction name="actionSearch"/>
-   <addaction name="separator"/>
-  </widget>
-  <action name="actionEdit">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/Buttons/skil3-edit_blue.png</normaloff>:/Buttons/skil3-edit_blue.png</iconset>
-   </property>
-   <property name="text">
-    <string>Edit</string>
-   </property>
-  </action>
-  <action name="actionDatabase">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/Buttons/skil3-database_orange.png</normaloff>:/Buttons/skil3-database_orange.png</iconset>
-   </property>
-   <property name="text">
-    <string>Database</string>
-   </property>
-  </action>
-  <action name="actionSearch">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/Buttons/skil3-search_green.png</normaloff>:/Buttons/skil3-search_green.png</iconset>
-   </property>
-   <property name="text">
-    <string>Search</string>
-   </property>
-  </action>
-  <action name="actionHome">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/Buttons/skil3-home_red.png</normaloff>:/Buttons/skil3-home_red.png</iconset>
-   </property>
-   <property name="text">
-    <string>Home</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
