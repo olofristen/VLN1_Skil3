@@ -26,3 +26,6 @@ HEADERS  += mainwindow.h \
     person.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    images.qrc

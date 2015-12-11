@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Buttons/skil3-logo_100px.png</file>
+        <file>Buttons/skil3-logo_100pxIN.png</file>
+        <file>Buttons/skil3-logo_color.png</file>
+        <file>Buttons/skil3-home_red.png</file>
+        <file>Buttons/skil3-database_orange.png</file>
+        <file>Buttons/skil3-edit_blue.png</file>
+        <file>Buttons/skil3-search_green.png</file>
+    </qresource>
+</RCC>
