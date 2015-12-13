@@ -41,6 +41,7 @@ public:
     int linkSize();
 
 
+    bool removeScientist(Person p);
 };
 
 

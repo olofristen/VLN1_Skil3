@@ -56,6 +56,13 @@ vector<Person> Domain::getSciFromLinks(int cID)
     return comp;
 }
 
+bool Domain::removeScientist(Person p)
+{
+    bool success = DB.removeScientist(p);
+    v = DB.readScientistFromDb();
+    return success;
+}
+
 vector<Person> Domain::returnAllScientists()    // Skilar öllum Person-vektornum
 {
     return v;

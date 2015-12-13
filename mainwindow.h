@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "domain.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,9 +18,25 @@ public:
 
 private slots:
     void on_actionHome_triggered();
+    void on_input_filter_sci_textChanged(const QString &arg1);
+
+    void on_scientistList_clicked(const QModelIndex &index);
+
+    void on_removeButton_clicked();
+
+    void on_buttonAddNewSci_clicked();
+
+    void on_isDead_toggled(bool checked);
 
 private:
     Ui::MainWindow *ui;
+
+    void displayScientists(vector<Person> sci);
+    void displayAllScientists();
+    void isHeDead();
+    Domain myDom;
+
+    vector<Person> currentlyDisplayedScientists;
 };
 
 #endif // MAINWINDOW_H

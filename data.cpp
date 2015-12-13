@@ -20,6 +20,15 @@ Database::~Database()       // Destructor, gagnagrunninum lokwð
     }
 }
 
+bool Database::removeScientist(Person p)
+{
+    QSqlQuery query(db);
+
+
+    bool success = query.exec("DELETE FROM scientists WHERE ID = " + QString::number(p.getId()));
+
+    return success;
+}
 int Database::addNewScientist(Person P)    // Bæti við vísindamanni í scientist-töfluna í SQL
 {
     QSqlQuery query(db);
