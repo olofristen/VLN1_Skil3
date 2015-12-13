@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "domain.h"
+#include "infoscientist.h"
 
 namespace Ui {
 class MainWindow;

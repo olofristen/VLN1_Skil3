@@ -235,7 +235,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -244,59 +244,7 @@
        <attribute name="title">
         <string>Add</string>
        </attribute>
-       <widget class="QWidget" name="layoutWidget_8">
-        <property name="geometry">
-         <rect>
-          <x>311</x>
-          <y>11</y>
-          <width>371</width>
-          <height>466</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_7">
-         <item>
-          <widget class="QLineEdit" name="input_filter_sci">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="placeholderText">
-            <string>Filter names...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="counter">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QListWidget" name="scientistList"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="removeButton">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Remove scientist</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QTextBrowser" name="detailsBox">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -387,7 +335,59 @@
          <item>
           <widget class="QPushButton" name="buttonAddNewSci">
            <property name="text">
-            <string>Add new scientist</string>
+            <string>Add new scientist!</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>16</y>
+          <width>351</width>
+          <height>466</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="input_filter_sci">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Filter names...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="counter">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="scientistList"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Remove scientist</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextBrowser" name="detailsBox">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -450,7 +450,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>1</x>
