@@ -63,6 +63,14 @@ bool Domain::removeScientist(Person p)
     return success;
 }
 
+
+bool Domain::removeComputer(Computer c)
+{
+    bool success = DB.removeComputer(c);
+    ve = DB.readComputerFromDb();
+    return success;
+}
+
 vector<Person> Domain::returnAllScientists()    // Skilar öllum Person-vektornum
 {
     return v;

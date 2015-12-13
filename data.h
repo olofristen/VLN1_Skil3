@@ -31,6 +31,7 @@ public:
     vector<Computer> searchComputerFromDb(string num, string search);
     vector<pair<Person, Computer> > readLinkFromDb();
     bool removeScientist(Person p);
+    bool removeComputer(Computer c);
 };
 
 

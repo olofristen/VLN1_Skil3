@@ -42,6 +42,7 @@ public:
 
 
     bool removeScientist(Person p);
+    bool removeComputer(Computer c);
 };
 
 
