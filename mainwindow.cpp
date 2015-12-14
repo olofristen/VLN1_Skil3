@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,6 +36,13 @@ void MainWindow::on_buttonAddNewSci_clicked()
     int deathyear = ui->inputDY->text().toInt();
     string bio = ui->inputBio->text().toStdString();
 
+    if(name == "" || birthyear == 0 || birthyear < 1600 || birthyear > 2010 || (deathyear != 0 && deathyear < birthyear) || deathyear > 2015 || (ui->isDead->isChecked() && deathyear == 0))
+    {
+        ui->errorMess->setText("These values are invalid! Try again...");
+        return;
+    }
+    if(deathyear == 0)       deathyear = -1;        // Not dead yet!
+
     myDom.addNewPerson(name, gender, birthyear, deathyear, bio);
     displayAllScientists();
 
@@ -43,6 +51,8 @@ void MainWindow::on_buttonAddNewSci_clicked()
     ui->inputDY->clear();
     ui->inputBio->clear();
     ui->isDead->setChecked(false);
+    ui->errorMess->clear();
+    ui->statusBar->showMessage("New scientist successfully added to the database!", 1500);
 }
 
 
@@ -152,6 +162,12 @@ void MainWindow::on_removeButton_clicked()
 {
     int currentIndex = ui->scientistList->currentIndex().row();
     Person currentlySelectedScientist = currentlyDisplayedScientists.at(currentIndex);
+
+    int answer = QMessageBox::question(this, "Confirm removal", "Are you sure you want to remove this scientist from the database?");
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
     bool success = myDom.removeScientist(currentlySelectedScientist);
 
     if(success)
@@ -162,6 +178,7 @@ void MainWindow::on_removeButton_clicked()
         ui->removeButton->setEnabled(false);
         ui->detailsBox->clear();
     }
+    ui->statusBar->showMessage("This scientist was successfully removed from the database", 1500);
 }
 
 
@@ -173,6 +190,11 @@ void MainWindow::on_buttonAddNewComp_clicked()
     int year = ui->inputYComp->text().toInt();
     string info = ui->inputInfo->text().toStdString();
 
+    if(name == "" || year < 1600 || year > 2015)
+    {
+        ui->errorMessComp->setText("These values are invalid! Try again...");
+        return;
+    }
     myDom.addNewComputer(name, year, type, wasbuilt, info);
     displayAllComputers();
 
@@ -181,6 +203,8 @@ void MainWindow::on_buttonAddNewComp_clicked()
     ui->inputYComp->clear();
     ui->inputInfo->clear();
     ui->wasBuilt->setChecked(false);
+    ui->errorMessComp->clear();
+    ui->statusBar->showMessage("New computer added to the database!", 1500);
 }
 
 void MainWindow::on_computerList_clicked(const QModelIndex &index)
@@ -193,17 +217,16 @@ void MainWindow::on_computerList_clicked(const QModelIndex &index)
     QString wasBuilt;
     if(currentlySelectedComp.getWasBuilt())
     {
-        wasBuilt = "\nIt was built!";
+        wasBuilt = "\nIt was built in " + QString::number(currentlySelectedComp.getBuildYear());
     }
     else
     {
-        wasBuilt = "\nIt was NEVER built!";
+        wasBuilt = "\nIt was NEVER built, but documented in " + QString::number(currentlySelectedComp.getBuildYear());
     }
 
     ui->detailsBoxComp->setText("Name: " + QString::fromStdString(currentlySelectedComp.getName()) +
                             "\nType: " + QString::fromStdString(currentlySelectedComp.getType()) +
-                            wasBuilt + "\n\nYear: " + QString::number(currentlySelectedComp.getBuildYear()) +
-                             + "\n\nShort info:\n" + QString::fromStdString(currentlySelectedComp.getInfo()));
+                            wasBuilt + "\n\nShort info:\n" + QString::fromStdString(currentlySelectedComp.getInfo()));
 }
 
 
@@ -211,16 +234,23 @@ void MainWindow::on_removeComp_clicked()
 {
     int currentIndex = ui->computerList->currentIndex().row();
     Computer currentlySelectedComp = currentlyDisplayedComputers.at(currentIndex);
+
+    int answer = QMessageBox::question(this, "Confirm removal", "Are you sure you want to remove this computer from the database?");
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
     bool success = myDom.removeComputer(currentlySelectedComp);
 
     if(success)
     {
-        ui->input_filter_sci->clear();
+        ui->inputFilterComp->clear();
         displayAllComputers();
 
         ui->removeComp->setEnabled(false);
         ui->detailsBoxComp->clear();
     }
+    ui->statusBar->showMessage("This computer was successfully removed from the database", 1500);
 }
 
 void MainWindow::on_inputFilterComp_textChanged(const QString &arg1)

@@ -235,7 +235,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -277,7 +277,7 @@
          <item>
           <widget class="QLabel" name="label_24">
            <property name="text">
-            <string>Birth year:</string>
+            <string>Birth year (1600 - 2010):</string>
            </property>
           </widget>
          </item>
@@ -336,6 +336,13 @@
           <widget class="QPushButton" name="buttonAddNewSci">
            <property name="text">
             <string>Add new scientist!</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="errorMess">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
@@ -456,7 +463,7 @@
           <x>20</x>
           <y>11</y>
           <width>331</width>
-          <height>211</height>
+          <height>307</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -525,8 +532,18 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QLabel" name="errorMessComp">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
+       <zorder>layoutWidget_9</zorder>
+       <zorder>layoutWidget</zorder>
+       <zorder>textBrowser</zorder>
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
