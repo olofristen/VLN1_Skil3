@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1084</width>
-    <height>686</height>
+    <width>968</width>
+    <height>688</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,7 +84,7 @@
       <x>0</x>
       <y>90</y>
       <width>1511</width>
-      <height>751</height>
+      <height>581</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -223,7 +223,7 @@
         <x>30</x>
         <y>20</y>
         <width>841</width>
-        <height>511</height>
+        <height>531</height>
        </rect>
       </property>
       <property name="font">
@@ -235,7 +235,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -492,7 +492,7 @@
            <item>
             <widget class="QLabel" name="label_79">
              <property name="text">
-              <string>Year:</string>
+              <string>Year (1600 - 2015):</string>
              </property>
             </widget>
            </item>
@@ -541,9 +541,6 @@
          </item>
         </layout>
        </widget>
-       <zorder>layoutWidget_9</zorder>
-       <zorder>layoutWidget</zorder>
-       <zorder>textBrowser</zorder>
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -640,7 +637,7 @@
          <item>
           <widget class="QLineEdit" name="inputFilterComp2">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string/>
@@ -660,7 +657,7 @@
          <item>
           <widget class="QListWidget" name="computerList2">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -694,7 +691,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1084</width>
+     <width>968</width>
      <height>21</height>
     </rect>
    </property>

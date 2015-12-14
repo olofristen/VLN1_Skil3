@@ -135,7 +135,7 @@ void MainWindow::on_input_filter_sci_textChanged(const QString &arg1)
     ui->counter->setText(QString::number(sci.size()) + " found!!");
 }
 
-void MainWindow::on_scientistList_clicked(const QModelIndex &index)
+void MainWindow::scientistListScroll()
 {
     ui->removeButton->setEnabled(true);
 
@@ -156,6 +156,22 @@ void MainWindow::on_scientistList_clicked(const QModelIndex &index)
                             "\nGender: " + QString::fromStdString(currentlySelectedScientist.getGender()) +
                             "\n\nYear of birth: " + QString::number(currentlySelectedScientist.getBirthYear()) +
                             death + "\n\nShort Bio: " + QString::fromStdString(currentlySelectedScientist.getBio()));
+}
+
+void MainWindow::on_scientistList_clicked(const QModelIndex &index)
+{
+    scientistListScroll();
+}
+
+void MainWindow::on_scientistList_currentRowChanged(int currentRow)
+{
+    if(currentRow < 0)
+    {
+        ui->detailsBox->clear();
+        return;
+    }
+    scientistListScroll();
+
 }
 
 void MainWindow::on_removeButton_clicked()
@@ -206,8 +222,7 @@ void MainWindow::on_buttonAddNewComp_clicked()
     ui->errorMessComp->clear();
     ui->statusBar->showMessage("New computer added to the database!", 1500);
 }
-
-void MainWindow::on_computerList_clicked(const QModelIndex &index)
+void MainWindow::computerListScroll()
 {
     ui->removeComp->setEnabled(true);
 
@@ -227,8 +242,24 @@ void MainWindow::on_computerList_clicked(const QModelIndex &index)
     ui->detailsBoxComp->setText("Name: " + QString::fromStdString(currentlySelectedComp.getName()) +
                             "\nType: " + QString::fromStdString(currentlySelectedComp.getType()) +
                             wasBuilt + "\n\nShort info:\n" + QString::fromStdString(currentlySelectedComp.getInfo()));
+
 }
 
+void MainWindow::on_computerList_clicked(const QModelIndex &index)
+{
+    computerListScroll();
+}
+
+
+void MainWindow::on_computerList_currentRowChanged(int currentRow)
+{
+    if(currentRow < 0)
+    {
+        ui->detailsBoxComp->clear();
+        return;
+    }
+    computerListScroll();
+}
 
 void MainWindow::on_removeComp_clicked()
 {
@@ -283,7 +314,7 @@ void MainWindow::on_linkButton_clicked()
     ui->inputFilterComp2->clear();
 }
 
-bool MainWindow::on_scientistList2_clicked()
+/*bool MainWindow::on_scientistList2_clicked()
 {
     ui->computerList2->setEnabled(true);
     ui->inputFilterComp2->setEnabled(true);
@@ -295,6 +326,17 @@ void MainWindow::on_computerList2_clicked()
     if(on_scientistList2_clicked())
     {
         ui->linkButton->setEnabled(true);
+    }
+}*/
+void MainWindow::enableLinkButton()
+{
+    if(ui->scientistList2->currentIndex().row() > -1 && ui->computerList2->currentIndex().row() > -1)
+    {
+        ui->linkButton->setEnabled(true);
+    }
+    else
+    {
+        ui->linkButton->setDisabled(true);
     }
 }
 
@@ -314,4 +356,14 @@ void MainWindow::on_inputFilterComp2_textChanged()
     displayComputers(comp);
     ui->counterComp2->setText(QString::number(comp.size()) + " found!!");
 
+}
+
+void MainWindow::on_scientistList2_currentRowChanged(int currentRow)
+{
+    enableLinkButton();
+}
+
+void MainWindow::on_computerList2_currentRowChanged(int currentRow)
+{
+    enableLinkButton();
 }

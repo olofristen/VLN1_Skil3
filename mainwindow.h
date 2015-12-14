@@ -38,13 +38,23 @@ private slots:
 
     void on_linkButton_clicked();
 
-    bool on_scientistList2_clicked();
+   // bool on_scientistList2_clicked();
 
-    void on_computerList2_clicked();
+    //void on_computerList2_clicked();
 
     void on_inputFilterSci2_textChanged();
 
     void on_inputFilterComp2_textChanged();
+
+    //void on_computerList_currentRowChanged(int currentRow);
+
+    void on_scientistList_currentRowChanged(int currentRow);
+
+    void on_computerList_currentRowChanged(int currentRow);
+
+    void on_scientistList2_currentRowChanged(int currentRow);
+
+    void on_computerList2_currentRowChanged(int currentRow);
 
 private:
     Ui::MainWindow *ui;
@@ -60,6 +70,9 @@ private:
     vector<Computer> currentlyDisplayedComputers;
     void setLinkEnabled();
     void displayCombos();
+    void scientistListScroll();
+    void computerListScroll();
+    void enableLinkButton();
 };
 
 #endif // MAINWINDOW_H
