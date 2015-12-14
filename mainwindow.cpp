@@ -9,6 +9,15 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllScientists();
     displayAllComputers();
 
+    displayCombos();
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+void MainWindow::displayCombos()
+{
     ui->compTypeCombo->addItem("Electronic");
     ui->compTypeCombo->addItem("Mechanic");
     ui->compTypeCombo->addItem("Transistor");
@@ -16,11 +25,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->genderCombo->addItem("Male");
     ui->genderCombo->addItem("Female");
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
 }
 
 void MainWindow::on_buttonAddNewSci_clicked()
@@ -58,20 +62,24 @@ void MainWindow::on_isDead_toggled(bool checked)
 void MainWindow::displayAllScientists()
 {
     ui->scientistList->clear();
+    ui->scientistList2->clear();
     vector<Person> sci = myDom.returnAllScientists();
     sort(sci.begin(), sci.end());
     currentlyDisplayedScientists = sci;
 
     for(int i = 0; i < sci.size(); i++)
     {
-         ui->scientistList->addItem(QString::fromStdString(sci[i].getName()));
+        ui->scientistList->addItem(QString::fromStdString(sci[i].getName()));
+        ui->scientistList2->addItem(QString::fromStdString(sci[i].getName()));
     }
     ui->counter->setText(QString::number(sci.size()) + " found!!");
+    ui->counterSci2->setText(QString::number(sci.size()) + " found!!");
 }
 
 void MainWindow::displayAllComputers()
 {
     ui->computerList->clear();
+    ui->computerList2->clear();
     vector<Computer> comp = myDom.returnAllComputers();
     sort(comp.begin(), comp.end());
     currentlyDisplayedComputers = comp;
@@ -79,26 +87,32 @@ void MainWindow::displayAllComputers()
     for(int i = 0; i < comp.size(); i++)
     {
         ui->computerList->addItem(QString::fromStdString(comp[i].getName()));
+        ui->computerList2->addItem(QString::fromStdString(comp[i].getName()));
     }
     ui->counterComp->setText(QString::number(comp.size()) + " found!!");
+    ui->counterComp2->setText(QString::number(comp.size()) + " found!!");
 }
 
 void MainWindow::displayScientists(vector<Person> sci)
 {
     ui->scientistList->clear();
+    ui->scientistList2->clear();
     sort(sci.begin(), sci.end());
     for (int i = 0 ; i < sci.size(); i++) {
         ui->scientistList->addItem(QString::fromStdString(sci[i].getName()));
+        ui->scientistList2->addItem(QString::fromStdString(sci[i].getName()));
     }
     currentlyDisplayedScientists = sci;
 }
 void MainWindow::displayComputers(vector<Computer> comp)
 {
     ui->computerList->clear();
+    ui->computerList2->clear();
     sort(comp.begin(), comp.end());
     for(int i = 0; i < comp.size(); i++)
     {
         ui->computerList->addItem(QString::fromStdString(comp[i].getName()));
+        ui->computerList2->addItem(QString::fromStdString(comp[i].getName()));
     }
     currentlyDisplayedComputers = comp;
 }
@@ -215,4 +229,59 @@ void MainWindow::on_inputFilterComp_textChanged(const QString &arg1)
     vector<Computer> comp = myDom.searchStringComputer("1",userInput);
     displayComputers(comp);
     ui->counterComp->setText(QString::number(comp.size()) + " found!!");
+}
+
+
+void MainWindow::on_linkButton_clicked()
+{
+    ui->detailsLinks->clear();
+    int currentIndex = ui->scientistList2->currentIndex().row();
+    Person currentlySelectedScientist = currentlyDisplayedScientists.at(currentIndex);
+    currentIndex = ui->computerList2->currentIndex().row();
+    Computer currentlySelectedComp = currentlyDisplayedComputers.at(currentIndex);
+
+    bool success = myDom.addNewLink(currentlySelectedScientist, currentlySelectedComp);
+    if(success)
+    {
+        ui->detailsLinks->setText("Worked! We linked together:\n\n" + QString::fromStdString(currentlySelectedScientist.getName()) + " + " + QString::fromStdString(currentlySelectedComp.getName()));
+    }
+    else
+    {
+        ui->detailsLinks->setText("This link already exists! \n\nTry again!");
+    }
+    ui->inputFilterSci2->clear();
+    ui->inputFilterComp2->clear();
+}
+
+bool MainWindow::on_scientistList2_clicked()
+{
+    ui->computerList2->setEnabled(true);
+    ui->inputFilterComp2->setEnabled(true);
+    return true;
+}
+
+void MainWindow::on_computerList2_clicked()
+{
+    if(on_scientistList2_clicked())
+    {
+        ui->linkButton->setEnabled(true);
+    }
+}
+
+void MainWindow::on_inputFilterSci2_textChanged()
+{
+    string userInput = ui->inputFilterSci2->text().toStdString();
+    vector<Person> sci = myDom.searchStringScientist("1",userInput);
+    displayScientists(sci);
+    ui->counterSci2->setText(QString::number(sci.size()) + " found!!");
+
+}
+
+void MainWindow::on_inputFilterComp2_textChanged()
+{
+    string userInput = ui->inputFilterComp2->text().toStdString();
+    vector<Computer> comp = myDom.searchStringComputer("1",userInput);
+    displayComputers(comp);
+    ui->counterComp2->setText(QString::number(comp.size()) + " found!!");
+
 }

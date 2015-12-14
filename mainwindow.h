@@ -36,6 +36,16 @@ private slots:
 
     void on_inputFilterComp_textChanged(const QString &arg1);
 
+    void on_linkButton_clicked();
+
+    bool on_scientistList2_clicked();
+
+    void on_computerList2_clicked();
+
+    void on_inputFilterSci2_textChanged();
+
+    void on_inputFilterComp2_textChanged();
+
 private:
     Ui::MainWindow *ui;
 
@@ -48,6 +58,8 @@ private:
 
     vector<Person> currentlyDisplayedScientists;
     vector<Computer> currentlyDisplayedComputers;
+    void setLinkEnabled();
+    void displayCombos();
 };
 
 #endif // MAINWINDOW_H

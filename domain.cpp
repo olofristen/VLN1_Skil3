@@ -85,20 +85,21 @@ vector<pair<Person, Computer> > Domain::returnAllLinks()       // Skilar öllum 
     return vLink;
 }
 
-pair<Person, Computer> Domain::addNewLink(int pInd, int cInd)   // Linknar saman Person og Computer fyrir gagnagrunninn og pair-vektorinn...
+
+bool Domain::addNewLink(Person p, Computer c)   // Linknar saman Person og Computer fyrir gagnagrunninn og pair-vektorinn...
 {
-    pair<Person, Computer> link = make_pair(v[pInd],ve[cInd]);
-    for(unsigned int i = 0; i < vLink.size(); i++)
+    pair<Person, Computer> link = make_pair(p, c);
+    bool success = DB.addNewLink(link);
+    if(success)
     {
-        if((vLink[i].first.getId() == link.first.getId()) && (vLink[i].second.getId() == link.second.getId()))
-        {
-            cout << endl << "Found duplicate link! This command was not confirmed."  << endl;
-            return link;
-        }
-     }
-    vLink.push_back(link);      // Hoppum yfir þetta ef við finnum parið nú þegar í vektornum
-    DB.addNewLink(link);
-    return link;
+        cout << "That worked!" << endl;
+        vLink.push_back(link);      // Hoppum yfir þetta ef við finnum parið nú þegar í vektornum
+    }
+    else
+    {
+        cout << endl << "Found duplicate link! This command was not confirmed."  << endl;
+    }
+    return success;
 }
 
 

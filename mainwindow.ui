@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>917</width>
-    <height>668</height>
+    <width>1084</width>
+    <height>686</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -222,7 +222,7 @@
        <rect>
         <x>30</x>
         <y>20</y>
-        <width>721</width>
+        <width>841</width>
         <height>511</height>
        </rect>
       </property>
@@ -235,7 +235,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
@@ -247,9 +247,9 @@
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>9</y>
-          <width>281</width>
+          <x>20</x>
+          <y>10</y>
+          <width>321</width>
           <height>271</height>
          </rect>
         </property>
@@ -341,11 +341,11 @@
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>330</x>
-          <y>16</y>
+          <x>380</x>
+          <y>10</y>
           <width>351</width>
           <height>466</height>
          </rect>
@@ -401,7 +401,7 @@
        <widget class="QWidget" name="layoutWidget_9">
         <property name="geometry">
          <rect>
-          <x>310</x>
+          <x>380</x>
           <y>10</y>
           <width>371</width>
           <height>466</height>
@@ -453,9 +453,9 @@
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>1</x>
+          <x>20</x>
           <y>11</y>
-          <width>271</width>
+          <width>331</width>
           <height>211</height>
          </rect>
         </property>
@@ -528,6 +528,128 @@
         </layout>
        </widget>
       </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Link</string>
+       </attribute>
+       <widget class="QPushButton" name="linkButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>290</y>
+          <width>111</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Link together!</string>
+        </property>
+       </widget>
+       <widget class="QTextBrowser" name="detailsLinks">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>330</y>
+          <width>581</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>371</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>&lt;b&gt;Scientists&lt;/b&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="inputFilterSci2">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Filter names...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="counterSci2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="scientistList2"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>20</y>
+          <width>391</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>&lt;b&gt;Computers&lt;/b&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="inputFilterComp2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Filter names...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="counterComp2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="computerList2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="Database">
@@ -555,7 +677,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>917</width>
+     <width>1084</width>
      <height>21</height>
     </rect>
    </property>

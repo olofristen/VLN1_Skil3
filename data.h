@@ -21,7 +21,7 @@ public:
     ~Database();
     int addNewScientist(Person P);
     int addNewComputer(Computer C);
-    void addNewLink(pair<Person, Computer> link);
+    bool addNewLink(pair<Person, Computer> link);
 
     vector<Person> readScientistFromDb();
     vector<Computer> readComputerFromDb();

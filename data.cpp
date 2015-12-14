@@ -85,7 +85,7 @@ int Database::addNewComputer(Computer C)       // Bæti við tölvu í computers
     }
 }
 
-void Database::addNewLink(pair<Person, Computer> link)  // Bætir við tengingu (link) milli tölvu og vísindamanns í tengitöflu í gagnagrunninum
+bool Database::addNewLink(pair<Person, Computer> link)  // Bætir við tengingu (link) milli tölvu og vísindamanns í tengitöflu í gagnagrunninum
 {
     QSqlQuery query(db);
     QString q = "CREATE TABLE IF NOT EXISTS links ('SID' INTEGER, 'CID' INTEGER, FOREIGN KEY (SID) REFERENCES scientists(ID), FOREIGN KEY (CID) REFERENCES computers(ID), PRIMARY KEY(SID, CID))";
@@ -95,7 +95,7 @@ void Database::addNewLink(pair<Person, Computer> link)  // Bætir við tengingu 
 
     query.bindValue(":sid", link.first.getId());
     query.bindValue(":cid", link.second.getId());
-    query.exec();
+    return query.exec();
 }
 
 vector<Person> Database::readScientistFromDb()      // Skilar vector af Person-klösum úr gagnagrunninum
