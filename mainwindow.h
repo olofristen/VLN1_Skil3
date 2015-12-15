@@ -2,8 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <vector>
 #include "domain.h"
 #include "infoscientist.h"
+
+using namespace std;
 
 namespace Ui {
 class MainWindow;
@@ -58,8 +61,28 @@ private slots:
 
     void on_linkTable_currentCellChanged();
 
+    void on_inputFilterComputers_textChanged(const QString &arg1);
+
+    void on_dropDownSearch_currentIndexChanged(const QString &arg1);
+
+    void on_tableComputers_clicked(const QModelIndex &index);
+
+    void on_tableScientists_clicked(const QModelIndex &index);
+
+    void on_lineEditScientists_textChanged(const QString &arg1);
+
+    void on_dropDownScientists_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
+    string getCurrentScientistSearch();
+    string getCurrentComputerSearch();
+    void displayAllScientistsST();
+    void displayScientistsST(vector<Person> scientists);
+    void displayAllComputersST();
+    void displayComputersST(vector<Computer> computers);
+    void displayInfo(unsigned int row);
+    void displayBio(int row);
     Domain myDom;
 
     vector<Person> currentlyDisplayedScientists;
