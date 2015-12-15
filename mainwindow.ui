@@ -68,7 +68,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -201,7 +201,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
            </font>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
