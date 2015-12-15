@@ -47,6 +47,7 @@ vector<Computer> Domain::getCompFromLinks(int pID)
     }
     return comp;
 }
+
 vector<Person> Domain::getSciFromLinks(int cID)
 {   // Sæki hér vísindamann úr link-vektornum fyrir viðeigandi ID á Computer
     vector<Person> comp;
@@ -65,9 +66,9 @@ bool Domain::removeScientist(Person p)
     bool success = DB.removeScientist(p);
     v = DB.readScientistFromDb();
     vLink = DB.readLinkFromDb();
+
     return success;
 }
-
 
 bool Domain::removeComputer(Computer c)
 {
@@ -93,11 +94,11 @@ vector<Computer> Domain::returnAllComputers()   // Skilar öllum Computer-vektor
 {
     return ve;
 }
+
 vector<pair<Person, Computer> > Domain::returnAllLinks()       // Skilar öllum tengingunum
 {
     return vLink;
 }
-
 
 pair<Person, Computer> Domain::returnLinkFromNames(string pName, string cName)
 {
@@ -126,7 +127,6 @@ bool Domain::addNewLink(Person p, Computer c)   // Linknar saman Person og Compu
     }
     return success;
 }
-
 
 vector<Person> Domain::sortAndDisplayScientist(string sortMenu)
 {        // sorterar vektorinn...

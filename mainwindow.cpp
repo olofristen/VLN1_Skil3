@@ -33,6 +33,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 void MainWindow::displayCombos()
 {
     ui->compTypeCombo->addItem("Electronic");
@@ -52,7 +53,7 @@ void MainWindow::on_buttonAddNewSci_clicked()
     string gender = ui->genderCombo->currentText().toStdString();
     int birthyear = ui->inputBY->text().toInt();
     int deathyear = ui->inputDY->text().toInt();
-    string bio = ui->inputBio->text().toStdString();
+    string bio = ui->inputBio->toPlainText().toStdString();
 
     int tempTimeBirth, tempTimeDeath;
     time_t t = time(NULL);
@@ -78,7 +79,6 @@ void MainWindow::on_buttonAddNewSci_clicked()
     ui->errorMess->clear();
     ui->statusBar->showMessage("New scientist successfully added to the database!", 1500);
 }
-
 
 void MainWindow::on_isDead_toggled(bool checked)
 {
@@ -221,14 +221,13 @@ void MainWindow::on_removeButton_clicked()
     ui->statusBar->showMessage("This scientist was successfully removed from the database", 1500);
 }
 
-
 void MainWindow::on_buttonAddNewComp_clicked()
 {
     string name = ui->inputNameComp->text().toStdString();
     string type = ui->compTypeCombo->currentText().toStdString();
     bool wasbuilt = ui->wasBuilt->isChecked();
     int year = ui->inputYComp->text().toInt();
-    string info = ui->inputInfo->text().toStdString();
+    string info = ui->inputInfo->toPlainText().toStdString();
 
     int tempThisYear;
     time_t t = time(NULL);
@@ -251,6 +250,7 @@ void MainWindow::on_buttonAddNewComp_clicked()
     ui->errorMessComp->clear();
     ui->statusBar->showMessage("New computer added to the database!", 1500);
 }
+
 void MainWindow::computerListScroll()
 {
     ui->removeComp->setEnabled(true);
@@ -278,7 +278,6 @@ void MainWindow::on_computerList_clicked(const QModelIndex &index)
 {
     computerListScroll();
 }
-
 
 void MainWindow::on_computerList_currentRowChanged(int currentRow)
 {
@@ -321,10 +320,7 @@ void MainWindow::on_inputFilterComp_textChanged(const QString &arg1)
     displayComputers(comp);
     ui->counterComp->setText(QString::number(comp.size()) + " found!!");
 }
-
-// Linking dót -------------------------------
-
-
+     // Linking dót -------------------------------
 void MainWindow::displayScientistsLink(vector<Person> sci)
 {
     ui->scientistList2->clear();
@@ -334,7 +330,6 @@ void MainWindow::displayScientistsLink(vector<Person> sci)
     }
     currentlyDisplayedSciLink = sci;
 }
-
 
 void MainWindow::displayComputersLink(vector<Computer> comp)
 {
@@ -405,8 +400,8 @@ void MainWindow::on_scientistList2_currentRowChanged(int currentRow)
 void MainWindow::on_computerList2_currentRowChanged(int currentRow)
 {
     enableLinkButton();
-}
-// Taflan
+} // Taflan
+
 void MainWindow::displayLinkTable(vector<pair<Person, Computer> > vlink)     // Býr til töflu yfir alla linka (Person - Computer)
 {
     ui->linkTable->setSortingEnabled(false);
@@ -478,6 +473,7 @@ void MainWindow::on_removeLinkButton_clicked()
         ui->statusBar->showMessage("This link was successfully removed from the database", 1500);
     }
 }
+
 void MainWindow::on_linkTable_clicked(const QModelIndex &index)
 {
     //ui->removeLinkButton->setEnabled(true);
@@ -633,6 +629,7 @@ string MainWindow::getCurrentScientistSearch()
         return "bio";
     }
 }
+
 string MainWindow::getCurrentComputerSearch()
 {
     string currentValueSearch = ui->dropDownSearch->currentText().toStdString();
