@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1278</width>
-    <height>806</height>
+    <height>837</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -36,7 +36,13 @@
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>100</height>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>80</height>
        </size>
       </property>
       <property name="mouseTracking">
@@ -68,7 +74,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -201,7 +207,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
            </font>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -228,13 +234,13 @@ font: 18pt &quot;Agency FB&quot;;</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -252,13 +258,26 @@ image-position: left;</string>
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
                 </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>100</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_18">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
                 <property name="sizeType">
                  <enum>QSizePolicy::Fixed</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
-                  <height>20</height>
+                  <width>0</width>
+                  <height>10</height>
                  </size>
                 </property>
                </spacer>
@@ -309,7 +328,7 @@ image-position: left;</string>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>12</height>
+                  <height>8</height>
                  </size>
                 </property>
                </spacer>
@@ -360,7 +379,7 @@ image-position: left;</string>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>12</height>
+                  <height>8</height>
                  </size>
                 </property>
                </spacer>
@@ -411,7 +430,7 @@ image-position: left;</string>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>12</height>
+                  <height>8</height>
                  </size>
                 </property>
                </spacer>
@@ -494,7 +513,7 @@ image-position: left;</string>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>12</height>
+                  <height>8</height>
                  </size>
                 </property>
                </spacer>
@@ -539,7 +558,7 @@ image-position: left;</string>
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>12</height>
+                  <height>8</height>
                  </size>
                 </property>
                </spacer>
@@ -653,13 +672,13 @@ image-position: left;</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -980,13 +999,13 @@ image-position: left;</string>
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>60</height>
+                <height>50</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>60</height>
+                <height>50</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -1223,13 +1242,13 @@ image-position: left;</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -1310,6 +1329,9 @@ image-position: left;</string>
                 <property name="autoFillBackground">
                  <bool>true</bool>
                 </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
                 <property name="alternatingRowColors">
                  <bool>true</bool>
                 </property>
@@ -1372,6 +1394,11 @@ image-position: left;</string>
                  </property>
                  <property name="textAlignment">
                   <set>AlignLeading|AlignVCenter</set>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>ID</string>
                  </property>
                 </column>
                </widget>
@@ -1451,13 +1478,13 @@ p, li { white-space: pre-wrap; }
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -1663,13 +1690,13 @@ image-position: left;</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -1713,6 +1740,9 @@ image-position: left;</string>
               </item>
               <item>
                <widget class="QTableWidget" name="linkTable">
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
                 <property name="sortingEnabled">
                  <bool>true</bool>
                 </property>
@@ -1784,17 +1814,17 @@ image-position: left;</string>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_15">
+     <widget class="QLabel" name="Footer">
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>79</height>
+        <height>63</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>79</height>
+        <height>63</height>
        </size>
       </property>
       <property name="styleSheet">
@@ -1816,7 +1846,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1278</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>

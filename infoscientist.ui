@@ -6,95 +6,239 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1054</width>
-    <height>709</height>
+    <width>650</width>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QLabel" name="Header">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>100</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(86, 197, 188);
-image: url(:/Buttons/skil3-logo_80pxIN.png);
-image-position: left;
-color: rgb(255, 255, 255);
-font: 18pt &quot;Agency FB&quot;;</string>
-     </property>
-     <property name="text">
-      <string>           THE COMPUTING DATABASE</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="Name">
-     <property name="styleSheet">
-      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Name:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="Gender">
-     <property name="styleSheet">
-      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Gender:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="YOB">
-     <property name="styleSheet">
-      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Year of Birth:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="YOD">
-     <property name="styleSheet">
-      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Year of Death:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="computersBuilt">
-     <property name="styleSheet">
-      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Computers Built:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="bio">
-     <property name="styleSheet">
-      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
-     </property>
-     <property name="text">
-      <string>Bio:</string>
-     </property>
-    </widget>
-   </item>
-  </layout>
+  <layout class="QVBoxLayout" name="verticalLayout"/>
+  <widget class="QLabel" name="Header">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1081</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(86, 197, 188);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Logo">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>61</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/Buttons/skil3-logo_100pxIN.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Title">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>20</y>
+     <width>331</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Agency FB</family>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>The Computing Database</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Name">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>160</y>
+     <width>68</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Name:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Gender">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>200</y>
+     <width>68</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Gender:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="YOB">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>240</y>
+     <width>111</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Year of Birth:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="YOD">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>280</y>
+     <width>121</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Year of Death:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="computersBuilt">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>330</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Linked to:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bio">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>410</y>
+     <width>121</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Short biography:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nameBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>160</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="genderBox">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>200</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="yobBox">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>240</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="yodBox">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>280</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="bioBox">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>420</y>
+     <width>361</width>
+     <height>151</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="compLink">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>340</y>
+     <width>361</width>
+     <height>51</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

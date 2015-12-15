@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllComputers();
     displayAllScientists();
 
-
     displayCombos();
     displayMoreCombos();
     displayLinkTable(myDom.returnAllLinks());
@@ -179,11 +178,28 @@ void MainWindow::scientistListScroll()
     {
         death = "\nYear of death: " + QString::number(currentlySelectedScientist.getDeathYear());
     }
+    QString Comps = showComputersFromLinks(currentlySelectedScientist.getId());
 
     ui->detailsBox->setText("Name: " + QString::fromStdString(currentlySelectedScientist.getName()) +
                             "\nGender: " + QString::fromStdString(currentlySelectedScientist.getGender()) +
                             "\n\nYear of birth: " + QString::number(currentlySelectedScientist.getBirthYear()) +
-                            death + "\n\nShort Bio: " + QString::fromStdString(currentlySelectedScientist.getBio()));
+                            death + "\n\nLinked to (computers):\n" + Comps + "\n\nShort Bio:\n" + QString::fromStdString(currentlySelectedScientist.getBio()));
+
+
+}
+QString MainWindow::showComputersFromLinks(int pid)
+{
+    vector<Computer> comp = myDom.getCompFromLinks(pid);
+    QString Comps = "";
+
+    for(unsigned int i = 0; i < comp.size(); i++) {
+        Comps = Comps + QString::fromStdString(comp[i].getName());
+        if(i != comp.size() - 1)
+        {
+            Comps = Comps + ", ";
+        }
+    }
+    return Comps;
 }
 
 void MainWindow::on_scientistList_clicked(const QModelIndex &index)
@@ -273,12 +289,27 @@ void MainWindow::computerListScroll()
         wasBuilt = "\nIt was NEVER built, but documented in " + QString::number(currentlySelectedComp.getBuildYear());
     }
 
+    QString Sci = showScientistsFromLinks(currentlySelectedComp.getId());
     ui->detailsBoxComp->setText("Name: " + QString::fromStdString(currentlySelectedComp.getName()) +
                             "\nType: " + QString::fromStdString(currentlySelectedComp.getType()) +
-                            wasBuilt + "\n\nShort info:\n" + QString::fromStdString(currentlySelectedComp.getInfo()));
+                            wasBuilt + "\n\nLinked to (scientists):\n" + Sci + "\n\nShort info:\n" + QString::fromStdString(currentlySelectedComp.getInfo()));
 
 }
 
+QString MainWindow::showScientistsFromLinks(int cid)
+{
+    vector<Person> sci = myDom.getSciFromLinks(cid);
+    QString Scistring = "";
+
+    for(unsigned int i = 0; i < sci.size(); i++) {
+        Scistring = Scistring + QString::fromStdString(sci[i].getName());
+        if(i != sci.size() - 1)
+        {
+            Scistring = Scistring + ", ";
+        }
+    }
+    return Scistring;
+}
 void MainWindow::on_computerList_clicked(const QModelIndex &index)
 {
     computerListScroll();
@@ -355,18 +386,30 @@ void MainWindow::on_linkButton_clicked()
     int currIndex = ui->computerList2->currentIndex().row();
     Computer currentlySelectedComp = currentlyDisplayedCompLink.at(currIndex);
 
-    bool success = myDom.addNewLink(currentlySelectedScientist, currentlySelectedComp);
-    if(success)
+    if(currentlySelectedScientist.getDeathYear() < currentlySelectedComp.getBuildYear() && currentlySelectedScientist.getDeathYear() != -1)
     {
-        ui->detailsLinks->setText("Worked! We linked together:\n\n" + QString::fromStdString(currentlySelectedScientist.getName()) + " + " + QString::fromStdString(currentlySelectedComp.getName()));
+        ui->detailsLinks->setText("This scientist was already dead when this computer was made/documented. \n\nTry again!");
+    }
+    else if(currentlySelectedComp.getBuildYear() < currentlySelectedScientist.getBirthYear())
+    {
+        ui->detailsLinks->setText("This scientist wasn't even born when this computer was made/documented. \n\nTry again!");
     }
     else
     {
-        ui->detailsLinks->setText("This link already exists! \n\nTry again!");
+        bool success = myDom.addNewLink(currentlySelectedScientist, currentlySelectedComp);
+        if(success)
+        {
+            ui->detailsLinks->setText("Worked! We linked together:\n\n" + QString::fromStdString(currentlySelectedScientist.getName()) + " + " + QString::fromStdString(currentlySelectedComp.getName()));
+        }
+        else
+        {
+            ui->detailsLinks->setText("This link already exists! \n\nTry again!");
+        }
     }
     ui->inputFilterSci2->clear();
     ui->inputFilterComp2->clear();
     displayLinkTable(myDom.returnAllLinks());
+
 }
 
 void MainWindow::enableLinkButton()
@@ -530,13 +573,18 @@ void MainWindow::displayScientistsST(vector<Person> scientists)
            dye = dy;
        }
        QString bio = QString::fromStdString(currentScientist.getBio());
+       QString id = QString::number(currentScientist.getId());
 
        ui->tableScientists->setItem(row, 0, new QTableWidgetItem(name));
        ui->tableScientists->setItem(row, 1, new QTableWidgetItem(gender));
        ui->tableScientists->setItem(row, 2, new QTableWidgetItem(by));
        ui->tableScientists->setItem(row, 3, new QTableWidgetItem(dye));
        ui->tableScientists->setItem(row, 4, new QTableWidgetItem(bio));
+       ui->tableScientists->setItem(row, 5, new QTableWidgetItem(id));
        ui->tableScientists->setColumnHidden(4, true);
+       ui->tableScientists->setColumnHidden(5, true);
+      // qDebug() << ui->tableScientists->item(row,5)->text();
+
    }
    ui->tableScientists->setSortingEnabled(true);
    ui->counterSciDB->setText(QString::number(scientists.size()) + " found!!");
@@ -572,6 +620,7 @@ void MainWindow::displayComputersST(vector<Computer> computers)
         ui->tableComputers->setItem(row, 3, new QTableWidgetItem(by));
         ui->tableComputers->setItem(row, 4, new QTableWidgetItem(info));
         ui->tableComputers->setColumnHidden(4, true);
+
     }
 
     ui->tableComputers->setSortingEnabled(true);
@@ -704,4 +753,22 @@ void MainWindow::on_tableComputers_currentCellChanged()
         return;
     }
     displayInfo(currentIndex);
+}
+
+void MainWindow::on_tableScientists_doubleClicked()
+{
+    int row = ui->tableScientists->currentRow();
+    QString name = ui->tableScientists->item(row, 0)->text();
+    QString gender = ui->tableScientists->item(row, 1)->text();
+    QString yob = ui->tableScientists->item(row, 2)->text();
+    QString yod = ui->tableScientists->item(row, 3)->text();
+    QString bio = ui->tableScientists->item(row, 4)->text();
+    QString id = ui->tableScientists->item(row, 5)->text();
+
+    qDebug() << id;
+    InfoScientist info;
+    info.printInfo(id, name, gender, yob, yod, bio, showComputersFromLinks(id.toInt()));
+    info.exec();
+
+
 }

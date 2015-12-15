@@ -18,17 +18,21 @@ SOURCES += main.cpp\
     data.cpp \
     domain.cpp \
     person.cpp \
-    infoscientist.cpp
+    infoscientist.cpp \
+    infocomputers.cpp
 
 HEADERS  += mainwindow.h \
     computer.h \
     data.h \
     domain.h \
     person.h \
-    infoscientist.h
+    infoscientist.h \
+    infocomputers.h
 
-FORMS    += mainwindow.ui \
-    infoscientist.ui
+FORMS    += \
+    infoscientist.ui \
+    infocomputers.ui \
+    mainwindow.ui
 
 RESOURCES += \
     images.qrc
