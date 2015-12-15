@@ -235,7 +235,7 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -287,7 +287,7 @@
          <item>
           <widget class="QLabel" name="label_24">
            <property name="text">
-            <string>Birth year (1600 - 2010):</string>
+            <string>Birth year:</string>
            </property>
           </widget>
          </item>
@@ -506,7 +506,7 @@
            <item>
             <widget class="QLabel" name="label_79">
              <property name="text">
-              <string>Year (1600 - 2015):</string>
+              <string>Year:</string>
              </property>
             </widget>
            </item>
@@ -777,7 +777,7 @@
      <x>0</x>
      <y>0</y>
      <width>968</width>
-     <height>31</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

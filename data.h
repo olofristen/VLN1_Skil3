@@ -7,6 +7,7 @@
 #include <fstream>
 #include <QtDebug>
 #include <QtSql>
+#include <ctime>
 
 class Database
 {
