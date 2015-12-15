@@ -68,7 +68,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -113,7 +113,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
          <string notr="true">font: 11pt &quot;Agency FB&quot;;</string>
         </property>
         <property name="text">
-         <string>the most important computer scientists AND computers OF ALL TIME!!</string>
+         <string>computer scientists AND computers OF ALL TIME!!</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_2">
