@@ -3,3 +3,20 @@
 [1211/100054:INFO:CONSOLE(544)] "Startup complete: %dms", source: file:///C:/Program%20Files/Adobe/Adobe%20Photoshop%20CC%202015/Required/Plug-Ins/Spaces2//www/src/js/main-en.js (544)
 [1211/100128:ERROR:renderer_main.cc(207)] Running without renderer sandbox
 [1211/100128:WARNING:message_in_transit_queue.cc(18)] Destroying nonempty message queue
+[1213/154856:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154901:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154906:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154910:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154911:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154915:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154916:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154920:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154921:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154923:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154925:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154926:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154928:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154930:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154931:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154933:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.
+[1213/154935:WARNING:dns_config_service_win.cc(654)] Failed to read DnsConfig.

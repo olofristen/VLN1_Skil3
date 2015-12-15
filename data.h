@@ -21,7 +21,8 @@ public:
     ~Database();
     int addNewScientist(Person P);
     int addNewComputer(Computer C);
-    void addNewLink(pair<Person, Computer> link);
+    bool addNewLink(pair<Person, Computer> link);
+    bool removeLink(Person p, Computer c);
 
     vector<Person> readScientistFromDb();
     vector<Computer> readComputerFromDb();
@@ -29,9 +30,14 @@ public:
     vector<Computer> sortComputersFromDb(string sortMenu);
     vector<Person> searchScientistFromDb(string num, string search);
     vector<Computer> searchComputerFromDb(string num, string search);
+    vector<pair<Person, Computer> > searchForLink(string type, string search);
+   // vector<pair<Person, Computer> > searchForLink(string search);
     vector<pair<Person, Computer> > readLinkFromDb();
     vector<Person> filterScientistFromDb(string dropDownValue, string search);
     vector<Computer> filterComputerFromDb(string dropDownValue, string search);
+
+    bool removeScientist(Person p);
+    bool removeComputer(Computer c);
 };
 
 

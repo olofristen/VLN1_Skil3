@@ -23,12 +23,15 @@ public:
     Domain();
     void addNewPerson(string name, string gender, int birthYear, int deathYear, string bio);
     void addNewComputer(string name, int buildYear, string type, bool wasBuilt, string info);
+    bool addNewLink(Person p, Computer c);
+    pair<Person, Computer> returnLinkFromNames(string pName, string cName);
 
-    pair<Person, Computer> addNewLink(int pInd, int cInd);
     vector<Person> sortAndDisplayScientist(string sortMenu);
     vector<Computer> sortAndDisplayComputer(string sortMenu);
     vector<Person>  searchStringScientist(string num, string search);
     vector<Computer>  searchStringComputer(string num, string search);
+    vector<pair<Person, Computer> > searchForLink(string type, string search);
+//    vector<pair<Person, Computer> > searchForLink(string search);
     vector<Computer> getCompFromLinks(int pID);
     vector<Person> getSciFromLinks(int cID);
     vector<Person> filterScientist(string dropDownValue, string search);
@@ -42,7 +45,9 @@ public:
     int computersSize();
     int linkSize();
 
-
+    bool removeScientist(Person p);
+    bool removeComputer(Computer c);
+    bool removeLink(pair<Person, Computer> link);
 };
 
 

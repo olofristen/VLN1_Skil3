@@ -38,8 +38,10 @@ void Domain::addNewComputer(string name, int buildYear, string type, bool wasBui
 vector<Computer> Domain::getCompFromLinks(int pID)
 {   // Sæki tölvu úr link-vektornum fyrir viðeigandi ID á Person
     vector<Computer> comp;
-    for(unsigned int i = 0; i < vLink.size(); i++) {
-        if(pID == vLink[i].first.getId()) {
+    for(unsigned int i = 0; i < vLink.size(); i++)
+    {
+        if(pID == vLink[i].first.getId())
+        {
             comp.push_back(vLink[i].second);
         }
     }
@@ -48,12 +50,38 @@ vector<Computer> Domain::getCompFromLinks(int pID)
 vector<Person> Domain::getSciFromLinks(int cID)
 {   // Sæki hér vísindamann úr link-vektornum fyrir viðeigandi ID á Computer
     vector<Person> comp;
-    for(unsigned int i = 0; i < vLink.size(); i++) {
-        if(cID == vLink[i].second.getId()) {
+    for(unsigned int i = 0; i < vLink.size(); i++)
+    {
+        if(cID == vLink[i].second.getId())
+        {
             comp.push_back(vLink[i].first);
         }
     }
     return comp;
+}
+
+bool Domain::removeScientist(Person p)
+{
+    bool success = DB.removeScientist(p);
+    v = DB.readScientistFromDb();
+    vLink = DB.readLinkFromDb();
+    return success;
+}
+
+
+bool Domain::removeComputer(Computer c)
+{
+    bool success = DB.removeComputer(c);
+    ve = DB.readComputerFromDb();
+    vLink = DB.readLinkFromDb();
+    return success;
+}
+
+bool Domain::removeLink(pair<Person, Computer> link)
+{
+    bool success = DB.removeLink(link.first, link.second);
+    vLink = DB.readLinkFromDb();
+    return success;
 }
 
 vector<Person> Domain::returnAllScientists()    // Skilar öllum Person-vektornum
@@ -70,20 +98,33 @@ vector<pair<Person, Computer> > Domain::returnAllLinks()       // Skilar öllum 
     return vLink;
 }
 
-pair<Person, Computer> Domain::addNewLink(int pInd, int cInd)   // Linknar saman Person og Computer fyrir gagnagrunninn og pair-vektorinn...
+
+pair<Person, Computer> Domain::returnLinkFromNames(string pName, string cName)
 {
-    pair<Person, Computer> link = make_pair(v[pInd],ve[cInd]);
-    for(unsigned int i = 0; i < vLink.size(); i++)
+    for(int i = 0; i < vLink.size(); i++)
     {
-        if((vLink[i].first.getId() == link.first.getId()) && (vLink[i].second.getId() == link.second.getId()))
+        if(vLink[i].first.getName() == pName && vLink[i].second.getName() == cName)
         {
-            cout << endl << "Found duplicate link! This command was not confirmed."  << endl;
-            return link;
+            return vLink[i];        // Skilum parinu ef það finnst
         }
-     }
-    vLink.push_back(link);      // Hoppum yfir þetta ef við finnum parið nú þegar í vektornum
-    DB.addNewLink(link);
-    return link;
+    }
+    return pair<Person, Computer>();        // Ekki til!
+}
+
+bool Domain::addNewLink(Person p, Computer c)   // Linknar saman Person og Computer fyrir gagnagrunninn og pair-vektorinn...
+{
+    pair<Person, Computer> link = make_pair(p, c);
+    bool success = DB.addNewLink(link);
+    if(success)
+    {
+        cout << "That worked!" << endl;
+        vLink.push_back(link);      // Hoppum yfir þetta ef við finnum parið nú þegar í vektornum
+    }
+    else
+    {
+        cout << endl << "Found duplicate link! This command was not confirmed."  << endl;
+    }
+    return success;
 }
 
 
@@ -106,6 +147,7 @@ vector<Computer> Domain::searchStringComputer(string num, string search)
 {       // leitar í vektornum...
     return DB.searchComputerFromDb(num, search);
 }
+
 vector<Person> Domain::filterScientist(string dropDownValue, string search)
 {       // leitar í vektornum...
     return DB.filterScientistFromDb(dropDownValue, search);
@@ -113,4 +155,9 @@ vector<Person> Domain::filterScientist(string dropDownValue, string search)
 vector<Computer> Domain::filterComputer(string dropDownValue, string search)
 {       // leitar í vektornum...
     return DB.filterComputerFromDb(dropDownValue, search);
+}
+
+vector<pair<Person, Computer> > Domain::searchForLink(string type, string search)
+{
+    return DB.searchForLink(type, search);
 }
