@@ -24,6 +24,7 @@ public:
     void addNewPerson(string name, string gender, int birthYear, int deathYear, string bio);
     void addNewComputer(string name, int buildYear, string type, bool wasBuilt, string info);
     bool addNewLink(Person p, Computer c);
+    pair<Person, Computer> returnLinkFromNames(string pName, string cName);
 
     vector<Person> sortAndDisplayScientist(string sortMenu);
     vector<Computer> sortAndDisplayComputer(string sortMenu);

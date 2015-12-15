@@ -409,11 +409,28 @@ void MainWindow::on_inputFilterLink_textChanged(const QString &arg1)
 
 void MainWindow::on_removeLinkButton_clicked()
 {
- //   int row = ui->linkTable->currentRow();
-    int currentIndex = ui->linkTable->currentIndex().row();
-    pair<Person, Computer> selectedPair = currentlyDisplayedLinks.at(currentIndex);
-    qDebug() << QString::fromStdString(currentlyDisplayedLinks.at(currentIndex).first.getName());
-    qDebug() << QString::fromStdString(currentlyDisplayedLinks.at(currentIndex).second.getName());
+    int row = ui->linkTable->currentRow();
+    int col = ui->linkTable->currentColumn();
+    string SciName, CompName;
+
+    if(col == 0)    // Scientist name chosen
+    {
+        SciName = ui->linkTable->item(row, col)->text().toStdString();
+        CompName = ui->linkTable->item(row, col + 1)->text().toStdString();
+    }
+    else           // col == 1, Computer name chosen
+    {
+        CompName = ui->linkTable->item(row, col)->text().toStdString();
+        SciName = ui->linkTable->item(row, col - 1)->text().toStdString();
+    }
+
+    qDebug() << QString::fromStdString(SciName);
+    qDebug() << QString::fromStdString(CompName);
+
+
+    pair<Person, Computer> selectedPair = myDom.returnLinkFromNames(SciName, CompName);
+    qDebug() << QString::fromStdString(selectedPair.first.getName());
+    qDebug() << QString::fromStdString(selectedPair.second.getName());
 
     int answer = QMessageBox::question(this, "Confirm removal", "Are you sure you want to remove this link from the database?");
     if(answer == QMessageBox::No)
@@ -435,30 +452,6 @@ void MainWindow::on_removeLinkButton_clicked()
         ui->statusBar->showMessage("This link was successfully removed from the database", 1500);
     }
 }
-/*void MainWindow::on_removeButton_clicked()
-{
-    int currentIndex = ui->scientistList->currentIndex().row();
-    Person currentlySelectedScientist = currentlyDisplayedScientists.at(currentIndex);
-
-    int answer = QMessageBox::question(this, "Confirm removal", "Are you sure you want to remove this scientist from the database?");
-    if(answer == QMessageBox::No)
-    {
-        return;
-    }
-    bool success = myDom.removeScientist(currentlySelectedScientist);
-
-    if(success)
-    {
-        ui->input_filter_sci->setText("");
-        displayAllScientists();
-        displayLinkTable(myDom.returnAllLinks());
-
-        ui->removeButton->setEnabled(false);
-        ui->detailsBox->clear();
-    }
-    ui->statusBar->showMessage("This scientist was successfully removed from the database", 1500);
-}
-*/
 void MainWindow::on_linkTable_clicked(const QModelIndex &index)
 {
     //ui->removeLinkButton->setEnabled(true);

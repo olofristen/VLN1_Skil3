@@ -82,6 +82,8 @@ private:
     void scientistListScroll();
     void computerListScroll();
     void enableLinkButton();
+    pair<Person, Computer> returnLinkFromNames(string pName, string cName);
+
 };
 
 #endif // MAINWINDOW_H

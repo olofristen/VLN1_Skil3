@@ -95,6 +95,18 @@ vector<pair<Person, Computer> > Domain::returnAllLinks()       // Skilar öllum 
 }
 
 
+pair<Person, Computer> Domain::returnLinkFromNames(string pName, string cName)
+{
+    for(int i = 0; i < vLink.size(); i++)
+    {
+        if(vLink[i].first.getName() == pName && vLink[i].second.getName() == cName)
+        {
+            return vLink[i];        // Skilum parinu ef það finnst
+        }
+    }
+    return pair<Person, Computer>();        // Ekki til!
+}
+
 bool Domain::addNewLink(Person p, Computer c)   // Linknar saman Person og Computer fyrir gagnagrunninn og pair-vektorinn...
 {
     pair<Person, Computer> link = make_pair(p, c);
