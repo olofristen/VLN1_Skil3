@@ -9,16 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->dropDownScientists->addItem("Name");
-    ui->dropDownScientists->addItem("Gender");
-    ui->dropDownScientists->addItem("Year of birth");
-    ui->dropDownScientists->addItem("Year of death");
-    ui->dropDownScientists->addItem("Bio");
-    ui->dropDownSearch->addItem("Name");
-    ui->dropDownSearch->addItem("Type");
-    ui->dropDownSearch->addItem("Was built");
-    ui->dropDownSearch->addItem("Building year");
-    ui->dropDownSearch->addItem("Info");
     displayAllComputersST();
     displayAllScientistsST();
     displayAllComputers();
@@ -26,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     displayCombos();
+    displayMoreCombos();
     displayLinkTable(myDom.returnAllLinks());
 }
 
@@ -45,6 +36,20 @@ void MainWindow::displayCombos()
     ui->genderCombo->addItem("Female");
     ui->linkCombo->addItem("Scientists");
     ui->linkCombo->addItem("Computers");
+}
+void MainWindow::displayMoreCombos()
+{
+    ui->dropDownScientists->addItem("Name");
+    ui->dropDownScientists->addItem("Gender");
+    ui->dropDownScientists->addItem("Year of birth");
+    ui->dropDownScientists->addItem("Year of death");
+    ui->dropDownScientists->addItem("Bio");
+
+    ui->dropDownSearch->addItem("Name");
+    ui->dropDownSearch->addItem("Type");
+    ui->dropDownSearch->addItem("Was built");
+    ui->dropDownSearch->addItem("Building year");
+    ui->dropDownSearch->addItem("Info");
 }
 
 void MainWindow::on_buttonAddNewSci_clicked()
@@ -491,13 +496,13 @@ void MainWindow::on_linkTable_currentCellChanged()
     }
 }
 
-void MainWindow::displayAllScientistsST()
+void MainWindow::displayAllScientistsST() // display fall fyrir database glugga
 {
     vector<Person> scientists = myDom.returnAllScientists();
     displayScientistsST(scientists);
 }
 
-void MainWindow::displayAllComputersST()
+void MainWindow::displayAllComputersST() // display fall fyrir database glugga
 {
     vector<Computer> computers = myDom.returnAllComputers();
     displayComputersST(computers);
@@ -573,7 +578,7 @@ void MainWindow::displayComputersST(vector<Computer> computers)
     ui->counterCompDB->setText(QString::number(computers.size()) + " found!!");
 }
 
-void MainWindow::on_lineEditScientists_textChanged(const QString &arg1)
+void MainWindow::on_dropDownScientists_currentIndexChanged(const QString &arg1) // birtir filteraða leit
 {
     string userInput = ui->lineEditScientists->text().toStdString();
     string dropDownValue = getCurrentScientistSearch();
@@ -581,7 +586,7 @@ void MainWindow::on_lineEditScientists_textChanged(const QString &arg1)
     displayScientistsST(scientist);
 }
 
-void MainWindow::on_inputFilterComputers_textChanged(const QString &arg1)
+void MainWindow::on_inputFilterComputers_textChanged(const QString &arg1) // birtir filteraða leit
 {
     string userInput = ui->inputFilterComputers->text().toStdString();
     string dropDownValue = getCurrentComputerSearch();
@@ -589,23 +594,23 @@ void MainWindow::on_inputFilterComputers_textChanged(const QString &arg1)
     displayComputersST(computer);
 }
 
-void MainWindow::on_dropDownScientists_currentIndexChanged(const QString &arg1)
+void MainWindow::on_lineEditScientists_textChanged(const QString &arg1) //
 {
     string userInput = ui->lineEditScientists->text().toStdString();
     string dropDownValue = getCurrentScientistSearch();
     vector<Person> scientist = myDom.filterScientist(dropDownValue, userInput);
-    displayScientists(scientist);
+    displayScientistsST(scientist);
 }
 
-void MainWindow::on_dropDownSearch_currentIndexChanged(const QString &arg1)
+void MainWindow::on_dropDownSearch_currentIndexChanged(const QString &arg1) //
 {
     string userInput = ui->inputFilterComputers->text().toStdString();
     string dropDownValue = getCurrentComputerSearch();
     vector<Computer> computer = myDom.filterComputer(dropDownValue, userInput);
-    displayComputers(computer);
+    displayComputersST(computer);
 }
 
-string MainWindow::getCurrentScientistSearch()
+string MainWindow::getCurrentScientistSearch() // skilar gildi úr úr dropdownbox
 {
     string currentValueSearch = ui->dropDownScientists->currentText().toStdString();
     if(currentValueSearch == "Name")
@@ -630,7 +635,7 @@ string MainWindow::getCurrentScientistSearch()
     }
 }
 
-string MainWindow::getCurrentComputerSearch()
+string MainWindow::getCurrentComputerSearch()  // skilar gildi úr úr dropdownbox
 {
     string currentValueSearch = ui->dropDownSearch->currentText().toStdString();
     if(currentValueSearch == "Name")
@@ -655,26 +660,26 @@ string MainWindow::getCurrentComputerSearch()
     }
 }
 
-void MainWindow::on_tableComputers_clicked(const QModelIndex &index)
+void MainWindow::on_tableComputers_clicked(const QModelIndex &index) // ef smellt er á birtist info
 {
     unsigned int currentIndex = ui->tableComputers->currentIndex().row();
     displayInfo(currentIndex);
 }
 
-void MainWindow::on_tableScientists_clicked(const QModelIndex &index)
+void MainWindow::on_tableScientists_clicked(const QModelIndex &index) // ef smellt er á birtist bio
 {
     unsigned int currentIndex = ui->tableScientists->currentIndex().row();
     displayBio(currentIndex);
 }
 
-void MainWindow::displayBio(int row)
+void MainWindow::displayBio(int row) // fall sem birtir info í sér glugga
 {
     QString name = ui->tableScientists->item(row, 0)->text();
     QString bio = ui->tableScientists->item(row, 4)->text();
     ui->textBrowserBio->setText(name + "\n\n" + bio);
 }
 
-void MainWindow::displayInfo(int row)
+void MainWindow::displayInfo(int row) // fall sem birtir bio í sér glugga
 {
     QString name = ui->tableComputers->item(row, 0)->text();
     QString info = ui->tableComputers->item(row, 4)->text();
