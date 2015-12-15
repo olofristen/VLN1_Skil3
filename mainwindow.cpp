@@ -39,7 +39,13 @@ void MainWindow::on_buttonAddNewSci_clicked()
     int deathyear = ui->inputDY->text().toInt();
     string bio = ui->inputBio->text().toStdString();
 
-    if(name == "" || birthyear == 0 || birthyear < 1600 || birthyear > 2010 || (deathyear != 0 && deathyear < birthyear) || deathyear > 2015 || (ui->isDead->isChecked() && deathyear == 0))
+    int tempTimeBirth, tempTimeDeath;
+    time_t t = time(NULL);
+    tm* timePtr = localtime(&t);
+    tempTimeBirth = timePtr->tm_year + 1895;
+    tempTimeDeath = timePtr->tm_year + 1900;
+
+    if(name == "" || birthyear == 0 || birthyear < 1 || birthyear > tempTimeBirth || (deathyear != 0 && deathyear < birthyear) || deathyear > tempTimeDeath || (ui->isDead->isChecked() && deathyear == 0))
     {
         ui->errorMess->setText("These values are invalid! Try again...");
         return;
@@ -209,7 +215,12 @@ void MainWindow::on_buttonAddNewComp_clicked()
     int year = ui->inputYComp->text().toInt();
     string info = ui->inputInfo->text().toStdString();
 
-    if(name == "" || year < 1600 || year > 2015)
+    int tempThisYear;
+    time_t t = time(NULL);
+    tm* timePtr = localtime(&t);
+    tempThisYear = timePtr->tm_year + 1900;
+
+    if(name == "" || year < 1 || year > tempThisYear)
     {
         ui->errorMessComp->setText("These values are invalid! Try again...");
         return;
