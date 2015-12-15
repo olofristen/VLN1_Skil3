@@ -31,7 +31,8 @@ HEADERS  += mainwindow.h \
 
 FORMS    += \
     infoscientist.ui \
-    infocomputers.ui
+    infocomputers.ui \
+    mainwindow.ui
 
 RESOURCES += \
     images.qrc
