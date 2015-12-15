@@ -383,7 +383,11 @@ void MainWindow::on_linkButton_clicked()
 
     if(currentlySelectedScientist.getDeathYear() < currentlySelectedComp.getBuildYear() && currentlySelectedScientist.getDeathYear() != -1)
     {
-        ui->detailsLinks->setText("this scientist was already dead when this computer was built \n\nTry again!");
+        ui->detailsLinks->setText("This scientist was already dead when this computer was made/documented. \n\nTry again!");
+    }
+    else if(currentlySelectedComp.getBuildYear() < currentlySelectedScientist.getBirthYear())
+    {
+        ui->detailsLinks->setText("This scientist wasn't even born when this computer was made/documented. \n\nTry again!");
     }
     else
     {
