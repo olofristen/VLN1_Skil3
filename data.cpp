@@ -317,9 +317,90 @@ vector<Computer> Database::searchComputerFromDb(string num, string search) // le
     return computers;
 }
 
+vector<Person> Database::filterScientistFromDb(string dropDownValue, string search) // filterar computer með sql
+{
+    vector<Person> scientists;
+    QSqlQuery query(db);
+
+    if(dropDownValue == "name")
+    {
+        query.exec("SELECT * FROM scientists WHERE Name LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    else if(dropDownValue == "gender")
+    {
+        query.exec("SELECT * FROM scientists WHERE Gender LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    else if(dropDownValue == "dob")
+    {
+        query.exec("SELECT * FROM scientists WHERE DOB LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    else if(dropDownValue == "dod")
+    {
+        query.exec("SELECT * FROM scientists WHERE DOD LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    else if(dropDownValue == "bio")
+    {
+        query.exec("SELECT * FROM scientists WHERE Bio LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    if(db.isOpen())
+    {
+        while(query.next())
+        {
+            scientists.push_back(Person(query));
+        }
+    }
+    else
+    {
+        cerr << "Unable to open database!" << endl;
+    }
+
+    return scientists;
+}
+
+vector<Computer> Database::filterComputerFromDb(string dropDownValue, string search) // filterar computer með sql
+{
+    vector<Computer> computers;
+    QSqlQuery query(db);
+
+    if(dropDownValue == "name")
+    {
+        query.exec("SELECT * FROM computers WHERE Name LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    else if(dropDownValue == "type")
+    {
+        query.exec("SELECT * FROM computers WHERE Type LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    else if(dropDownValue == "wb")
+    {
+        query.exec("SELECT * FROM computers WHERE WB LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    else if(dropDownValue == "by")
+    {
+        query.exec("SELECT * FROM computers WHERE BuildYear LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+    else if(dropDownValue == "info")
+    {
+        query.exec("SELECT * FROM computers WHERE Info LIKE '%" + QString::fromStdString(search) + "%'");
+    }
+
+    if(db.isOpen())
+    {
+        while(query.next())
+        {
+            computers.push_back(Computer(query));
+        }
+    }
+    else
+    {
+        cerr << "Unable to open database!" << endl;
+    }
+
+    return computers;
+}
+
 vector<pair<Person, Computer> > Database::searchForLink(string type, string search)
 {
-    vector<pair<Person, Computer>> vlink;
+    vector<pair<Person, Computer> > vlink;
 
     QSqlQuery query(db);
 
@@ -361,6 +442,7 @@ vector<pair<Person, Computer> > Database::searchForLink(string type, string sear
     return vlink;
 
 }
+
 vector<pair<Person, Computer> > Database::readLinkFromDb()      // Les upp úr tengitöflunni og skilar viðeigandi Person og computer-klasa
 {
     vector<pair<Person, Computer> > vlink;

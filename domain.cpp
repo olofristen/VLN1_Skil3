@@ -38,8 +38,10 @@ void Domain::addNewComputer(string name, int buildYear, string type, bool wasBui
 vector<Computer> Domain::getCompFromLinks(int pID)
 {   // Sæki tölvu úr link-vektornum fyrir viðeigandi ID á Person
     vector<Computer> comp;
-    for(unsigned int i = 0; i < vLink.size(); i++) {
-        if(pID == vLink[i].first.getId()) {
+    for(unsigned int i = 0; i < vLink.size(); i++)
+    {
+        if(pID == vLink[i].first.getId())
+        {
             comp.push_back(vLink[i].second);
         }
     }
@@ -48,8 +50,10 @@ vector<Computer> Domain::getCompFromLinks(int pID)
 vector<Person> Domain::getSciFromLinks(int cID)
 {   // Sæki hér vísindamann úr link-vektornum fyrir viðeigandi ID á Computer
     vector<Person> comp;
-    for(unsigned int i = 0; i < vLink.size(); i++) {
-        if(cID == vLink[i].second.getId()) {
+    for(unsigned int i = 0; i < vLink.size(); i++)
+    {
+        if(cID == vLink[i].second.getId())
+        {
             comp.push_back(vLink[i].first);
         }
     }
@@ -143,7 +147,17 @@ vector<Computer> Domain::searchStringComputer(string num, string search)
 {       // leitar í vektornum...
     return DB.searchComputerFromDb(num, search);
 }
-vector<pair<Person, Computer>> Domain::searchForLink(string type, string search)
+
+vector<Person> Domain::filterScientist(string dropDownValue, string search)
+{       // leitar í vektornum...
+    return DB.filterScientistFromDb(dropDownValue, search);
+}
+vector<Computer> Domain::filterComputer(string dropDownValue, string search)
+{       // leitar í vektornum...
+    return DB.filterComputerFromDb(dropDownValue, search);
+}
+
+vector<pair<Person, Computer> > Domain::searchForLink(string type, string search)
 {
     return DB.searchForLink(type, search);
 }

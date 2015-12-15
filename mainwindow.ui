@@ -96,7 +96,7 @@
      <enum>QTabWidget::West</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <property name="iconSize">
      <size>
@@ -217,7 +217,7 @@
      <attribute name="title">
       <string/>
      </attribute>
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="Edit_2">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -235,14 +235,24 @@
        </font>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>60</width>
+        <height>60</height>
+       </size>
       </property>
       <property name="tabBarAutoHide">
        <bool>false</bool>
       </property>
-      <widget class="QWidget" name="tab_8">
+      <widget class="QWidget" name="AddScientist">
+       <attribute name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/Buttons/skil3-addSci_lblue.png</normaloff>:/Buttons/skil3-addSci_lblue.png</iconset>
+       </attribute>
        <attribute name="title">
-        <string>Add</string>
+        <string/>
        </attribute>
        <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
@@ -250,7 +260,7 @@
           <x>20</x>
           <y>10</y>
           <width>321</width>
-          <height>271</height>
+          <height>376</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
@@ -277,7 +287,7 @@
          <item>
           <widget class="QLabel" name="label_24">
            <property name="text">
-            <string>Birth year (1600 - 2010):</string>
+            <string>Birth year:</string>
            </property>
           </widget>
          </item>
@@ -401,9 +411,13 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_9">
+      <widget class="QWidget" name="AddComp">
+       <attribute name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/Buttons/skil3-addCom_pink.png</normaloff>:/Buttons/skil3-addCom_pink.png</iconset>
+       </attribute>
        <attribute name="title">
-        <string>AddComp</string>
+        <string/>
        </attribute>
        <widget class="QWidget" name="layoutWidget_9">
         <property name="geometry">
@@ -463,7 +477,7 @@
           <x>20</x>
           <y>11</y>
           <width>331</width>
-          <height>251</height>
+          <height>318</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -492,7 +506,7 @@
            <item>
             <widget class="QLabel" name="label_79">
              <property name="text">
-              <string>Year (1600 - 2015):</string>
+              <string>Year:</string>
              </property>
             </widget>
            </item>
@@ -542,9 +556,13 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="AddLink">
+       <attribute name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/Buttons/skil3-addLink_purple.png</normaloff>:/Buttons/skil3-addLink_purple.png</iconset>
+       </attribute>
        <attribute name="title">
-        <string>Link</string>
+        <string/>
        </attribute>
        <widget class="QPushButton" name="linkButton">
         <property name="enabled">
@@ -554,8 +572,8 @@
          <rect>
           <x>330</x>
           <y>290</y>
-          <width>111</width>
-          <height>23</height>
+          <width>131</width>
+          <height>31</height>
          </rect>
         </property>
         <property name="text">
@@ -664,15 +682,262 @@
         </layout>
        </widget>
       </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Database">
+     <attribute name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/Buttons/skil3-database_orange.png</normaloff>:/Buttons/skil3-database_orange.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string/>
+     </attribute>
+     <widget class="QTabWidget" name="tabWidgetComSci">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>1161</width>
+        <height>570</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+       <widget class="QTextBrowser" name="textBrowserBio">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>60</y>
+          <width>411</width>
+          <height>361</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <property name="html">
+         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8.25pt; font-weight:400;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>30</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Scientists&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>40</y>
+          <width>47</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;H2&gt;Bio&lt;H2&gt;</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>60</y>
+          <width>461</width>
+          <height>361</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLineEdit" name="lineEditScientists">
+           <property name="placeholderText">
+            <string>Filter scientists</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="dropDownScientists"/>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="tableScientists">
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="showGrid">
+            <bool>false</bool>
+           </property>
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+           <column>
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Gender</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Year of birth</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Year of death</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Page</string>
+        <string>Tab 2</string>
        </attribute>
-       <widget class="QWidget" name="">
+       <widget class="QTextBrowser" name="textBrowserInfo">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>60</y>
+          <width>421</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelComputers">
         <property name="geometry">
          <rect>
           <x>100</x>
           <y>40</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;H2&gt;Computers</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="labelInfo">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>40</y>
+          <width>71</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;H2&gt;Info&lt;H2&gt;</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>60</y>
+          <width>451</width>
+          <height>361</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <widget class="QLineEdit" name="inputFilterComputers">
+           <property name="placeholderText">
+            <string>Filter computers</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="dropDownSearch"/>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="tableComputers">
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="showGrid">
+            <bool>false</bool>
+           </property>
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+           <column>
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Type</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Was built ?</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Building year</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+       <widget class="QWidget" name="layoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>60</y>
           <width>451</width>
           <height>401</height>
          </rect>
@@ -739,26 +1004,21 @@
          </item>
         </layout>
        </widget>
+       <widget class="QLabel" name="labelComputers_2">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>40</y>
+          <width>449</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Links&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
       </widget>
      </widget>
-    </widget>
-    <widget class="QWidget" name="Database">
-     <attribute name="icon">
-      <iconset resource="images.qrc">
-       <normaloff>:/Buttons/skil3-database_orange.png</normaloff>:/Buttons/skil3-database_orange.png</iconset>
-     </attribute>
-     <attribute name="title">
-      <string/>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="Search">
-     <attribute name="icon">
-      <iconset resource="images.qrc">
-       <normaloff>:/Buttons/skil3-search_green.png</normaloff>:/Buttons/skil3-search_green.png</iconset>
-     </attribute>
-     <attribute name="title">
-      <string/>
-     </attribute>
     </widget>
    </widget>
   </widget>

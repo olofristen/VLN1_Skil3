@@ -7,6 +7,7 @@
 #include <fstream>
 #include <QtDebug>
 #include <QtSql>
+#include <ctime>
 
 class Database
 {
@@ -33,6 +34,9 @@ public:
     vector<pair<Person, Computer> > searchForLink(string type, string search);
    // vector<pair<Person, Computer> > searchForLink(string search);
     vector<pair<Person, Computer> > readLinkFromDb();
+    vector<Person> filterScientistFromDb(string dropDownValue, string search);
+    vector<Computer> filterComputerFromDb(string dropDownValue, string search);
+
     bool removeScientist(Person p);
     bool removeComputer(Computer c);
 };

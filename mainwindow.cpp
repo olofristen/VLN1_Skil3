@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "domain.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -7,8 +8,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    displayAllScientists();
+
+    ui->dropDownScientists->addItem("Name");
+    ui->dropDownScientists->addItem("Gender");
+    ui->dropDownScientists->addItem("Year of birth");
+    ui->dropDownScientists->addItem("Year of death");
+    ui->dropDownScientists->addItem("Bio");
+    ui->dropDownSearch->addItem("Name");
+    ui->dropDownSearch->addItem("Type");
+    ui->dropDownSearch->addItem("Was built");
+    ui->dropDownSearch->addItem("Building year");
+    ui->dropDownSearch->addItem("Info");
+    displayAllComputersST();
+    displayAllScientistsST();
     displayAllComputers();
+    displayAllScientists();
+
 
     displayCombos();
     displayLinkTable(myDom.returnAllLinks());
@@ -39,7 +54,13 @@ void MainWindow::on_buttonAddNewSci_clicked()
     int deathyear = ui->inputDY->text().toInt();
     string bio = ui->inputBio->text().toStdString();
 
-    if(name == "" || birthyear == 0 || birthyear < 1600 || birthyear > 2010 || (deathyear != 0 && deathyear < birthyear) || deathyear > 2015 || (ui->isDead->isChecked() && deathyear == 0))
+    int tempTimeBirth, tempTimeDeath;
+    time_t t = time(NULL);
+    tm* timePtr = localtime(&t);
+    tempTimeBirth = timePtr->tm_year + 1895;
+    tempTimeDeath = timePtr->tm_year + 1900;
+
+    if(name == "" || birthyear == 0 || birthyear < 1 || birthyear > tempTimeBirth || (deathyear != 0 && deathyear < birthyear) || deathyear > tempTimeDeath || (ui->isDead->isChecked() && deathyear == 0))
     {
         ui->errorMess->setText("These values are invalid! Try again...");
         return;
@@ -209,7 +230,12 @@ void MainWindow::on_buttonAddNewComp_clicked()
     int year = ui->inputYComp->text().toInt();
     string info = ui->inputInfo->text().toStdString();
 
-    if(name == "" || year < 1600 || year > 2015)
+    int tempThisYear;
+    time_t t = time(NULL);
+    tm* timePtr = localtime(&t);
+    tempThisYear = timePtr->tm_year + 1900;
+
+    if(name == "" || year < 1 || year > tempThisYear)
     {
         ui->errorMessComp->setText("These values are invalid! Try again...");
         return;
@@ -381,7 +407,7 @@ void MainWindow::on_computerList2_currentRowChanged(int currentRow)
     enableLinkButton();
 }
 // Taflan
-void MainWindow::displayLinkTable(vector<pair<Person, Computer>> vlink)     // Býr til töflu yfir alla linka (Person - Computer)
+void MainWindow::displayLinkTable(vector<pair<Person, Computer> > vlink)     // Býr til töflu yfir alla linka (Person - Computer)
 {
     ui->linkTable->setSortingEnabled(false);
     ui->linkTable->clearContents();
@@ -403,7 +429,7 @@ void MainWindow::displayLinkTable(vector<pair<Person, Computer>> vlink)     // B
 void MainWindow::on_inputFilterLink_textChanged(const QString &arg1)
 {
     string userInput = ui->inputFilterLink->text().toStdString();
-    vector<pair<Person, Computer>> vlink = myDom.searchForLink(ui->linkCombo->currentText().toStdString(), userInput);
+    vector<pair<Person, Computer> > vlink = myDom.searchForLink(ui->linkCombo->currentText().toStdString(), userInput);
     displayLinkTable(vlink);
 }
 
@@ -467,4 +493,183 @@ void MainWindow::on_linkTable_currentCellChanged()
     {
         ui->removeLinkButton->setEnabled(false);
     }
+}
+
+void MainWindow::displayAllScientistsST()
+{
+    vector<Person> scientists = myDom.returnAllScientists();
+    displayScientistsST(scientists);
+}
+
+void MainWindow::displayAllComputersST()
+{
+    vector<Computer> computers = myDom.returnAllComputers();
+    displayComputersST(computers);
+}
+
+void MainWindow::displayScientistsST(vector<Person> scientists)
+{
+    ui->tableScientists->clearContents();
+    ui->tableScientists->setRowCount(scientists.size());
+   for(int row = 0; row < scientists.size(); row++)
+   {
+       Person currentScientist = scientists.at(row);
+       QString dye;
+       QString name = QString::fromStdString(currentScientist.getName());
+       QString gender = QString::fromStdString(currentScientist.getGender());
+       QString by = QString::number(currentScientist.getBirthYear());
+       QString dy = QString::number(currentScientist.getDeathYear());
+       if(dy == "-1")
+       {
+           dye = "Alive and kicking";
+       }
+       else
+       {
+           dye = dy;
+       }
+       QString bio = QString::fromStdString(currentScientist.getBio());
+
+       ui->tableScientists->setItem(row, 0, new QTableWidgetItem(name));
+       ui->tableScientists->setItem(row, 1, new QTableWidgetItem(gender));
+       ui->tableScientists->setItem(row, 2, new QTableWidgetItem(by));
+       ui->tableScientists->setItem(row, 3, new QTableWidgetItem(dye));
+       ui->tableScientists->setItem(row, 4, new QTableWidgetItem(bio));
+   }
+}
+
+void MainWindow::displayComputersST(vector<Computer> computers)
+{
+    ui->tableComputers->clearContents();
+    ui->tableComputers->setRowCount(computers.size());
+   for(unsigned int row = 0; row < computers.size(); row++)
+   {
+       Computer currentComputer = computers.at(row);
+       QString wbu;
+       QString name = QString::fromStdString(currentComputer.getName());
+       QString type = QString::fromStdString(currentComputer.getType());
+       QString wb = QString::number(currentComputer.getWasBuilt());
+       if(wb == "1")
+       {
+           wbu = "Yes";
+       }
+       else
+       {
+           wbu = "No";
+       }
+       QString by = QString::number(currentComputer.getBuildYear());
+
+       ui->tableComputers->setItem(row, 0, new QTableWidgetItem(name));
+       ui->tableComputers->setItem(row, 1, new QTableWidgetItem(type));
+       ui->tableComputers->setItem(row, 2, new QTableWidgetItem(wbu));
+       ui->tableComputers->setItem(row, 3, new QTableWidgetItem(by));
+   }
+}
+void MainWindow::displayBio(int row)
+{
+    vector<Person> scientists = myDom.returnAllScientists();
+    Person currentScientist = scientists.at(row);
+
+    QString bio = QString::fromStdString(currentScientist.getBio());
+    ui->textBrowserBio->setText(bio);
+}
+void MainWindow::displayInfo(unsigned int row)
+{
+    vector<Computer> computers = myDom.returnAllComputers();
+    Computer currentComputer = computers.at(row);
+
+    QString info = QString::fromStdString(currentComputer.getInfo());
+    ui->textBrowserInfo->setText(info);
+}
+
+void MainWindow::on_lineEditScientists_textChanged(const QString &arg1)
+{
+    string userInput = ui->lineEditScientists->text().toStdString();
+    string dropDownValue = getCurrentScientistSearch();
+    vector<Person> scientist = myDom.filterScientist(dropDownValue, userInput);
+    displayScientists(scientist);
+}
+
+void MainWindow::on_inputFilterComputers_textChanged(const QString &arg1)
+{
+    string userInput = ui->inputFilterComputers->text().toStdString();
+    string dropDownValue = getCurrentComputerSearch();
+    vector<Computer> computer = myDom.filterComputer(dropDownValue, userInput);
+    displayComputers(computer);
+}
+
+void MainWindow::on_dropDownScientists_currentIndexChanged(const QString &arg1)
+{
+    string userInput = ui->lineEditScientists->text().toStdString();
+    string dropDownValue = getCurrentScientistSearch();
+    vector<Person> scientist = myDom.filterScientist(dropDownValue, userInput);
+    displayScientists(scientist);
+}
+
+void MainWindow::on_dropDownSearch_currentIndexChanged(const QString &arg1)
+{
+    string userInput = ui->inputFilterComputers->text().toStdString();
+    string dropDownValue = getCurrentComputerSearch();
+    vector<Computer> computer = myDom.filterComputer(dropDownValue, userInput);
+    displayComputers(computer);
+}
+
+string MainWindow::getCurrentScientistSearch()
+{
+    string currentValueSearch = ui->dropDownScientists->currentText().toStdString();
+    if(currentValueSearch == "Name")
+    {
+        return "name";
+    }
+    else if(currentValueSearch == "Gender")
+    {
+        return "gender";
+    }
+    else if(currentValueSearch == "Year of birth")
+    {
+        return "dob";
+    }
+    else if(currentValueSearch == "Year of death")
+    {
+        return "dod";
+    }
+    else if(currentValueSearch == "Bio")
+    {
+        return "bio";
+    }
+}
+string MainWindow::getCurrentComputerSearch()
+{
+    string currentValueSearch = ui->dropDownSearch->currentText().toStdString();
+    if(currentValueSearch == "Name")
+    {
+        return "name";
+    }
+    else if(currentValueSearch == "Type")
+    {
+        return "type";
+    }
+    else if(currentValueSearch == "Was built")
+    {
+        return "wb";
+    }
+    else if(currentValueSearch == "Building year")
+    {
+        return "by";
+    }
+    else if(currentValueSearch == "Info")
+    {
+        return "info";
+    }
+}
+
+void MainWindow::on_tableComputers_clicked(const QModelIndex &index)
+{
+    unsigned int currentIndex = ui->tableComputers->currentIndex().row();
+    displayInfo(currentIndex);
+}
+
+void MainWindow::on_tableScientists_clicked(const QModelIndex &index)
+{
+    unsigned int currentIndex = ui->tableScientists->currentIndex().row();
+    displayBio(currentIndex);
 }
