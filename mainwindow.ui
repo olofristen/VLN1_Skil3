@@ -36,7 +36,13 @@
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>100</height>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>80</height>
        </size>
       </property>
       <property name="mouseTracking">
@@ -228,13 +234,13 @@ font: 18pt &quot;Agency FB&quot;;</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -666,13 +672,13 @@ image-position: left;</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -993,13 +999,13 @@ image-position: left;</string>
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>60</height>
+                <height>50</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>60</height>
+                <height>50</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -1196,7 +1202,7 @@ image-position: left;</string>
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1236,13 +1242,13 @@ image-position: left;</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -1472,13 +1478,13 @@ p, li { white-space: pre-wrap; }
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -1684,13 +1690,13 @@ image-position: left;</string>
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>16777215</width>
-                  <height>60</height>
+                  <height>50</height>
                  </size>
                 </property>
                 <property name="styleSheet">
