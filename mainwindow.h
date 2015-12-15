@@ -18,45 +18,45 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_input_filter_sci_textChanged(const QString &arg1);
+    void onInputFilterSciTextChanged(const QString &arg1);
 
-    void on_scientistList_clicked(const QModelIndex &index);
+    void onScientistListClicked(const QModelIndex &index);
 
-    void on_removeButton_clicked();
+    void onRemoveButtonClicked();
 
-    void on_buttonAddNewSci_clicked();
+    void onButtonAddNewSciClicked();
 
-    void on_isDead_toggled(bool checked);
+    void onIsDeadToggled(bool checked);
 
-    void on_buttonAddNewComp_clicked();
+    void onButtonAddNewCompClicked();
 
-    void on_computerList_clicked(const QModelIndex &index);
+    void onComputerListClicked(const QModelIndex &index);
 
-    void on_removeComp_clicked();
+    void onRemoveCompClicked();
 
-    void on_inputFilterComp_textChanged(const QString &arg1);
+    void onInputFilterCompTextChanged(const QString &arg1);
 
-    void on_linkButton_clicked();
+    void onLinkButtonClicked();
 
-    void on_inputFilterSci2_textChanged();
+    void onInputFilterSci2TextChanged();
 
-    void on_inputFilterComp2_textChanged();
+    void onInputFilterComp2TextChanged();
 
-    void on_scientistList_currentRowChanged(int currentRow);
+    void onScientistListCurrentRowChanged(int currentRow);
 
-    void on_computerList_currentRowChanged(int currentRow);
+    void onComputerListCurrentRowChanged(int currentRow);
 
-    void on_scientistList2_currentRowChanged(int currentRow);
+    void onScientistList2CurrentRowChanged(int currentRow);
 
-    void on_computerList2_currentRowChanged(int currentRow);
+    void onComputerList2CurrentRowChanged(int currentRow);
 
-    void on_inputFilterLink_textChanged(const QString &arg1);
+    void onInputFilterLinkTextChanged(const QString &arg1);
 
-    void on_removeLinkButton_clicked();
+    void onRemoveLinkButtonClicked();
 
-    void on_linkTable_clicked(const QModelIndex &index);
+    void onLinkTableClicked(const QModelIndex &index);
 
-    void on_linkTable_currentCellChanged();
+    void onLinkTableCurrentCellChanged();
 
 private:
     Ui::MainWindow *ui;
@@ -66,7 +66,7 @@ private:
     vector<Computer> currentlyDisplayedComputers;
     vector<Person> currentlyDisplayedSciLink;
     vector<Computer> currentlyDisplayedCompLink;
-    vector<pair<Person, Computer>> currentlyDisplayedLinks;
+    vector<pair<Person, Computer> > currentlyDisplayedLinks;
 
     void displayAllScientists();
     void displayAllComputers();

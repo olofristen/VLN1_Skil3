@@ -143,7 +143,7 @@ vector<Computer> Domain::searchStringComputer(string num, string search)
 {       // leitar í vektornum...
     return DB.searchComputerFromDb(num, search);
 }
-vector<pair<Person, Computer>> Domain::searchForLink(string type, string search)
+vector<pair<Person, Computer> > Domain::searchForLink(string type, string search)
 {
     return DB.searchForLink(type, search);
 }

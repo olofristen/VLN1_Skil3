@@ -319,7 +319,7 @@ vector<Computer> Database::searchComputerFromDb(string num, string search) // le
 
 vector<pair<Person, Computer> > Database::searchForLink(string type, string search)
 {
-    vector<pair<Person, Computer>> vlink;
+    vector<pair<Person, Computer> > vlink;
 
     QSqlQuery query(db);
 

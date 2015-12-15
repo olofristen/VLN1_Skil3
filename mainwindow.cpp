@@ -31,7 +31,7 @@ void MainWindow::displayCombos()
     ui->linkCombo->addItem("Computers");
 }
 
-void MainWindow::on_buttonAddNewSci_clicked()
+void MainWindow::onButtonAddNewSciClicked()
 {
     string name = ui->inputName->text().toStdString();
     string gender = ui->genderCombo->currentText().toStdString();
@@ -59,7 +59,7 @@ void MainWindow::on_buttonAddNewSci_clicked()
 }
 
 
-void MainWindow::on_isDead_toggled(bool checked)
+void MainWindow::onIsDeadToggled(bool checked)
 {
     ui->inputDY->setText("");
     if(checked)
@@ -129,7 +129,7 @@ void MainWindow::displayComputers(vector<Computer> comp)
     currentlyDisplayedComputers = comp;
 }
 
-void MainWindow::on_input_filter_sci_textChanged(const QString &arg1)
+void MainWindow::onInputFilterSciTextChanged(const QString &arg1)
 {
     string userInput = ui->input_filter_sci->text().toStdString();
     vector<Person> sci = myDom.searchStringScientist("1",userInput);
@@ -160,12 +160,12 @@ void MainWindow::scientistListScroll()
                             death + "\n\nShort Bio: " + QString::fromStdString(currentlySelectedScientist.getBio()));
 }
 
-void MainWindow::on_scientistList_clicked(const QModelIndex &index)
+void MainWindow::onScientistListClicked(const QModelIndex &index)
 {
     scientistListScroll();
 }
 
-void MainWindow::on_scientistList_currentRowChanged(int currentRow)
+void MainWindow::onScientistListCurrentRowChanged(int currentRow)
 {
     if(currentRow < 0)
     {
@@ -176,7 +176,7 @@ void MainWindow::on_scientistList_currentRowChanged(int currentRow)
 
 }
 
-void MainWindow::on_removeButton_clicked()
+void MainWindow::onRemoveButtonClicked()
 {
     int currentIndex = ui->scientistList->currentIndex().row();
     Person currentlySelectedScientist = currentlyDisplayedScientists.at(currentIndex);
@@ -201,7 +201,7 @@ void MainWindow::on_removeButton_clicked()
 }
 
 
-void MainWindow::on_buttonAddNewComp_clicked()
+void MainWindow::onButtonAddNewCompClicked()
 {
     string name = ui->inputNameComp->text().toStdString();
     string type = ui->compTypeCombo->currentText().toStdString();
@@ -248,13 +248,13 @@ void MainWindow::computerListScroll()
 
 }
 
-void MainWindow::on_computerList_clicked(const QModelIndex &index)
+void MainWindow::onComputerListClicked(const QModelIndex &index)
 {
     computerListScroll();
 }
 
 
-void MainWindow::on_computerList_currentRowChanged(int currentRow)
+void MainWindow::onComputerListCurrentRowChanged(int currentRow)
 {
     if(currentRow < 0)
     {
@@ -264,7 +264,7 @@ void MainWindow::on_computerList_currentRowChanged(int currentRow)
     computerListScroll();
 }
 
-void MainWindow::on_removeComp_clicked()
+void MainWindow::onRemoveCompClicked()
 {
     int currentIndex = ui->computerList->currentIndex().row();
     Computer currentlySelectedComp = currentlyDisplayedComputers.at(currentIndex);
@@ -288,7 +288,7 @@ void MainWindow::on_removeComp_clicked()
     ui->statusBar->showMessage("This computer was successfully removed from the database", 1500);
 }
 
-void MainWindow::on_inputFilterComp_textChanged(const QString &arg1)
+void MainWindow::onInputFilterCompTextChanged(const QString &arg1)
 {
     string userInput = ui->inputFilterComp->text().toStdString();
     vector<Computer> comp = myDom.searchStringComputer("1",userInput);
@@ -321,7 +321,7 @@ void MainWindow::displayComputersLink(vector<Computer> comp)
     currentlyDisplayedCompLink = comp;
 }
 
-void MainWindow::on_linkButton_clicked()
+void MainWindow::onLinkButtonClicked()
 {
     ui->detailsLinks->clear();
     int currentIndex = ui->scientistList2->currentIndex().row();
@@ -355,7 +355,7 @@ void MainWindow::enableLinkButton()
     }
 }
 
-void MainWindow::on_inputFilterSci2_textChanged()
+void MainWindow::onInputFilterSci2TextChanged()
 {
     string userInput = ui->inputFilterSci2->text().toStdString();
     vector<Person> sci = myDom.searchStringScientist("1",userInput);
@@ -363,7 +363,7 @@ void MainWindow::on_inputFilterSci2_textChanged()
     ui->counterSci2->setText(QString::number(sci.size()) + " found!!");
 }
 
-void MainWindow::on_inputFilterComp2_textChanged()
+void MainWindow::onInputFilterComp2TextChanged()
 {
     string userInput = ui->inputFilterComp2->text().toStdString();
     vector<Computer> comp = myDom.searchStringComputer("1",userInput);
@@ -371,17 +371,17 @@ void MainWindow::on_inputFilterComp2_textChanged()
     ui->counterComp2->setText(QString::number(comp.size()) + " found!!");
  }
 
-void MainWindow::on_scientistList2_currentRowChanged(int currentRow)
+void MainWindow::onScientistList2CurrentRowChanged(int currentRow)
 {
     enableLinkButton();
 }
 
-void MainWindow::on_computerList2_currentRowChanged(int currentRow)
+void MainWindow::onComputerList2CurrentRowChanged(int currentRow)
 {
     enableLinkButton();
 }
 // Taflan
-void MainWindow::displayLinkTable(vector<pair<Person, Computer>> vlink)     // Býr til töflu yfir alla linka (Person - Computer)
+void MainWindow::displayLinkTable(vector<pair<Person, Computer> > vlink)     // Býr til töflu yfir alla linka (Person - Computer)
 {
     ui->linkTable->setSortingEnabled(false);
     ui->linkTable->clearContents();
@@ -400,14 +400,14 @@ void MainWindow::displayLinkTable(vector<pair<Person, Computer>> vlink)     // B
     ui->counterLink->setText(QString::number(vlink.size()) + " found!!");
 }
 
-void MainWindow::on_inputFilterLink_textChanged(const QString &arg1)
+void MainWindow::onInputFilterLinkTextChanged(const QString &arg1)
 {
     string userInput = ui->inputFilterLink->text().toStdString();
-    vector<pair<Person, Computer>> vlink = myDom.searchForLink(ui->linkCombo->currentText().toStdString(), userInput);
+    vector<pair<Person, Computer> > vlink = myDom.searchForLink(ui->linkCombo->currentText().toStdString(), userInput);
     displayLinkTable(vlink);
 }
 
-void MainWindow::on_removeLinkButton_clicked()
+void MainWindow::onRemoveLinkButtonClicked()
 {
     int row = ui->linkTable->currentRow();
     int col = ui->linkTable->currentColumn();
@@ -452,12 +452,12 @@ void MainWindow::on_removeLinkButton_clicked()
         ui->statusBar->showMessage("This link was successfully removed from the database", 1500);
     }
 }
-void MainWindow::on_linkTable_clicked(const QModelIndex &index)
+void MainWindow::onLinkTableClicked(const QModelIndex &index)
 {
     //ui->removeLinkButton->setEnabled(true);
 }
 
-void MainWindow::on_linkTable_currentCellChanged()
+void MainWindow::onLinkTableCurrentCellChanged()
 {
     if(ui->linkTable->currentIndex().row() > -1)
     {
