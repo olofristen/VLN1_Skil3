@@ -45,6 +45,7 @@ bool Database::removeLink(Person p, Computer c)
     qDebug() << QString::fromStdString(c.getName());
     bool success = query.exec("DELETE FROM links WHERE (SID = " + QString::number(p.getId()) + " AND CID = " + QString::number(c.getId()) + ")");
     qDebug() << success;
+
     return success;
 }
 
@@ -52,8 +53,8 @@ int Database::addNewScientist(Person P)    // Bæti við vísindamanni í scient
 {
     QSqlQuery query(db);
     QString q = "CREATE TABLE IF NOT EXISTS scientists ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Gender' TEXT NOT NULL , 'DOB' INTEGER, 'DOD' INTEGER, 'Bio' TEXT, ON DELETE CASCADE)";
-    query.exec(q);
 
+    query.exec(q);
     query.prepare("INSERT INTO scientists (Name, Gender, DOB, DOD, Bio ) VALUES(:name,:gender,:dob,:dod,:bio)");
     query.bindValue(":name", QString::fromStdString(P.getName()));
     query.bindValue(":gender", QString::fromStdString(P.getGender()));
@@ -186,11 +187,13 @@ vector<Person> Database::sortScientistsFromDb(string sortMenu) // sortar person 
     }
     if(db.isOpen())
     {
-        while(query.next()){
+        while(query.next())
+        {
             scientists.push_back(Person(query));
         }
     }
-    else {
+    else
+    {
         cerr << "Unable to open database!" << endl;
     }
 
@@ -225,11 +228,13 @@ vector<Computer> Database::sortComputersFromDb(string sortMenu)  // sortar compu
 
     if(db.isOpen())
     {
-        while(query.next()){
+        while(query.next())
+        {
             computers.push_back(Computer(query));
         }
     }
-    else {
+    else
+    {
         cerr << "Unable to open database!" << endl;
     }
 
@@ -382,7 +387,6 @@ vector<Computer> Database::filterComputerFromDb(string dropDownValue, string sea
     {
         query.exec("SELECT * FROM computers WHERE Info LIKE '%" + QString::fromStdString(search) + "%'");
     }
-
     if(db.isOpen())
     {
         while(query.next())

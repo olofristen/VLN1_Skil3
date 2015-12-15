@@ -83,6 +83,7 @@ void Person::readData(QSqlQuery query)
     deathYear = query.value("DOD").toUInt();
     bio = query.value("Bio").toString().toStdString();
 }
+
 void Person::setId(int id)
 {
     ID = id;
