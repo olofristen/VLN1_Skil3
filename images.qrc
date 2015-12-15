@@ -16,5 +16,6 @@
         <file>Buttons/skil3-computers.png</file>
         <file>Buttons/skil3-links.png</file>
         <file>Buttons/skil3-scientists.png</file>
+        <file>Buttons/octo.png</file>
     </qresource>
 </RCC>
