@@ -52,7 +52,7 @@ void MainWindow::on_buttonAddNewSci_clicked()
     string gender = ui->genderCombo->currentText().toStdString();
     int birthyear = ui->inputBY->text().toInt();
     int deathyear = ui->inputDY->text().toInt();
-    string bio = ui->inputBio->text().toStdString();
+    string bio = ui->inputBio->toPlainText().toStdString();
 
     int tempTimeBirth, tempTimeDeath;
     time_t t = time(NULL);
@@ -228,7 +228,7 @@ void MainWindow::on_buttonAddNewComp_clicked()
     string type = ui->compTypeCombo->currentText().toStdString();
     bool wasbuilt = ui->wasBuilt->isChecked();
     int year = ui->inputYComp->text().toInt();
-    string info = ui->inputInfo->text().toStdString();
+    string info = ui->inputInfo->toPlainText().toStdString();
 
     int tempThisYear;
     time_t t = time(NULL);

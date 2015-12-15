@@ -68,7 +68,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -201,7 +201,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
            </font>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -468,12 +468,12 @@ image-position: left;</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="inputBio">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+               <widget class="QPlainTextEdit" name="inputBio">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>200</height>
+                 </size>
                 </property>
                </widget>
               </item>
@@ -752,12 +752,12 @@ image-position: left;</string>
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="inputInfo">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+               <widget class="QPlainTextEdit" name="inputInfo">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>200</height>
+                 </size>
                 </property>
                </widget>
               </item>
