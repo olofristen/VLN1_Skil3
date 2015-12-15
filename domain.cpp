@@ -38,8 +38,10 @@ void Domain::addNewComputer(string name, int buildYear, string type, bool wasBui
 vector<Computer> Domain::getCompFromLinks(int pID)
 {   // Sæki tölvu úr link-vektornum fyrir viðeigandi ID á Person
     vector<Computer> comp;
-    for(unsigned int i = 0; i < vLink.size(); i++) {
-        if(pID == vLink[i].first.getId()) {
+    for(unsigned int i = 0; i < vLink.size(); i++)
+    {
+        if(pID == vLink[i].first.getId())
+        {
             comp.push_back(vLink[i].second);
         }
     }
@@ -48,8 +50,10 @@ vector<Computer> Domain::getCompFromLinks(int pID)
 vector<Person> Domain::getSciFromLinks(int cID)
 {   // Sæki hér vísindamann úr link-vektornum fyrir viðeigandi ID á Computer
     vector<Person> comp;
-    for(unsigned int i = 0; i < vLink.size(); i++) {
-        if(cID == vLink[i].second.getId()) {
+    for(unsigned int i = 0; i < vLink.size(); i++)
+    {
+        if(cID == vLink[i].second.getId())
+        {
             comp.push_back(vLink[i].first);
         }
     }

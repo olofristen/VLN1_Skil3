@@ -18,45 +18,45 @@ public:
     ~MainWindow();
 
 private slots:
-    void onInputFilterSciTextChanged(const QString &arg1);
+    void on_input_filter_sci_textChanged(const QString &arg1);
 
-    void onScientistListClicked(const QModelIndex &index);
+    void on_scientistList_clicked(const QModelIndex &index);
 
-    void onRemoveButtonClicked();
+    void on_removeButton_clicked();
 
-    void onButtonAddNewSciClicked();
+    void on_buttonAddNewSci_clicked();
 
-    void onIsDeadToggled(bool checked);
+    void on_isDead_toggled(bool checked);
 
-    void onButtonAddNewCompClicked();
+    void on_buttonAddNewComp_clicked();
 
-    void onComputerListClicked(const QModelIndex &index);
+    void on_computerList_clicked(const QModelIndex &index);
 
-    void onRemoveCompClicked();
+    void on_removeComp_clicked();
 
-    void onInputFilterCompTextChanged(const QString &arg1);
+    void on_inputFilterComp_textChanged(const QString &arg1);
 
-    void onLinkButtonClicked();
+    void on_linkButton_clicked();
 
-    void onInputFilterSci2TextChanged();
+    void on_inputFilterSci2_textChanged();
 
-    void onInputFilterComp2TextChanged();
+    void on_inputFilterComp2_textChanged();
 
-    void onScientistListCurrentRowChanged(int currentRow);
+    void on_scientistList_currentRowChanged(int currentRow);
 
-    void onComputerListCurrentRowChanged(int currentRow);
+    void on_computerList_currentRowChanged(int currentRow);
 
-    void onScientistList2CurrentRowChanged(int currentRow);
+    void on_scientistList2_currentRowChanged(int currentRow);
 
-    void onComputerList2CurrentRowChanged(int currentRow);
+    void on_computerList2_currentRowChanged(int currentRow);
 
-    void onInputFilterLinkTextChanged(const QString &arg1);
+    void on_inputFilterLink_textChanged(const QString &arg1);
 
-    void onRemoveLinkButtonClicked();
+    void on_removeLinkButton_clicked();
 
-    void onLinkTableClicked(const QModelIndex &index);
+    void on_linkTable_clicked(const QModelIndex &index);
 
-    void onLinkTableCurrentCellChanged();
+    void on_linkTable_currentCellChanged();
 
 private:
     Ui::MainWindow *ui;
