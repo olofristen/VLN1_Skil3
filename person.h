@@ -27,12 +27,15 @@ class Person
         Person();
         Person (string name, string gender, int birthYear, int deathYear, string bio);
         Person(QSqlQuery query);
+
         string getName();
         string getGender();
         string getBio();
+
         int getBirthYear();
         int getDeathYear();
         int getId();
+
         void setId(int id);
 
         friend bool sortByYearOfBirth (const Person& a, const Person &b);
