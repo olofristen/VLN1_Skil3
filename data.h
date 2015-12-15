@@ -30,6 +30,8 @@ public:
     vector<Person> searchScientistFromDb(string num, string search);
     vector<Computer> searchComputerFromDb(string num, string search);
     vector<pair<Person, Computer> > readLinkFromDb();
+    vector<Person> filterScientistFromDb(string dropDownValue, string search);
+    vector<Computer> filterComputerFromDb(string dropDownValue, string search);
 };
 
 

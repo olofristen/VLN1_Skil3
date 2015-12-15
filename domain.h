@@ -31,6 +31,8 @@ public:
     vector<Computer>  searchStringComputer(string num, string search);
     vector<Computer> getCompFromLinks(int pID);
     vector<Person> getSciFromLinks(int cID);
+    vector<Person> filterScientist(string dropDownValue, string search);
+    vector<Computer> filterComputer(string dropDownValue, string search);
 
     vector<pair<Person, Computer> > returnAllLinks();
     vector<Person> returnAllScientists();

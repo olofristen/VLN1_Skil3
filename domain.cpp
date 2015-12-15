@@ -106,3 +106,11 @@ vector<Computer> Domain::searchStringComputer(string num, string search)
 {       // leitar í vektornum...
     return DB.searchComputerFromDb(num, search);
 }
+vector<Person> Domain::filterScientist(string dropDownValue, string search)
+{       // leitar í vektornum...
+    return DB.filterScientistFromDb(dropDownValue, search);
+}
+vector<Computer> Domain::filterComputer(string dropDownValue, string search)
+{       // leitar í vektornum...
+    return DB.filterComputerFromDb(dropDownValue, search);
+}
