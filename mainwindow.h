@@ -38,15 +38,9 @@ private slots:
 
     void on_linkButton_clicked();
 
-   // bool on_scientistList2_clicked();
-
-    //void on_computerList2_clicked();
-
     void on_inputFilterSci2_textChanged();
 
     void on_inputFilterComp2_textChanged();
-
-    //void on_computerList_currentRowChanged(int currentRow);
 
     void on_scientistList_currentRowChanged(int currentRow);
 
@@ -56,18 +50,33 @@ private slots:
 
     void on_computerList2_currentRowChanged(int currentRow);
 
+    void on_inputFilterLink_textChanged(const QString &arg1);
+
+    void on_removeLinkButton_clicked();
+
+    void on_linkTable_clicked(const QModelIndex &index);
+
+    void on_linkTable_currentCellChanged();
+
 private:
     Ui::MainWindow *ui;
-
-    void displayScientists(vector<Person> sci);
-    void displayAllScientists();
-    void displayAllComputers();
-    void displayComputers(vector<Computer> comp);
-    void isHeDead();
     Domain myDom;
 
     vector<Person> currentlyDisplayedScientists;
     vector<Computer> currentlyDisplayedComputers;
+    vector<Person> currentlyDisplayedSciLink;
+    vector<Computer> currentlyDisplayedCompLink;
+    vector<pair<Person, Computer>> currentlyDisplayedLinks;
+
+    void displayAllScientists();
+    void displayAllComputers();
+    void displayScientists(vector<Person> sci);
+    void displayComputers(vector<Computer> comp);
+    void displayScientistsLink(vector<Person> sci);
+    void displayComputersLink(vector<Computer> comp);
+    void displayLinkTable(vector<pair<Person, Computer> > vlink);
+
+    void isHeDead();
     void setLinkEnabled();
     void displayCombos();
     void scientistListScroll();

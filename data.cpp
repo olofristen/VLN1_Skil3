@@ -38,10 +38,20 @@ bool Database::removeComputer(Computer c)
     return success;
 }
 
+bool Database::removeLink(Person p, Computer c)
+{
+    QSqlQuery query(db);
+    qDebug() << QString::fromStdString(p.getName());
+    qDebug() << QString::fromStdString(c.getName());
+    bool success = query.exec("DELETE FROM links WHERE (SID = " + QString::number(p.getId()) + " AND CID = " + QString::number(c.getId()) + ")");
+    qDebug() << success;
+    return success;
+}
+
 int Database::addNewScientist(Person P)    // Bæti við vísindamanni í scientist-töfluna í SQL
 {
     QSqlQuery query(db);
-    QString q = "CREATE TABLE IF NOT EXISTS scientists ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Gender' TEXT NOT NULL , 'DOB' INTEGER, 'DOD' INTEGER, 'Bio' TEXT)";
+    QString q = "CREATE TABLE IF NOT EXISTS scientists ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Gender' TEXT NOT NULL , 'DOB' INTEGER, 'DOD' INTEGER, 'Bio' TEXT, ON DELETE CASCADE)";
     query.exec(q);
 
     query.prepare("INSERT INTO scientists (Name, Gender, DOB, DOD, Bio ) VALUES(:name,:gender,:dob,:dod,:bio)");
@@ -64,7 +74,7 @@ int Database::addNewScientist(Person P)    // Bæti við vísindamanni í scient
 int Database::addNewComputer(Computer C)       // Bæti við tölvu í computers-töfluna í SQL
 {
     QSqlQuery query(db);
-    QString q = "CREATE TABLE IF NOT EXISTS computers ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Type' TEXT NOT NULL, 'WB' BOOL NOT NULL, 'BuildYear' INTEGER, 'Info' TEXT NOT NULL)";
+    QString q = "CREATE TABLE IF NOT EXISTS computers ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Type' TEXT NOT NULL, 'WB' BOOL NOT NULL, 'BuildYear' INTEGER, 'Info' TEXT NOT NULL, ON DELETE CASCADE)";
     query.exec(q);
 
     query.prepare("INSERT INTO computers (Name, Type, WB, BuildYear, Info) VALUES(:name,:type,:wb,:buildyear,:info)");
@@ -307,6 +317,50 @@ vector<Computer> Database::searchComputerFromDb(string num, string search) // le
     return computers;
 }
 
+vector<pair<Person, Computer> > Database::searchForLink(string type, string search)
+{
+    vector<pair<Person, Computer>> vlink;
+
+    QSqlQuery query(db);
+
+    QString Type;
+    if(type == "Scientists")
+    {
+        Type = "S.Name";
+    }
+    else if(type == "Computers")
+    {
+        Type = "C.Name";
+    }
+    QString q = "SELECT * FROM links L, scientists S, computers C WHERE S.ID = L.SID AND C.ID = L.CID AND " +
+                Type + " LIKE '%" + QString::fromStdString(search) + "%'";
+
+    query.exec(q);
+    while(query.next())
+    {
+        //int ID = query.value("S.ID").toUInt();
+        string name = query.value(3).toString().toStdString();
+        string gender = query.value(4).toString().toStdString();
+        int birthYear = query.value(5).toInt();
+        int deathYear = query.value(6).toInt();
+        string bio = query.value(7).toString().toStdString();
+        Person P = Person(name, gender, birthYear, deathYear, bio);
+        P.setId(query.value(2).toInt());
+
+        //ID = query.value("ID").toInt();
+        name = query.value(9).toString().toStdString();
+        string type = query.value(10).toString().toStdString();
+        bool wasBuilt = query.value(11).toBool();
+        int buildYear = query.value(12).toInt();
+        string info = query.value(13).toString().toStdString();
+        Computer C = Computer(name, type, wasBuilt, buildYear, info);
+        C.setId(query.value(8).toInt());
+
+        vlink.push_back(make_pair(P,C));
+    }
+    return vlink;
+
+}
 vector<pair<Person, Computer> > Database::readLinkFromDb()      // Les upp úr tengitöflunni og skilar viðeigandi Person og computer-klasa
 {
     vector<pair<Person, Computer> > vlink;

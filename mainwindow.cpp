@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllComputers();
 
     displayCombos();
+    displayLinkTable(myDom.returnAllLinks());
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +27,8 @@ void MainWindow::displayCombos()
 
     ui->genderCombo->addItem("Male");
     ui->genderCombo->addItem("Female");
+    ui->linkCombo->addItem("Scientists");
+    ui->linkCombo->addItem("Computers");
 }
 
 void MainWindow::on_buttonAddNewSci_clicked()
@@ -76,6 +79,7 @@ void MainWindow::displayAllScientists()
     vector<Person> sci = myDom.returnAllScientists();
     sort(sci.begin(), sci.end());
     currentlyDisplayedScientists = sci;
+    currentlyDisplayedSciLink = sci;
 
     for(int i = 0; i < sci.size(); i++)
     {
@@ -93,6 +97,7 @@ void MainWindow::displayAllComputers()
     vector<Computer> comp = myDom.returnAllComputers();
     sort(comp.begin(), comp.end());
     currentlyDisplayedComputers = comp;
+    currentlyDisplayedCompLink = comp;
 
     for(int i = 0; i < comp.size(); i++)
     {
@@ -106,23 +111,20 @@ void MainWindow::displayAllComputers()
 void MainWindow::displayScientists(vector<Person> sci)
 {
     ui->scientistList->clear();
-    ui->scientistList2->clear();
     sort(sci.begin(), sci.end());
     for (int i = 0 ; i < sci.size(); i++) {
         ui->scientistList->addItem(QString::fromStdString(sci[i].getName()));
-        ui->scientistList2->addItem(QString::fromStdString(sci[i].getName()));
     }
     currentlyDisplayedScientists = sci;
 }
+
 void MainWindow::displayComputers(vector<Computer> comp)
 {
     ui->computerList->clear();
-    ui->computerList2->clear();
     sort(comp.begin(), comp.end());
     for(int i = 0; i < comp.size(); i++)
     {
         ui->computerList->addItem(QString::fromStdString(comp[i].getName()));
-        ui->computerList2->addItem(QString::fromStdString(comp[i].getName()));
     }
     currentlyDisplayedComputers = comp;
 }
@@ -190,6 +192,7 @@ void MainWindow::on_removeButton_clicked()
     {
         ui->input_filter_sci->setText("");
         displayAllScientists();
+        displayLinkTable(myDom.returnAllLinks());
 
         ui->removeButton->setEnabled(false);
         ui->detailsBox->clear();
@@ -277,6 +280,7 @@ void MainWindow::on_removeComp_clicked()
     {
         ui->inputFilterComp->clear();
         displayAllComputers();
+        displayLinkTable(myDom.returnAllLinks());
 
         ui->removeComp->setEnabled(false);
         ui->detailsBoxComp->clear();
@@ -292,14 +296,38 @@ void MainWindow::on_inputFilterComp_textChanged(const QString &arg1)
     ui->counterComp->setText(QString::number(comp.size()) + " found!!");
 }
 
+// Linking dót -------------------------------
+
+
+void MainWindow::displayScientistsLink(vector<Person> sci)
+{
+    ui->scientistList2->clear();
+    sort(sci.begin(), sci.end());
+    for (int i = 0 ; i < sci.size(); i++) {
+        ui->scientistList2->addItem(QString::fromStdString(sci[i].getName()));
+    }
+    currentlyDisplayedSciLink = sci;
+}
+
+
+void MainWindow::displayComputersLink(vector<Computer> comp)
+{
+    ui->computerList2->clear();
+    sort(comp.begin(), comp.end());
+    for(int i = 0; i < comp.size(); i++)
+    {
+        ui->computerList2->addItem(QString::fromStdString(comp[i].getName()));
+    }
+    currentlyDisplayedCompLink = comp;
+}
 
 void MainWindow::on_linkButton_clicked()
 {
     ui->detailsLinks->clear();
     int currentIndex = ui->scientistList2->currentIndex().row();
-    Person currentlySelectedScientist = currentlyDisplayedScientists.at(currentIndex);
-    currentIndex = ui->computerList2->currentIndex().row();
-    Computer currentlySelectedComp = currentlyDisplayedComputers.at(currentIndex);
+    Person currentlySelectedScientist = currentlyDisplayedSciLink.at(currentIndex);
+    int currIndex = ui->computerList2->currentIndex().row();
+    Computer currentlySelectedComp = currentlyDisplayedCompLink.at(currIndex);
 
     bool success = myDom.addNewLink(currentlySelectedScientist, currentlySelectedComp);
     if(success)
@@ -312,22 +340,9 @@ void MainWindow::on_linkButton_clicked()
     }
     ui->inputFilterSci2->clear();
     ui->inputFilterComp2->clear();
+    displayLinkTable(myDom.returnAllLinks());
 }
 
-/*bool MainWindow::on_scientistList2_clicked()
-{
-    ui->computerList2->setEnabled(true);
-    ui->inputFilterComp2->setEnabled(true);
-    return true;
-}
-
-void MainWindow::on_computerList2_clicked()
-{
-    if(on_scientistList2_clicked())
-    {
-        ui->linkButton->setEnabled(true);
-    }
-}*/
 void MainWindow::enableLinkButton()
 {
     if(ui->scientistList2->currentIndex().row() > -1 && ui->computerList2->currentIndex().row() > -1)
@@ -344,19 +359,17 @@ void MainWindow::on_inputFilterSci2_textChanged()
 {
     string userInput = ui->inputFilterSci2->text().toStdString();
     vector<Person> sci = myDom.searchStringScientist("1",userInput);
-    displayScientists(sci);
+    displayScientistsLink(sci);
     ui->counterSci2->setText(QString::number(sci.size()) + " found!!");
-
 }
 
 void MainWindow::on_inputFilterComp2_textChanged()
 {
     string userInput = ui->inputFilterComp2->text().toStdString();
     vector<Computer> comp = myDom.searchStringComputer("1",userInput);
-    displayComputers(comp);
+    displayComputersLink(comp);
     ui->counterComp2->setText(QString::number(comp.size()) + " found!!");
-
-}
+ }
 
 void MainWindow::on_scientistList2_currentRowChanged(int currentRow)
 {
@@ -366,4 +379,99 @@ void MainWindow::on_scientistList2_currentRowChanged(int currentRow)
 void MainWindow::on_computerList2_currentRowChanged(int currentRow)
 {
     enableLinkButton();
+}
+// Taflan
+void MainWindow::displayLinkTable(vector<pair<Person, Computer>> vlink)     // Býr til töflu yfir alla linka (Person - Computer)
+{
+    ui->linkTable->setSortingEnabled(false);
+    ui->linkTable->clearContents();
+    ui->linkTable->setRowCount(vlink.size());
+    currentlyDisplayedLinks = vlink;
+
+    for(int row = 0; row < vlink.size(); row++)     // Fylli inn í dálka töflunnar
+    {
+        QString SciName = QString::fromStdString(vlink[row].first.getName());
+        QString CompName = QString::fromStdString(vlink[row].second.getName());
+
+        ui->linkTable->setItem(row, 0, new QTableWidgetItem(SciName));
+        ui->linkTable->setItem(row, 1, new QTableWidgetItem(CompName));
+    }
+    ui->linkTable->setSortingEnabled(true);
+    ui->counterLink->setText(QString::number(vlink.size()) + " found!!");
+}
+
+void MainWindow::on_inputFilterLink_textChanged(const QString &arg1)
+{
+    string userInput = ui->inputFilterLink->text().toStdString();
+    vector<pair<Person, Computer>> vlink = myDom.searchForLink(ui->linkCombo->currentText().toStdString(), userInput);
+    displayLinkTable(vlink);
+}
+
+void MainWindow::on_removeLinkButton_clicked()
+{
+ //   int row = ui->linkTable->currentRow();
+    int currentIndex = ui->linkTable->currentIndex().row();
+    pair<Person, Computer> selectedPair = currentlyDisplayedLinks.at(currentIndex);
+    qDebug() << QString::fromStdString(currentlyDisplayedLinks.at(currentIndex).first.getName());
+    qDebug() << QString::fromStdString(currentlyDisplayedLinks.at(currentIndex).second.getName());
+
+    int answer = QMessageBox::question(this, "Confirm removal", "Are you sure you want to remove this link from the database?");
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
+    bool success = myDom.removeLink(selectedPair);
+    qDebug() << success;
+
+    if(success)
+    {
+        ui->input_filter_sci->setText("");
+        //displayAllScientists();
+        displayLinkTable(myDom.returnAllLinks());
+
+        ui->removeButton->setEnabled(false);
+       // ui->detailsBox->clear();
+        qDebug() << "Virkaði!";
+        ui->statusBar->showMessage("This link was successfully removed from the database", 1500);
+    }
+}
+/*void MainWindow::on_removeButton_clicked()
+{
+    int currentIndex = ui->scientistList->currentIndex().row();
+    Person currentlySelectedScientist = currentlyDisplayedScientists.at(currentIndex);
+
+    int answer = QMessageBox::question(this, "Confirm removal", "Are you sure you want to remove this scientist from the database?");
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
+    bool success = myDom.removeScientist(currentlySelectedScientist);
+
+    if(success)
+    {
+        ui->input_filter_sci->setText("");
+        displayAllScientists();
+        displayLinkTable(myDom.returnAllLinks());
+
+        ui->removeButton->setEnabled(false);
+        ui->detailsBox->clear();
+    }
+    ui->statusBar->showMessage("This scientist was successfully removed from the database", 1500);
+}
+*/
+void MainWindow::on_linkTable_clicked(const QModelIndex &index)
+{
+    //ui->removeLinkButton->setEnabled(true);
+}
+
+void MainWindow::on_linkTable_currentCellChanged()
+{
+    if(ui->linkTable->currentIndex().row() > -1)
+    {
+        ui->removeLinkButton->setEnabled(true);
+    }
+    else
+    {
+        ui->removeLinkButton->setEnabled(false);
+    }
 }

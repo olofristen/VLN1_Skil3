@@ -29,6 +29,8 @@ public:
     vector<Computer> sortAndDisplayComputer(string sortMenu);
     vector<Person>  searchStringScientist(string num, string search);
     vector<Computer>  searchStringComputer(string num, string search);
+    vector<pair<Person, Computer> > searchForLink(string type, string search);
+//    vector<pair<Person, Computer> > searchForLink(string search);
     vector<Computer> getCompFromLinks(int pID);
     vector<Person> getSciFromLinks(int cID);
 
@@ -40,9 +42,9 @@ public:
     int computersSize();
     int linkSize();
 
-
     bool removeScientist(Person p);
     bool removeComputer(Computer c);
+    bool removeLink(pair<Person, Computer> link);
 };
 
 

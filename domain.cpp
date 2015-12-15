@@ -60,6 +60,7 @@ bool Domain::removeScientist(Person p)
 {
     bool success = DB.removeScientist(p);
     v = DB.readScientistFromDb();
+    vLink = DB.readLinkFromDb();
     return success;
 }
 
@@ -68,6 +69,14 @@ bool Domain::removeComputer(Computer c)
 {
     bool success = DB.removeComputer(c);
     ve = DB.readComputerFromDb();
+    vLink = DB.readLinkFromDb();
+    return success;
+}
+
+bool Domain::removeLink(pair<Person, Computer> link)
+{
+    bool success = DB.removeLink(link.first, link.second);
+    vLink = DB.readLinkFromDb();
     return success;
 }
 
@@ -121,4 +130,8 @@ vector<Person> Domain::searchStringScientist(string num, string search)
 vector<Computer> Domain::searchStringComputer(string num, string search)
 {       // leitar í vektornum...
     return DB.searchComputerFromDb(num, search);
+}
+vector<pair<Person, Computer>> Domain::searchForLink(string type, string search)
+{
+    return DB.searchForLink(type, search);
 }
