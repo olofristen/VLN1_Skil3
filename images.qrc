@@ -13,5 +13,8 @@
         <file>Buttons/skil3-erase_ngreen.png</file>
         <file>Buttons/skil3-edit.png</file>
         <file>Buttons/skil3-logo_80pxIN.png</file>
+        <file>Buttons/skil3-computers.png</file>
+        <file>Buttons/skil3-links.png</file>
+        <file>Buttons/skil3-scientists.png</file>
     </qresource>
 </RCC>
