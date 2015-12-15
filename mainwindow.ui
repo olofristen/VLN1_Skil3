@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1195</width>
-    <height>620</height>
+    <width>1293</width>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -83,8 +83,8 @@
      <rect>
       <x>0</x>
       <y>90</y>
-      <width>1511</width>
-      <height>581</height>
+      <width>1251</width>
+      <height>591</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -217,472 +217,480 @@
      <attribute name="title">
       <string/>
      </attribute>
-     <widget class="QTabWidget" name="Edit_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>10</y>
-        <width>841</width>
-        <height>531</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Monospac821 BT</family>
-        <weight>75</weight>
-        <bold>true</bold>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>60</width>
-        <height>60</height>
-       </size>
-      </property>
-      <property name="tabBarAutoHide">
-       <bool>false</bool>
-      </property>
-      <widget class="QWidget" name="AddScientist">
-       <attribute name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/Buttons/skil3-addSci_lblue.png</normaloff>:/Buttons/skil3-addSci_lblue.png</iconset>
-       </attribute>
-       <attribute name="title">
-        <string/>
-       </attribute>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>10</y>
-          <width>321</width>
-          <height>376</height>
-         </rect>
+     <layout class="QVBoxLayout" name="verticalLayout_9">
+      <item>
+       <widget class="QTabWidget" name="Edit_2">
+        <property name="font">
+         <font>
+          <family>Monospac821 BT</family>
+          <weight>75</weight>
+          <bold>true</bold>
+          <strikeout>false</strikeout>
+         </font>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QLabel" name="label_22">
-           <property name="text">
-            <string>Name:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputName"/>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_23">
-           <property name="text">
-            <string>Gender:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="genderCombo"/>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_24">
-           <property name="text">
-            <string>Birth year:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputBY"/>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QLabel" name="label_26">
-             <property name="text">
-              <string>Death year:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="isDead">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>Is he dead?</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputDY">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_25">
-           <property name="text">
-            <string>Biography:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputBio">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonAddNewSci">
-           <property name="text">
-            <string>Add new scientist!</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="errorMess">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>10</y>
-          <width>351</width>
-          <height>466</height>
-         </rect>
+        <property name="currentIndex">
+         <number>2</number>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLineEdit" name="input_filter_sci">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="placeholderText">
-            <string>Filter names...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="counter">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QListWidget" name="scientistList"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="removeButton">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Remove scientist</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QTextBrowser" name="detailsBox">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="AddComp">
-       <attribute name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/Buttons/skil3-addCom_pink.png</normaloff>:/Buttons/skil3-addCom_pink.png</iconset>
-       </attribute>
-       <attribute name="title">
-        <string/>
-       </attribute>
-       <widget class="QWidget" name="layoutWidget_9">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>10</y>
-          <width>371</width>
-          <height>466</height>
-         </rect>
+        <property name="iconSize">
+         <size>
+          <width>60</width>
+          <height>60</height>
+         </size>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_22">
-         <item>
-          <widget class="QLineEdit" name="inputFilterComp">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="placeholderText">
-            <string>Filter names...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="counterComp">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QListWidget" name="computerList"/>
-         </item>
-         <item>
-          <widget class="QPushButton" name="removeComp">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Remove computer</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QTextBrowser" name="detailsBoxComp">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>11</y>
-          <width>331</width>
-          <height>318</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_8">
-         <item>
-          <widget class="QLabel" name="label_77">
-           <property name="text">
-            <string>Name:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputNameComp"/>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_78">
-           <property name="text">
-            <string>Type:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="compTypeCombo"/>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QLabel" name="label_79">
-             <property name="text">
-              <string>Year:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="wasBuilt">
-             <property name="text">
-              <string>Was it ever built?</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputYComp"/>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_81">
-           <property name="text">
-            <string>Infomation:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputInfo">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="buttonAddNewComp">
-           <property name="text">
-            <string>Add new computer!</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="errorMessComp">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="AddLink">
-       <attribute name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/Buttons/skil3-addLink_purple.png</normaloff>:/Buttons/skil3-addLink_purple.png</iconset>
-       </attribute>
-       <attribute name="title">
-        <string/>
-       </attribute>
-       <widget class="QPushButton" name="linkButton">
-        <property name="enabled">
+        <property name="tabBarAutoHide">
          <bool>false</bool>
         </property>
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>290</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Link together!</string>
-        </property>
+        <widget class="QWidget" name="AddScientist">
+         <attribute name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/Buttons/skil3-addSci_lblue.png</normaloff>:/Buttons/skil3-addSci_lblue.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string/>
+         </attribute>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>10</y>
+            <width>321</width>
+            <height>376</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QLabel" name="label_22">
+             <property name="text">
+              <string>Name:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="inputName"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_23">
+             <property name="text">
+              <string>Gender:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="genderCombo"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_24">
+             <property name="text">
+              <string>Birth year:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="inputBY"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_26">
+               <property name="text">
+                <string>Death year:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="isDead">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Ignored">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Is he dead?</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="inputDY">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_25">
+             <property name="text">
+              <string>Biography:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="inputBio">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="buttonAddNewSci">
+             <property name="text">
+              <string>Add new scientist!</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="errorMess">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>10</y>
+            <width>351</width>
+            <height>466</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QLineEdit" name="input_filter_sci">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="placeholderText">
+              <string>Filter names...</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="counter">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QListWidget" name="scientistList"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="removeButton">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Remove scientist</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextBrowser" name="detailsBox">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="AddComp">
+         <attribute name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/Buttons/skil3-addCom_pink.png</normaloff>:/Buttons/skil3-addCom_pink.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string/>
+         </attribute>
+         <widget class="QWidget" name="layoutWidget_9">
+          <property name="geometry">
+           <rect>
+            <x>380</x>
+            <y>10</y>
+            <width>371</width>
+            <height>466</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_22">
+           <item>
+            <widget class="QLineEdit" name="inputFilterComp">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="placeholderText">
+              <string>Filter names...</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="counterComp">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QListWidget" name="computerList"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="removeComp">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Remove computer</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTextBrowser" name="detailsBoxComp">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>11</y>
+            <width>331</width>
+            <height>318</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QLabel" name="label_77">
+             <property name="text">
+              <string>Name:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="inputNameComp"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_78">
+             <property name="text">
+              <string>Type:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="compTypeCombo"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QLabel" name="label_79">
+               <property name="text">
+                <string>Year:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="wasBuilt">
+               <property name="text">
+                <string>Was it ever built?</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="inputYComp"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_81">
+             <property name="text">
+              <string>Infomation:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="inputInfo">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="buttonAddNewComp">
+             <property name="text">
+              <string>Add new computer!</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="errorMessComp">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="AddLink">
+         <attribute name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/Buttons/skil3-addLink_purple.png</normaloff>:/Buttons/skil3-addLink_purple.png</iconset>
+         </attribute>
+         <attribute name="title">
+          <string/>
+         </attribute>
+         <widget class="QPushButton" name="linkButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>330</x>
+            <y>290</y>
+            <width>131</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Link together!</string>
+          </property>
+         </widget>
+         <widget class="QTextBrowser" name="detailsLinks">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>330</y>
+            <width>581</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>20</y>
+            <width>731</width>
+            <height>261</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>&lt;b&gt;Scientists&lt;/b&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="inputFilterSci2">
+               <property name="text">
+                <string/>
+               </property>
+               <property name="placeholderText">
+                <string>Filter names...</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="counterSci2">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListWidget" name="scientistList2"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Minimum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>&lt;b&gt;Computers&lt;/b&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="inputFilterComp2">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="placeholderText">
+                <string>Filter names...</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="counterComp2">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QListWidget" name="computerList2">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
        </widget>
-       <widget class="QTextBrowser" name="detailsLinks">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>330</y>
-          <width>581</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>371</width>
-          <height>261</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QLabel" name="label_7">
-           <property name="text">
-            <string>&lt;b&gt;Scientists&lt;/b&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputFilterSci2">
-           <property name="text">
-            <string/>
-           </property>
-           <property name="placeholderText">
-            <string>Filter names...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="counterSci2">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QListWidget" name="scientistList2"/>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>20</y>
-          <width>391</width>
-          <height>261</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <item>
-          <widget class="QLabel" name="label_8">
-           <property name="text">
-            <string>&lt;b&gt;Computers&lt;/b&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="inputFilterComp2">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="placeholderText">
-            <string>Filter names...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="counterComp2">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QListWidget" name="computerList2">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </widget>
+      </item>
+     </layout>
     </widget>
     <widget class="QWidget" name="Database">
      <attribute name="icon">
@@ -702,7 +710,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -786,6 +794,9 @@ p, li { white-space: pre-wrap; }
            <property name="autoFillBackground">
             <bool>true</bool>
            </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
            <property name="alternatingRowColors">
             <bool>true</bool>
            </property>
@@ -823,6 +834,11 @@ p, li { white-space: pre-wrap; }
              <string>Bio</string>
             </property>
            </column>
+           <column>
+            <property name="text">
+             <string>ID</string>
+            </property>
+           </column>
           </widget>
          </item>
          <item>
@@ -833,6 +849,19 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QLabel" name="DC">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>450</y>
+          <width>47</width>
+          <height>13</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
@@ -1066,7 +1095,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1195</width>
+     <width>1293</width>
      <height>21</height>
     </rect>
    </property>

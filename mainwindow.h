@@ -20,6 +20,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    QString showScientistsFromLinks(int cid);
+    QString showComputersFromLinks(int pid);
+
 private slots:
     void on_input_filter_sci_textChanged(const QString &arg1);
 
@@ -77,6 +80,8 @@ private slots:
 
     void on_tableComputers_currentCellChanged();
 
+    void on_tableScientists_doubleClicked();
+
 private:
     Ui::MainWindow *ui;
     string getCurrentScientistSearch();
@@ -109,7 +114,6 @@ private:
     void scientistListScroll();
     void computerListScroll();
     void enableLinkButton();
-
 };
 
 #endif // MAINWINDOW_H

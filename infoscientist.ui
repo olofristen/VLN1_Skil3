@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1054</width>
-    <height>709</height>
+    <width>650</width>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -144,15 +144,15 @@
     <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
    </property>
    <property name="text">
-    <string>Computers Built:</string>
+    <string>Linked to:</string>
    </property>
   </widget>
   <widget class="QLabel" name="bio">
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>400</y>
-     <width>68</width>
+     <y>410</y>
+     <width>121</width>
      <height>19</height>
     </rect>
    </property>
@@ -160,7 +160,82 @@
     <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
    </property>
    <property name="text">
-    <string>Bio:</string>
+    <string>Short biography:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nameBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>160</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="genderBox">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>200</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="yobBox">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>240</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="yodBox">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>280</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="bioBox">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>420</y>
+     <width>361</width>
+     <height>151</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="compLink">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>340</y>
+     <width>361</width>
+     <height>51</height>
+    </rect>
    </property>
   </widget>
  </widget>

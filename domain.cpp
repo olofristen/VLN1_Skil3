@@ -47,6 +47,7 @@ vector<Computer> Domain::getCompFromLinks(int pID)
     }
     return comp;
 }
+
 vector<Person> Domain::getSciFromLinks(int cID)
 {   // Sæki hér vísindamann úr link-vektornum fyrir viðeigandi ID á Computer
     vector<Person> comp;
