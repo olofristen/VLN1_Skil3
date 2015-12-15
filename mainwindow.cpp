@@ -509,6 +509,7 @@ void MainWindow::displayAllComputersST()
 
 void MainWindow::displayScientistsST(vector<Person> scientists)
 {
+    ui->tableScientists->setSortingEnabled(false);
     ui->tableScientists->clearContents();
     ui->tableScientists->setRowCount(scientists.size());
    for(int row = 0; row < scientists.size(); row++)
@@ -534,51 +535,46 @@ void MainWindow::displayScientistsST(vector<Person> scientists)
        ui->tableScientists->setItem(row, 2, new QTableWidgetItem(by));
        ui->tableScientists->setItem(row, 3, new QTableWidgetItem(dye));
        ui->tableScientists->setItem(row, 4, new QTableWidgetItem(bio));
+       ui->tableScientists->setColumnHidden(4, true);
    }
+   ui->tableScientists->setSortingEnabled(true);
+   ui->counterSciDB->setText(QString::number(scientists.size()) + " found!!");
 }
 
 void MainWindow::displayComputersST(vector<Computer> computers)
 {
+
+    ui->tableComputers->setSortingEnabled(false);
     ui->tableComputers->clearContents();
     ui->tableComputers->setRowCount(computers.size());
-   for(unsigned int row = 0; row < computers.size(); row++)
-   {
-       Computer currentComputer = computers.at(row);
-       QString wbu;
-       QString name = QString::fromStdString(currentComputer.getName());
-       QString type = QString::fromStdString(currentComputer.getType());
-       QString wb = QString::number(currentComputer.getWasBuilt());
-       if(wb == "1")
-       {
-           wbu = "Yes";
-       }
-       else
-       {
-           wbu = "No";
-       }
-       QString by = QString::number(currentComputer.getBuildYear());
+    for(unsigned int row = 0; row < computers.size(); row++)
+    {
+        Computer currentComputer = computers.at(row);
+        QString wbu;
+        QString name = QString::fromStdString(currentComputer.getName());
+        QString type = QString::fromStdString(currentComputer.getType());
+        QString wb = QString::number(currentComputer.getWasBuilt());
+        if(wb == "1")
+        {
+            wbu = "Yes";
+        }
+        else
+        {
+            wbu = "No";
+        }
+        QString by = QString::number(currentComputer.getBuildYear());
+        QString info = QString::fromStdString(currentComputer.getInfo());
 
-       ui->tableComputers->setItem(row, 0, new QTableWidgetItem(name));
-       ui->tableComputers->setItem(row, 1, new QTableWidgetItem(type));
-       ui->tableComputers->setItem(row, 2, new QTableWidgetItem(wbu));
-       ui->tableComputers->setItem(row, 3, new QTableWidgetItem(by));
-   }
-}
-void MainWindow::displayBio(int row)
-{
-    vector<Person> scientists = myDom.returnAllScientists();
-    Person currentScientist = scientists.at(row);
+        ui->tableComputers->setItem(row, 0, new QTableWidgetItem(name));
+        ui->tableComputers->setItem(row, 1, new QTableWidgetItem(type));
+        ui->tableComputers->setItem(row, 2, new QTableWidgetItem(wbu));
+        ui->tableComputers->setItem(row, 3, new QTableWidgetItem(by));
+        ui->tableComputers->setItem(row, 4, new QTableWidgetItem(info));
+        ui->tableComputers->setColumnHidden(4, true);
+    }
 
-    QString bio = QString::fromStdString(currentScientist.getBio());
-    ui->textBrowserBio->setText(bio);
-}
-void MainWindow::displayInfo(unsigned int row)
-{
-    vector<Computer> computers = myDom.returnAllComputers();
-    Computer currentComputer = computers.at(row);
-
-    QString info = QString::fromStdString(currentComputer.getInfo());
-    ui->textBrowserInfo->setText(info);
+    ui->tableComputers->setSortingEnabled(true);
+    ui->counterCompDB->setText(QString::number(computers.size()) + " found!!");
 }
 
 void MainWindow::on_lineEditScientists_textChanged(const QString &arg1)
@@ -586,7 +582,7 @@ void MainWindow::on_lineEditScientists_textChanged(const QString &arg1)
     string userInput = ui->lineEditScientists->text().toStdString();
     string dropDownValue = getCurrentScientistSearch();
     vector<Person> scientist = myDom.filterScientist(dropDownValue, userInput);
-    displayScientists(scientist);
+    displayScientistsST(scientist);
 }
 
 void MainWindow::on_inputFilterComputers_textChanged(const QString &arg1)
@@ -594,7 +590,7 @@ void MainWindow::on_inputFilterComputers_textChanged(const QString &arg1)
     string userInput = ui->inputFilterComputers->text().toStdString();
     string dropDownValue = getCurrentComputerSearch();
     vector<Computer> computer = myDom.filterComputer(dropDownValue, userInput);
-    displayComputers(computer);
+    displayComputersST(computer);
 }
 
 void MainWindow::on_dropDownScientists_currentIndexChanged(const QString &arg1)
@@ -672,4 +668,38 @@ void MainWindow::on_tableScientists_clicked(const QModelIndex &index)
 {
     unsigned int currentIndex = ui->tableScientists->currentIndex().row();
     displayBio(currentIndex);
+}
+
+void MainWindow::displayBio(int row)
+{
+    QString name = ui->tableScientists->item(row, 0)->text();
+    QString bio = ui->tableScientists->item(row, 4)->text();
+    ui->textBrowserBio->setText(name + "\n\n" + bio);
+}
+
+void MainWindow::displayInfo(int row)
+{
+    QString name = ui->tableComputers->item(row, 0)->text();
+    QString info = ui->tableComputers->item(row, 4)->text();
+    ui->textBrowserInfo->setText(name + "\n\n" + info);
+ }
+
+void MainWindow::on_tableScientists_currentCellChanged()
+{
+    int currentIndex = ui->tableScientists->currentIndex().row();
+    if(currentIndex < 0)
+    {
+        return;
+    }
+    displayBio(currentIndex);
+}
+
+void MainWindow::on_tableComputers_currentCellChanged()
+{
+    int currentIndex = ui->tableComputers->currentIndex().row();
+    if(currentIndex < 0)
+    {
+        return;
+    }
+    displayInfo(currentIndex);
 }

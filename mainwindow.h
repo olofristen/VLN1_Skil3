@@ -73,6 +73,10 @@ private slots:
 
     void on_dropDownScientists_currentIndexChanged(const QString &arg1);
 
+    void on_tableScientists_currentCellChanged();
+
+    void on_tableComputers_currentCellChanged();
+
 private:
     Ui::MainWindow *ui;
     string getCurrentScientistSearch();
@@ -81,7 +85,7 @@ private:
     void displayScientistsST(vector<Person> scientists);
     void displayAllComputersST();
     void displayComputersST(vector<Computer> computers);
-    void displayInfo(unsigned int row);
+    void displayInfo(int row);
     void displayBio(int row);
     Domain myDom;
 

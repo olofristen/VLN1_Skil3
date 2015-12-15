@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>968</width>
-    <height>688</height>
+    <width>1195</width>
+    <height>620</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -702,7 +702,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -795,6 +795,9 @@ p, li { white-space: pre-wrap; }
            <property name="sortingEnabled">
             <bool>true</bool>
            </property>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
            <column>
             <property name="text">
              <string>Name</string>
@@ -815,6 +818,18 @@ p, li { white-space: pre-wrap; }
              <string>Year of death</string>
             </property>
            </column>
+           <column>
+            <property name="text">
+             <string>Bio</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="counterSciDB">
+           <property name="text">
+            <string/>
+           </property>
           </widget>
          </item>
         </layout>
@@ -870,7 +885,7 @@ p, li { white-space: pre-wrap; }
          <string>&lt;H2&gt;Info&lt;H2&gt;</string>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>100</x>
@@ -895,6 +910,9 @@ p, li { white-space: pre-wrap; }
            <property name="autoFillBackground">
             <bool>true</bool>
            </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
            <property name="alternatingRowColors">
             <bool>true</bool>
            </property>
@@ -904,6 +922,15 @@ p, li { white-space: pre-wrap; }
            <property name="sortingEnabled">
             <bool>true</bool>
            </property>
+           <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+            <bool>true</bool>
+           </attribute>
            <column>
             <property name="text">
              <string>Name</string>
@@ -924,6 +951,18 @@ p, li { white-space: pre-wrap; }
              <string>Building year</string>
             </property>
            </column>
+           <column>
+            <property name="text">
+             <string>Info</string>
+            </property>
+           </column>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="counterCompDB">
+           <property name="text">
+            <string/>
+           </property>
           </widget>
          </item>
         </layout>
@@ -1027,7 +1066,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>968</width>
+     <width>1195</width>
      <height>21</height>
     </rect>
    </property>
