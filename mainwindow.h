@@ -83,7 +83,6 @@ private:
     void displayComputersST(vector<Computer> computers);
     void displayInfo(unsigned int row);
     void displayBio(int row);
-    Domain domain;
     Domain myDom;
 
     vector<Person> currentlyDisplayedScientists;
