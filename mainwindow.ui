@@ -53,7 +53,7 @@ color: rgb(255, 255, 255);
 font: 18pt &quot;Agency FB&quot;;</string>
       </property>
       <property name="text">
-       <string>           THE COMPUTING DATABASE</string>
+       <string>              THE COMPUTING DATABASE</string>
       </property>
      </widget>
     </item>
@@ -243,7 +243,7 @@ image: url(:/Buttons/skil3-addSci_lblue.png);
 image-position: left;</string>
                 </property>
                 <property name="text">
-                 <string>           ADD NEW SCIENTIST</string>
+                 <string>              ADD NEW SCIENTIST</string>
                 </property>
                </widget>
               </item>
@@ -562,6 +562,9 @@ image-position: left;</string>
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
@@ -602,7 +605,7 @@ image: url(:/Buttons/skil3-addCom_pink.png);
 image-position: left;</string>
                 </property>
                 <property name="text">
-                 <string>           ADD NEW COMPUTER</string>
+                 <string>              ADD NEW COMPUTER</string>
                 </property>
                </widget>
               </item>
@@ -843,6 +846,9 @@ image-position: left;</string>
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+                </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
@@ -881,7 +887,7 @@ image: url(:/Buttons/skil3-addLink_purple.png);
 image-position: left;</string>
               </property>
               <property name="text">
-               <string>           ADD NEW LINK</string>
+               <string>              ADD NEW LINK</string>
               </property>
              </widget>
             </item>
@@ -1066,7 +1072,7 @@ image-position: left;</string>
         <item>
          <widget class="QTabWidget" name="tabWidgetComSci">
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1105,7 +1111,7 @@ image: url(:/Buttons/skil3-scientists.png);
 image-position: left;</string>
                 </property>
                 <property name="text">
-                 <string>          SCIENTISTS</string>
+                 <string>             SCIENTISTS</string>
                 </property>
                </widget>
               </item>
@@ -1198,20 +1204,25 @@ image-position: left;</string>
               </property>
               <property name="font">
                <font>
-                <pointsize>12</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>MS Shell Dlg 2</family>
+                <pointsize>8</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="autoFillBackground">
                <bool>true</bool>
               </property>
+              <property name="styleSheet">
+               <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
+              </property>
               <property name="html">
                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8.25pt; font-weight:400;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8.25pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
@@ -1248,7 +1259,7 @@ image: url(:/Buttons/skil3-computers.png);
 image-position: left;</string>
                 </property>
                 <property name="text">
-                 <string>          COMPUTERS</string>
+                 <string>             COMPUTERS</string>
                 </property>
                </widget>
               </item>
@@ -1341,13 +1352,18 @@ image-position: left;</string>
                 </property>
                 <property name="font">
                  <font>
-                  <pointsize>12</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <family>MS Shell Dlg 2</family>
+                  <pointsize>8</pointsize>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="autoFillBackground">
                  <bool>true</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 8pt &quot;MS Shell Dlg 2&quot;;</string>
                 </property>
                </widget>
               </item>
@@ -1393,7 +1409,7 @@ image: url(:/Buttons/skil3-links.png);
 image-position: left;</string>
                 </property>
                 <property name="text">
-                 <string>          LINKS</string>
+                 <string>             LINKS</string>
                 </property>
                </widget>
               </item>
