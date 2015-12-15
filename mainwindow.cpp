@@ -24,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllComputers();
     displayAllScientists();
 
-
     displayCombos();
     displayLinkTable(myDom.returnAllLinks());
 }
@@ -350,14 +349,21 @@ void MainWindow::on_linkButton_clicked()
     int currIndex = ui->computerList2->currentIndex().row();
     Computer currentlySelectedComp = currentlyDisplayedCompLink.at(currIndex);
 
-    bool success = myDom.addNewLink(currentlySelectedScientist, currentlySelectedComp);
-    if(success)
+    if(currentlySelectedScientist.getDeathYear() < currentlySelectedComp.getBuildYear() && currentlySelectedScientist.getDeathYear() != -1)
     {
-        ui->detailsLinks->setText("Worked! We linked together:\n\n" + QString::fromStdString(currentlySelectedScientist.getName()) + " + " + QString::fromStdString(currentlySelectedComp.getName()));
+        ui->detailsLinks->setText("this scientist was already dead when this computer was built \n\nTry again!");
     }
     else
     {
-        ui->detailsLinks->setText("This link already exists! \n\nTry again!");
+        bool success = myDom.addNewLink(currentlySelectedScientist, currentlySelectedComp);
+        if(success)
+        {
+            ui->detailsLinks->setText("Worked! We linked together:\n\n" + QString::fromStdString(currentlySelectedScientist.getName()) + " + " + QString::fromStdString(currentlySelectedComp.getName()));
+        }
+        else
+        {
+            ui->detailsLinks->setText("This link already exists! \n\nTry again!");
+        }
     }
     ui->inputFilterSci2->clear();
     ui->inputFilterComp2->clear();
