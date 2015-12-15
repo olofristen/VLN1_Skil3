@@ -238,6 +238,88 @@
     </rect>
    </property>
   </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="Header">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(86, 197, 188);
+image: url(:/Buttons/skil3-logo_80pxIN.png);
+image-position: left;
+color: rgb(255, 255, 255);
+font: 18pt &quot;Agency FB&quot;;</string>
+     </property>
+     <property name="text">
+      <string>           THE COMPUTING DATABASE</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="Name">
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Name:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="Gender">
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Gender:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="YOB">
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Year of Birth:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="YOD">
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Year of Death:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="computersBuilt">
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Computers Built:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="bio">
+     <property name="styleSheet">
+      <string notr="true">font: 75 12pt &quot;AlternateGothic2 BT&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Bio:</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

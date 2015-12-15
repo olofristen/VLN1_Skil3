@@ -4,4 +4,5 @@
 *.user
 *.obj
 *.autosave
+*.psd
 /build-*
