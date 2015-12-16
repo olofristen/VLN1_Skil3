@@ -46,10 +46,10 @@ private slots:
     void on_linkTable_clicked(const QModelIndex &index);
     void on_linkTable_currentCellChanged();
     void on_inputFilterComputers_textChanged(const QString &arg1);
-    void on_dropDownSearch_currentIndexChanged(const QString &arg1);
     void on_tableComputers_clicked(const QModelIndex &index);
     void on_tableScientists_clicked(const QModelIndex &index);
     void on_lineEditScientists_textChanged(const QString &arg1);
+    void on_dropDownSearch_currentIndexChanged(const QString &arg1);
     void on_dropDownScientists_currentIndexChanged(const QString &arg1);
     void on_tableScientists_currentCellChanged();
     void on_tableComputers_currentCellChanged();
@@ -86,6 +86,7 @@ private:
     void isHeDead();
     void setLinkEnabled();
     void displayCombos();
+    void displayMoreCombos();
     void scientistListScroll();
     void computerListScroll();
     void enableLinkButton();
