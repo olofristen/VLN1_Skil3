@@ -74,7 +74,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1202,7 +1202,7 @@ image-position: left;</string>
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1618,6 +1618,11 @@ image-position: left;</string>
                 <column>
                  <property name="text">
                   <string>Info</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>id</string>
                  </property>
                 </column>
                </widget>

@@ -5,6 +5,7 @@
 #include <vector>
 #include "domain.h"
 #include "infoscientist.h"
+#include "infocomputers.h"
 
 using namespace std;
 
@@ -54,6 +55,7 @@ private slots:
     void on_tableComputers_currentCellChanged();
 
     void on_tableScientists_doubleClicked();
+    void on_tableComputers_doubleClicked();
 
 private:
     Ui::MainWindow *ui;

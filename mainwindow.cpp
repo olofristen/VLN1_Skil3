@@ -101,7 +101,7 @@ void MainWindow::displayAllScientists()
     currentlyDisplayedScientists = sci;
     currentlyDisplayedSciLink = sci;
 
-    for(int i = 0; i < sci.size(); i++)
+    for(unsigned int i = 0; i < sci.size(); i++)
     {
         ui->scientistList->addItem(QString::fromStdString(sci[i].getName()));
         ui->scientistList2->addItem(QString::fromStdString(sci[i].getName()));
@@ -119,7 +119,7 @@ void MainWindow::displayAllComputers()
     currentlyDisplayedComputers = comp;
     currentlyDisplayedCompLink = comp;
 
-    for(int i = 0; i < comp.size(); i++)
+    for(unsigned int i = 0; i < comp.size(); i++)
     {
         ui->computerList->addItem(QString::fromStdString(comp[i].getName()));
         ui->computerList2->addItem(QString::fromStdString(comp[i].getName()));
@@ -132,7 +132,7 @@ void MainWindow::displayScientists(vector<Person> sci)
 {
     ui->scientistList->clear();
     sort(sci.begin(), sci.end());
-    for (int i = 0 ; i < sci.size(); i++) {
+    for (unsigned int i = 0 ; i < sci.size(); i++) {
         ui->scientistList->addItem(QString::fromStdString(sci[i].getName()));
     }
     currentlyDisplayedScientists = sci;
@@ -142,7 +142,7 @@ void MainWindow::displayComputers(vector<Computer> comp)
 {
     ui->computerList->clear();
     sort(comp.begin(), comp.end());
-    for(int i = 0; i < comp.size(); i++)
+    for(unsigned int i = 0; i < comp.size(); i++)
     {
         ui->computerList->addItem(QString::fromStdString(comp[i].getName()));
     }
@@ -196,6 +196,22 @@ QString MainWindow::showComputersFromLinks(int pid)
     }
     return Comps;
 }
+
+QString MainWindow::showScientistsFromLinks(int cid)
+{
+    vector<Person> sci = myDom.getSciFromLinks(cid);
+    QString Sci = "";
+
+    for(unsigned int i = 0; i < sci.size(); i++) {
+        Sci = Sci + QString::fromStdString(sci[i].getName());
+        if(i != sci.size() - 1)
+        {
+            Sci = Sci + ", ";
+        }
+    }
+    return Sci;
+}
+
 
 void MainWindow::on_scientistList_clicked(const QModelIndex &index)
 {
@@ -291,20 +307,6 @@ void MainWindow::computerListScroll()
 
 }
 
-QString MainWindow::showScientistsFromLinks(int cid)
-{
-    vector<Person> sci = myDom.getSciFromLinks(cid);
-    QString Scistring = "";
-
-    for(unsigned int i = 0; i < sci.size(); i++) {
-        Scistring = Scistring + QString::fromStdString(sci[i].getName());
-        if(i != sci.size() - 1)
-        {
-            Scistring = Scistring + ", ";
-        }
-    }
-    return Scistring;
-}
 void MainWindow::on_computerList_clicked(const QModelIndex &index)
 {
     computerListScroll();
@@ -356,7 +358,7 @@ void MainWindow::displayScientistsLink(vector<Person> sci)
 {
     ui->scientistList2->clear();
     sort(sci.begin(), sci.end());
-    for (int i = 0 ; i < sci.size(); i++) {
+    for (unsigned int i = 0 ; i < sci.size(); i++) {
         ui->scientistList2->addItem(QString::fromStdString(sci[i].getName()));
     }
     currentlyDisplayedSciLink = sci;
@@ -366,7 +368,7 @@ void MainWindow::displayComputersLink(vector<Computer> comp)
 {
     ui->computerList2->clear();
     sort(comp.begin(), comp.end());
-    for(int i = 0; i < comp.size(); i++)
+    for(unsigned int i = 0; i < comp.size(); i++)
     {
         ui->computerList2->addItem(QString::fromStdString(comp[i].getName()));
     }
@@ -452,7 +454,7 @@ void MainWindow::displayLinkTable(vector<pair<Person, Computer> > vlink)     // 
     ui->linkTable->setRowCount(vlink.size());
     currentlyDisplayedLinks = vlink;
 
-    for(int row = 0; row < vlink.size(); row++)     // Fylli inn í dálka töflunnar
+    for(unsigned int row = 0; row < vlink.size(); row++)     // Fylli inn í dálka töflunnar
     {
         QString SciName = QString::fromStdString(vlink[row].first.getName());
         QString CompName = QString::fromStdString(vlink[row].second.getName());
@@ -551,7 +553,7 @@ void MainWindow::displayScientistsST(vector<Person> scientists)
     ui->tableScientists->setSortingEnabled(false);
     ui->tableScientists->clearContents();
     ui->tableScientists->setRowCount(scientists.size());
-   for(int row = 0; row < scientists.size(); row++)
+   for(unsigned int row = 0; row < scientists.size(); row++)
    {
        Person currentScientist = scientists.at(row);
        QString dye;
@@ -608,13 +610,17 @@ void MainWindow::displayComputersST(vector<Computer> computers)
         }
         QString by = QString::number(currentComputer.getBuildYear());
         QString info = QString::fromStdString(currentComputer.getInfo());
+        QString id = QString::number(currentComputer.getId());
+
 
         ui->tableComputers->setItem(row, 0, new QTableWidgetItem(name));
         ui->tableComputers->setItem(row, 1, new QTableWidgetItem(type));
         ui->tableComputers->setItem(row, 2, new QTableWidgetItem(wbu));
         ui->tableComputers->setItem(row, 3, new QTableWidgetItem(by));
         ui->tableComputers->setItem(row, 4, new QTableWidgetItem(info));
+        ui->tableComputers->setItem(row, 5, new QTableWidgetItem(id));
         ui->tableComputers->setColumnHidden(4, true);
+        ui->tableComputers->setColumnHidden(5, true);
 
     }
 
@@ -764,6 +770,24 @@ void MainWindow::on_tableScientists_doubleClicked()
     InfoScientist info;
     info.printInfo(id, name, gender, yob, yod, bio, showComputersFromLinks(id.toInt()));
     info.exec();
+
+
+}
+
+void MainWindow::on_tableComputers_doubleClicked()
+{
+    int row = ui->tableComputers->currentRow();
+    QString name = ui->tableComputers->item(row, 0)->text();
+    QString type = ui->tableComputers->item(row, 1)->text();
+    QString wb = ui->tableComputers->item(row, 2)->text();
+    QString by = ui->tableComputers->item(row, 3)->text();
+    QString info = ui->tableComputers->item(row, 4)->text();
+    QString id = ui->tableComputers->item(row, 5)->text();
+
+    qDebug() << id;
+    InfoComputers Info;
+    Info.printInfo(id, name, type, wb, by, info, showScientistsFromLinks(id.toInt()));
+    Info.exec();
 
 
 }
