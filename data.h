@@ -8,6 +8,7 @@
 #include <QtDebug>
 #include <QtSql>
 #include <ctime>
+#include <QString>
 
 class Database
 {

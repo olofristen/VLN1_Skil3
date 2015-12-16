@@ -1,6 +1,5 @@
 #include "person.h"
 #include "data.h"
-#include <QString>
 
 
 Database::Database()        // Database búinn til/opnaður í constructor

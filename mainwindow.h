@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <vector>
+#include <QMessageBox>
 #include "domain.h"
 #include "infoscientist.h"
 #include "infocomputers.h"
@@ -25,15 +26,15 @@ public:
     QString showComputersFromLinks(int pid);
 
 private slots:
-    void on_input_filter_sci_textChanged(const QString &arg1);
-    void on_scientistList_clicked(const QModelIndex &index);
+    void on_input_filter_sci_textChanged();
+    void on_scientistList_clicked();
     void on_removeButton_clicked();
     void on_buttonAddNewSci_clicked();
     void on_isDead_toggled(bool checked);
     void on_buttonAddNewComp_clicked();
-    void on_computerList_clicked(const QModelIndex &index);
+    void on_computerList_clicked();
     void on_removeComp_clicked();
-    void on_inputFilterComp_textChanged(const QString &arg1);
+    void on_inputFilterComp_textChanged();
     void on_linkButton_clicked();
     void on_inputFilterSci2_textChanged();
     void on_inputFilterComp2_textChanged();
@@ -41,16 +42,15 @@ private slots:
     void on_computerList_currentRowChanged(int currentRow);
     void on_scientistList2_currentRowChanged(int currentRow);
     void on_computerList2_currentRowChanged(int currentRow);
-    void on_inputFilterLink_textChanged(const QString &arg1);
+    void on_inputFilterLink_textChanged();
     void on_removeLinkButton_clicked();
-    void on_linkTable_clicked(const QModelIndex &index);
     void on_linkTable_currentCellChanged();
-    void on_inputFilterComputers_textChanged(const QString &arg1);
-    void on_tableComputers_clicked(const QModelIndex &index);
-    void on_tableScientists_clicked(const QModelIndex &index);
-    void on_lineEditScientists_textChanged(const QString &arg1);
-    void on_dropDownSearch_currentIndexChanged(const QString &arg1);
-    void on_dropDownScientists_currentIndexChanged(const QString &arg1);
+    void on_inputFilterComputers_textChanged();
+    void on_tableComputers_clicked();
+    void on_tableScientists_clicked();
+    void on_lineEditScientists_textChanged();
+    void on_dropDownSearch_currentIndexChanged();
+    void on_dropDownScientists_currentIndexChanged();
     void on_tableScientists_currentCellChanged();
     void on_tableComputers_currentCellChanged();
 
@@ -73,7 +73,6 @@ private:
     vector<Computer> currentlyDisplayedComputers;
     vector<Person> currentlyDisplayedSciLink;
     vector<Computer> currentlyDisplayedCompLink;
-    vector<pair<Person, Computer> > currentlyDisplayedLinks;
 
     void displayAllScientists();
     void displayAllComputers();

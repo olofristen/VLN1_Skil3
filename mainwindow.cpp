@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "domain.h"
-#include <QMessageBox>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -50,8 +50,7 @@ void MainWindow::displayMoreCombos()
     ui->dropDownSearch->addItem("Building year");
     ui->dropDownSearch->addItem("Info");
 }
-
-void MainWindow::on_buttonAddNewSci_clicked()
+void MainWindow::on_buttonAddNewSci_clicked()       // Bætum nýjum vísindamanni við grunninn með takkanum!
 {
     string name = ui->inputName->text().toStdString();
     string gender = ui->genderCombo->currentText().toStdString();
@@ -74,6 +73,7 @@ void MainWindow::on_buttonAddNewSci_clicked()
 
     myDom.addNewPerson(name, gender, birthyear, deathyear, bio);
     displayAllScientists();
+    displayAllScientistsST();
 
     ui->inputName->clear();
     ui->inputBY->clear();
@@ -97,7 +97,7 @@ void MainWindow::on_isDead_toggled(bool checked)
     }
 }
 
-void MainWindow::displayAllScientists()
+void MainWindow::displayAllScientists()      //listar upp nöfn vísindamannanna
 {
     ui->scientistList->clear();
     ui->scientistList2->clear();
@@ -115,7 +115,7 @@ void MainWindow::displayAllScientists()
     ui->counterSci2->setText(QString::number(sci.size()) + " found!!");
 }
 
-void MainWindow::displayAllComputers()
+void MainWindow::displayAllComputers()      // Listar upp allar tölvurnar
 {
     ui->computerList->clear();
     ui->computerList2->clear();
@@ -133,7 +133,7 @@ void MainWindow::displayAllComputers()
     ui->counterComp2->setText(QString::number(comp.size()) + " found!!");
 }
 
-void MainWindow::displayScientists(vector<Person> sci)
+void MainWindow::displayScientists(vector<Person> sci)     // Listar upp filteraða vísindamenn
 {
     ui->scientistList->clear();
     sort(sci.begin(), sci.end());
@@ -143,7 +143,7 @@ void MainWindow::displayScientists(vector<Person> sci)
     currentlyDisplayedScientists = sci;
 }
 
-void MainWindow::displayComputers(vector<Computer> comp)
+void MainWindow::displayComputers(vector<Computer> comp)    // Listar upp filteraðar tölvur
 {
     ui->computerList->clear();
     sort(comp.begin(), comp.end());
@@ -154,7 +154,7 @@ void MainWindow::displayComputers(vector<Computer> comp)
     currentlyDisplayedComputers = comp;
 }
 
-void MainWindow::on_input_filter_sci_textChanged(const QString &arg1)
+void MainWindow::on_input_filter_sci_textChanged()
 {
     string userInput = ui->input_filter_sci->text().toStdString();
     vector<Person> sci = myDom.searchStringScientist("1",userInput);
@@ -162,7 +162,7 @@ void MainWindow::on_input_filter_sci_textChanged(const QString &arg1)
     ui->counter->setText(QString::number(sci.size()) + " found!!");
 }
 
-void MainWindow::scientistListScroll()
+void MainWindow::scientistListScroll()      // Kallað á þegar farið er um vísindamannalistann (örvatakkar og mús)
 {
     ui->removeButton->setEnabled(true);
 
@@ -187,7 +187,7 @@ void MainWindow::scientistListScroll()
 
 
 }
-QString MainWindow::showComputersFromLinks(int pid)
+QString MainWindow::showComputersFromLinks(int pid)     // Notað til að telja upp tölvurnar í linkum út frá gefnum vísindamanni
 {
     vector<Computer> comp = myDom.getCompFromLinks(pid);
     QString Comps = "";
@@ -202,7 +202,7 @@ QString MainWindow::showComputersFromLinks(int pid)
     return Comps;
 }
 
-QString MainWindow::showScientistsFromLinks(int cid)
+QString MainWindow::showScientistsFromLinks(int cid)    // Notað til að telja upp vísindamennina í linkum út frá gefinni tölvu
 {
     vector<Person> sci = myDom.getSciFromLinks(cid);
     QString Sci = "";
@@ -218,7 +218,7 @@ QString MainWindow::showScientistsFromLinks(int cid)
 }
 
 
-void MainWindow::on_scientistList_clicked(const QModelIndex &index)
+void MainWindow::on_scientistList_clicked()
 {
     scientistListScroll();
 }
@@ -234,7 +234,7 @@ void MainWindow::on_scientistList_currentRowChanged(int currentRow)
 
 }
 
-void MainWindow::on_removeButton_clicked()
+void MainWindow::on_removeButton_clicked()      // Fjarlægjum valda vísindamanninn með takkanum...
 {
     int currentIndex = ui->scientistList->currentIndex().row();
     Person currentlySelectedScientist = currentlyDisplayedScientists.at(currentIndex);
@@ -250,6 +250,7 @@ void MainWindow::on_removeButton_clicked()
     {
         ui->input_filter_sci->setText("");
         displayAllScientists();
+        displayAllScientistsST();
         displayLinkTable(myDom.returnAllLinks());
 
         ui->removeButton->setEnabled(false);
@@ -258,7 +259,7 @@ void MainWindow::on_removeButton_clicked()
     ui->statusBar->showMessage("This scientist was successfully removed from the database", 1500);
 }
 
-void MainWindow::on_buttonAddNewComp_clicked()
+void MainWindow::on_buttonAddNewComp_clicked()      // Bætum nýrri tölvu við database-inn með takkanum!
 {
     string name = ui->inputNameComp->text().toStdString();
     string type = ui->compTypeCombo->currentText().toStdString();
@@ -278,6 +279,7 @@ void MainWindow::on_buttonAddNewComp_clicked()
     }
     myDom.addNewComputer(name, year, type, wasbuilt, info);
     displayAllComputers();
+    displayAllComputersST();
 
     ui->inputNameComp->clear();
     ui->compTypeCombo->setCurrentIndex(0);
@@ -288,7 +290,7 @@ void MainWindow::on_buttonAddNewComp_clicked()
     ui->statusBar->showMessage("New computer added to the database!", 1500);
 }
 
-void MainWindow::computerListScroll()
+void MainWindow::computerListScroll()       // Notað til að færast um tölvulistann (örvatakkar og mús)
 {
     ui->removeComp->setEnabled(true);
 
@@ -312,7 +314,7 @@ void MainWindow::computerListScroll()
 
 }
 
-void MainWindow::on_computerList_clicked(const QModelIndex &index)
+void MainWindow::on_computerList_clicked()
 {
     computerListScroll();
 }
@@ -327,7 +329,7 @@ void MainWindow::on_computerList_currentRowChanged(int currentRow)
     computerListScroll();
 }
 
-void MainWindow::on_removeComp_clicked()
+void MainWindow::on_removeComp_clicked()        // Fjarlægjum valda tölvu með takka
 {
     int currentIndex = ui->computerList->currentIndex().row();
     Computer currentlySelectedComp = currentlyDisplayedComputers.at(currentIndex);
@@ -343,6 +345,7 @@ void MainWindow::on_removeComp_clicked()
     {
         ui->inputFilterComp->clear();
         displayAllComputers();
+        displayAllComputersST();
         displayLinkTable(myDom.returnAllLinks());
 
         ui->removeComp->setEnabled(false);
@@ -351,7 +354,7 @@ void MainWindow::on_removeComp_clicked()
     ui->statusBar->showMessage("This computer was successfully removed from the database", 1500);
 }
 
-void MainWindow::on_inputFilterComp_textChanged(const QString &arg1)
+void MainWindow::on_inputFilterComp_textChanged()
 {
     string userInput = ui->inputFilterComp->text().toStdString();
     vector<Computer> comp = myDom.searchStringComputer("1",userInput);
@@ -359,7 +362,8 @@ void MainWindow::on_inputFilterComp_textChanged(const QString &arg1)
     ui->counterComp->setText(QString::number(comp.size()) + " found!!");
 }
      // Linking dót -------------------------------
-void MainWindow::displayScientistsLink(vector<Person> sci)
+
+void MainWindow::displayScientistsLink(vector<Person> sci)      // Listar upp vísindamenn fyrir link-tabinn
 {
     ui->scientistList2->clear();
     sort(sci.begin(), sci.end());
@@ -369,7 +373,7 @@ void MainWindow::displayScientistsLink(vector<Person> sci)
     currentlyDisplayedSciLink = sci;
 }
 
-void MainWindow::displayComputersLink(vector<Computer> comp)
+void MainWindow::displayComputersLink(vector<Computer> comp)    // Listar upp tölvur fyrir link-tabinn
 {
     ui->computerList2->clear();
     sort(comp.begin(), comp.end());
@@ -380,7 +384,7 @@ void MainWindow::displayComputersLink(vector<Computer> comp)
     currentlyDisplayedCompLink = comp;
 }
 
-void MainWindow::on_linkButton_clicked()
+void MainWindow::on_linkButton_clicked()        // Tengjum saman valinn vísindamann og tölvu með takka
 {
     ui->detailsLinks->clear();
     int currentIndex = ui->scientistList2->currentIndex().row();
@@ -450,14 +454,13 @@ void MainWindow::on_scientistList2_currentRowChanged(int currentRow)
 void MainWindow::on_computerList2_currentRowChanged(int currentRow)
 {
     enableLinkButton();
-} // Taflan
+}
 
 void MainWindow::displayLinkTable(vector<pair<Person, Computer> > vlink)     // Býr til töflu yfir alla linka (Person - Computer)
 {
     ui->linkTable->setSortingEnabled(false);
     ui->linkTable->clearContents();
     ui->linkTable->setRowCount(vlink.size());
-    currentlyDisplayedLinks = vlink;
 
     for(unsigned int row = 0; row < vlink.size(); row++)     // Fylli inn í dálka töflunnar
     {
@@ -471,14 +474,14 @@ void MainWindow::displayLinkTable(vector<pair<Person, Computer> > vlink)     // 
     ui->counterLink->setText(QString::number(vlink.size()) + " found!!");
 }
 
-void MainWindow::on_inputFilterLink_textChanged(const QString &arg1)
+void MainWindow::on_inputFilterLink_textChanged()
 {
     string userInput = ui->inputFilterLink->text().toStdString();
     vector<pair<Person, Computer> > vlink = myDom.searchForLink(ui->linkCombo->currentText().toStdString(), userInput);
     displayLinkTable(vlink);
 }
 
-void MainWindow::on_removeLinkButton_clicked()
+void MainWindow::on_removeLinkButton_clicked()      // Fjarlægjum valinn link úr töflunni
 {
     int row = ui->linkTable->currentRow();
     int col = ui->linkTable->currentColumn();
@@ -495,13 +498,7 @@ void MainWindow::on_removeLinkButton_clicked()
         SciName = ui->linkTable->item(row, col - 1)->text().toStdString();
     }
 
-    qDebug() << QString::fromStdString(SciName);
-    qDebug() << QString::fromStdString(CompName);
-
-
     pair<Person, Computer> selectedPair = myDom.returnLinkFromNames(SciName, CompName);
-    qDebug() << QString::fromStdString(selectedPair.first.getName());
-    qDebug() << QString::fromStdString(selectedPair.second.getName());
 
     int answer = QMessageBox::question(this, "Confirm removal", "Are you sure you want to remove this link from the database?");
     if(answer == QMessageBox::No)
@@ -509,7 +506,6 @@ void MainWindow::on_removeLinkButton_clicked()
         return;
     }
     bool success = myDom.removeLink(selectedPair);
-    qDebug() << success;
 
     if(success)
     {
@@ -519,11 +515,11 @@ void MainWindow::on_removeLinkButton_clicked()
 
         ui->removeButton->setEnabled(false);
        // ui->detailsBox->clear();
-        qDebug() << "Virkaði!";
+       // qDebug() << "Virkaði!";
         ui->statusBar->showMessage("This link was successfully removed from the database", 1500);
     }
 }
-void MainWindow::showLinkDetails(string SciName, string CompName)
+void MainWindow::showLinkDetails(string SciName, string CompName)       // Prentar út upplýsingar um link í box við hliðina á link-töflunni
 {
     pair<Person, Computer> selectedPair = myDom.returnLinkFromNames(SciName, CompName);
 
@@ -544,7 +540,7 @@ void MainWindow::showLinkDetails(string SciName, string CompName)
                             death + "\n\nShort Bio:\n" + QString::fromStdString(selectedPair.first.getBio());
 
 
-    QString dash = "\n\n\n------------------------------------------------\n\n\n";
+    QString dash = "\n\n\n-----------------------------------------------------------\n\n\n";
 
     QString wasBuilt = "";
     if(selectedPair.second.getWasBuilt())
@@ -563,12 +559,7 @@ void MainWindow::showLinkDetails(string SciName, string CompName)
 
 }
 
-void MainWindow::on_linkTable_clicked(const QModelIndex &index)
-{
-    //ui->removeLinkButton->setEnabled(true);
-}
-
-void MainWindow::on_linkTable_currentCellChanged()
+void MainWindow::on_linkTable_currentCellChanged()      // Þegar við færumst um link-töfluna (örvatakkar/mús)
 {
     if(ui->linkTable->currentIndex().row() > -1)
     {
@@ -588,8 +579,6 @@ void MainWindow::on_linkTable_currentCellChanged()
             SciName = ui->linkTable->item(row, col - 1)->text().toStdString();
         }
 
-        qDebug() << QString::fromStdString(SciName);
-        qDebug() << QString::fromStdString(CompName);
 
         showLinkDetails(SciName, CompName);
     }
@@ -601,19 +590,19 @@ void MainWindow::on_linkTable_currentCellChanged()
 
 }
 
-void MainWindow::displayAllScientistsST() // display fall fyrir database glugga
+void MainWindow::displayAllScientistsST()       // display fall fyrir database töflu, vísindamenn
 {
     vector<Person> scientists = myDom.returnAllScientists();
     displayScientistsST(scientists);
 }
 
-void MainWindow::displayAllComputersST() // display fall fyrir database glugga
+void MainWindow::displayAllComputersST()        // display fall fyrir database töflu, tölvur
 {
     vector<Computer> computers = myDom.returnAllComputers();
     displayComputersST(computers);
 }
 
-void MainWindow::displayScientistsST(vector<Person> scientists)
+void MainWindow::displayScientistsST(vector<Person> scientists)     // Vísindamannataflan...
 {
     ui->tableScientists->setSortingEnabled(false);
     ui->tableScientists->clearContents();
@@ -652,7 +641,7 @@ void MainWindow::displayScientistsST(vector<Person> scientists)
    ui->counterSciDB->setText(QString::number(scientists.size()) + " found!!");
 }
 
-void MainWindow::displayComputersST(vector<Computer> computers)
+void MainWindow::displayComputersST(vector<Computer> computers)     // Tölvutaflan...
 {
 
     ui->tableComputers->setSortingEnabled(false);
@@ -693,7 +682,7 @@ void MainWindow::displayComputersST(vector<Computer> computers)
     ui->counterCompDB->setText(QString::number(computers.size()) + " found!!");
 }
 
-void MainWindow::on_dropDownScientists_currentIndexChanged(const QString &arg1) // birtir filteraða leit
+void MainWindow::on_dropDownScientists_currentIndexChanged()        // birtir filteraða leit
 {
     string userInput = ui->lineEditScientists->text().toStdString();
     string dropDownValue = getCurrentScientistSearch();
@@ -701,7 +690,7 @@ void MainWindow::on_dropDownScientists_currentIndexChanged(const QString &arg1) 
     displayScientistsST(scientist);
 }
 
-void MainWindow::on_inputFilterComputers_textChanged(const QString &arg1) // birtir filteraða leit
+void MainWindow::on_inputFilterComputers_textChanged()              // birtir filteraða leit
 {
     string userInput = ui->inputFilterComputers->text().toStdString();
     string dropDownValue = getCurrentComputerSearch();
@@ -709,7 +698,7 @@ void MainWindow::on_inputFilterComputers_textChanged(const QString &arg1) // bir
     displayComputersST(computer);
 }
 
-void MainWindow::on_lineEditScientists_textChanged(const QString &arg1) //
+void MainWindow::on_lineEditScientists_textChanged()
 {
     string userInput = ui->lineEditScientists->text().toStdString();
     string dropDownValue = getCurrentScientistSearch();
@@ -717,7 +706,7 @@ void MainWindow::on_lineEditScientists_textChanged(const QString &arg1) //
     displayScientistsST(scientist);
 }
 
-void MainWindow::on_dropDownSearch_currentIndexChanged(const QString &arg1) //
+void MainWindow::on_dropDownSearch_currentIndexChanged()
 {
     string userInput = ui->inputFilterComputers->text().toStdString();
     string dropDownValue = getCurrentComputerSearch();
@@ -725,7 +714,7 @@ void MainWindow::on_dropDownSearch_currentIndexChanged(const QString &arg1) //
     displayComputersST(computer);
 }
 
-string MainWindow::getCurrentScientistSearch() // skilar gildi úr úr dropdownbox
+string MainWindow::getCurrentScientistSearch()           // skilar gildi úr úr dropdownbox fyrir vísindamann
 {
     string currentValueSearch = ui->dropDownScientists->currentText().toStdString();
     if(currentValueSearch == "Name")
@@ -750,7 +739,7 @@ string MainWindow::getCurrentScientistSearch() // skilar gildi úr úr dropdownb
     }
 }
 
-string MainWindow::getCurrentComputerSearch()  // skilar gildi úr úr dropdownbox
+string MainWindow::getCurrentComputerSearch()       // skilar gildi úr úr dropdownbox fyrir tölvu
 {
     string currentValueSearch = ui->dropDownSearch->currentText().toStdString();
     if(currentValueSearch == "Name")
@@ -775,33 +764,33 @@ string MainWindow::getCurrentComputerSearch()  // skilar gildi úr úr dropdownb
     }
 }
 
-void MainWindow::on_tableComputers_clicked(const QModelIndex &index) // ef smellt er á birtist info
+void MainWindow::on_tableComputers_clicked()        // ef smellt er á birtist info í boxinu við hliðina á töflunni
 {
     unsigned int currentIndex = ui->tableComputers->currentIndex().row();
     displayInfo(currentIndex);
 }
 
-void MainWindow::on_tableScientists_clicked(const QModelIndex &index) // ef smellt er á birtist bio
+void MainWindow::on_tableScientists_clicked()       // ef smellt er á birtist bio í boxinu við hliðina á töflunni
 {
     unsigned int currentIndex = ui->tableScientists->currentIndex().row();
     displayBio(currentIndex);
 }
 
-void MainWindow::displayBio(int row) // fall sem birtir info í sér glugga
+void MainWindow::displayBio(int row)            // fall sem birtir info
 {
     QString name = ui->tableScientists->item(row, 0)->text();
     QString bio = ui->tableScientists->item(row, 4)->text();
     ui->textBrowserBio->setText(name + "\n\n" + bio);
 }
 
-void MainWindow::displayInfo(int row) // fall sem birtir bio í sér glugga
+void MainWindow::displayInfo(int row)           // fall sem birtir bio
 {
     QString name = ui->tableComputers->item(row, 0)->text();
     QString info = ui->tableComputers->item(row, 4)->text();
     ui->textBrowserInfo->setText(name + "\n\n" + info);
  }
 
-void MainWindow::on_tableScientists_currentCellChanged()
+void MainWindow::on_tableScientists_currentCellChanged()        // Til að geta notað örvatakka á töflunni
 {
     int currentIndex = ui->tableScientists->currentIndex().row();
     if(currentIndex < 0)
@@ -821,7 +810,7 @@ void MainWindow::on_tableComputers_currentCellChanged()
     displayInfo(currentIndex);
 }
 
-void MainWindow::on_tableScientists_doubleClicked()
+void MainWindow::on_tableScientists_doubleClicked()     // Birtum nýjan glugga þegar tvíklikkað á töflureit!
 {
     int row = ui->tableScientists->currentRow();
     QString name = ui->tableScientists->item(row, 0)->text();
@@ -839,7 +828,7 @@ void MainWindow::on_tableScientists_doubleClicked()
 
 }
 
-void MainWindow::on_tableComputers_doubleClicked()
+void MainWindow::on_tableComputers_doubleClicked()      // Sama hér fyrir tölvutöfluna, nýr gluggi og allt!
 {
     int row = ui->tableComputers->currentRow();
     QString name = ui->tableComputers->item(row, 0)->text();
