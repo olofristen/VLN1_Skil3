@@ -87,6 +87,7 @@ private:
     void scientistListScroll();
     void computerListScroll();
     void enableLinkButton();
+    void showLinkDetails(string SciName, string CompName);
 };
 
 #endif // MAINWINDOW_H

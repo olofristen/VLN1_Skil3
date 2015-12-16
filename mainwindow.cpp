@@ -516,6 +516,45 @@ void MainWindow::on_removeLinkButton_clicked()
         ui->statusBar->showMessage("This link was successfully removed from the database", 1500);
     }
 }
+void MainWindow::showLinkDetails(string SciName, string CompName)
+{
+    pair<Person, Computer> selectedPair = myDom.returnLinkFromNames(SciName, CompName);
+
+    QString death = "";
+    if(selectedPair.first.getDeathYear() == -1)
+    {
+        death = "\nDefinately NOT dead!";
+    }
+    else
+    {
+        death = "\nYear of death: " + QString::number(selectedPair.first.getDeathYear());
+    }
+    //QString Comps = showComputersFromLinks(currentlySelectedScientist.getId());
+
+    QString scientist = "Scientist:\n\nName: " + QString::fromStdString(selectedPair.first.getName()) +
+                            "\nGender: " + QString::fromStdString(selectedPair.first.getGender()) +
+                            "\n\nYear of birth: " + QString::number(selectedPair.first.getBirthYear()) +
+                            death + "\n\nShort Bio:\n" + QString::fromStdString(selectedPair.first.getBio());
+
+
+    QString dash = "\n\n\n------------------------------------------------\n\n\n";
+
+    QString wasBuilt = "";
+    if(selectedPair.second.getWasBuilt())
+    {
+        wasBuilt = "\nIt was built in " + QString::number(selectedPair.second.getBuildYear());
+    }
+    else
+    {
+        wasBuilt = "\nIt was NEVER built, but documented in " + QString::number(selectedPair.second.getBuildYear());
+    }
+    QString computer = "Computer: \n\nName: " + QString::fromStdString(selectedPair.second.getName()) +
+                            "\nType: " + QString::fromStdString(selectedPair.second.getType()) +
+                            wasBuilt + "\n\nShort info:\n" + QString::fromStdString(selectedPair.second.getInfo());
+
+    ui->textBrowserLink->setText(scientist + dash + computer);
+
+}
 
 void MainWindow::on_linkTable_clicked(const QModelIndex &index)
 {
@@ -527,11 +566,32 @@ void MainWindow::on_linkTable_currentCellChanged()
     if(ui->linkTable->currentIndex().row() > -1)
     {
         ui->removeLinkButton->setEnabled(true);
+        int row = ui->linkTable->currentRow();
+        int col = ui->linkTable->currentColumn();
+        string SciName, CompName;
+
+        if(col == 0)    // Scientist name chosen
+        {
+            SciName = ui->linkTable->item(row, col)->text().toStdString();
+            CompName = ui->linkTable->item(row, col + 1)->text().toStdString();
+        }
+        else           // col == 1, Computer name chosen
+        {
+            CompName = ui->linkTable->item(row, col)->text().toStdString();
+            SciName = ui->linkTable->item(row, col - 1)->text().toStdString();
+        }
+
+        qDebug() << QString::fromStdString(SciName);
+        qDebug() << QString::fromStdString(CompName);
+
+        showLinkDetails(SciName, CompName);
     }
     else
     {
         ui->removeLinkButton->setEnabled(false);
+        ui->textBrowserLink->clear();
     }
+
 }
 
 void MainWindow::displayAllScientistsST()
