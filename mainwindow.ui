@@ -74,7 +74,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1792,6 +1792,9 @@ image-position: left;</string>
                 <attribute name="horizontalHeaderDefaultSectionSize">
                  <number>200</number>
                 </attribute>
+                <attribute name="horizontalHeaderMinimumSectionSize">
+                 <number>70</number>
+                </attribute>
                 <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
                  <bool>true</bool>
                 </attribute>
@@ -1924,7 +1927,7 @@ font: 18pt &quot;Agency FB&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1278</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
    </property>
   </widget>
