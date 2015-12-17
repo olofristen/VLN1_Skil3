@@ -5,7 +5,7 @@
 Database::Database()        // Database búinn til/opnaður í constructor
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    QString dbSoC = "database.sqlite";
+    QString dbSoC = "database1.sqlite";
     db.setDatabaseName(dbSoC);
 
     db.open();
@@ -51,7 +51,7 @@ bool Database::removeLink(Person p, Computer c)
 int Database::addNewScientist(Person P)    // Bæti við vísindamanni í scientist-töfluna í SQL
 {
     QSqlQuery query(db);
-    QString q = "CREATE TABLE IF NOT EXISTS scientists ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Gender' TEXT NOT NULL , 'DOB' INTEGER, 'DOD' INTEGER, 'Bio' TEXT, ON DELETE CASCADE)";
+    QString q = "CREATE TABLE IF NOT EXISTS scientists ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Gender' TEXT NOT NULL , 'DOB' INTEGER, 'DOD' INTEGER, 'Bio' TEXT)";
 
     query.exec(q);
     query.prepare("INSERT INTO scientists (Name, Gender, DOB, DOD, Bio ) VALUES(:name,:gender,:dob,:dod,:bio)");
@@ -74,7 +74,7 @@ int Database::addNewScientist(Person P)    // Bæti við vísindamanni í scient
 int Database::addNewComputer(Computer C)       // Bæti við tölvu í computers-töfluna í SQL
 {
     QSqlQuery query(db);
-    QString q = "CREATE TABLE IF NOT EXISTS computers ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Type' TEXT NOT NULL, 'WB' BOOL NOT NULL, 'BuildYear' INTEGER, 'Info' TEXT NOT NULL, ON DELETE CASCADE)";
+    QString q = "CREATE TABLE IF NOT EXISTS computers ('ID' INTEGER PRIMARY KEY  AUTOINCREMENT, 'Name' TEXT NOT NULL , 'Type' TEXT NOT NULL, 'WB' BOOL NOT NULL, 'BuildYear' INTEGER, 'Info' TEXT NOT NULL)";
     query.exec(q);
 
     query.prepare("INSERT INTO computers (Name, Type, WB, BuildYear, Info) VALUES(:name,:type,:wb,:buildyear,:info)");
@@ -98,7 +98,12 @@ int Database::addNewComputer(Computer C)       // Bæti við tölvu í computers
 bool Database::addNewLink(pair<Person, Computer> link)  // Bætir við tengingu (link) milli tölvu og vísindamanns í tengitöflu í gagnagrunninum
 {
     QSqlQuery query(db);
-    QString q = "CREATE TABLE IF NOT EXISTS links ('SID' INTEGER, 'CID' INTEGER, FOREIGN KEY (SID) REFERENCES scientists(ID), FOREIGN KEY (CID) REFERENCES computers(ID), PRIMARY KEY(SID, CID))";
+    query.exec("PRAGMA foreign_keys = ON");
+    QString q = "CREATE TABLE links ('SID' INTEGER, 'CID' INTEGER,"
+            "FOREIGN KEY (SID) REFERENCES scientists(ID) ON DELETE CASCADE,"
+            "FOREIGN KEY (CID) REFERENCES computers(ID) ON DELETE CASCADE,"
+            "PRIMARY KEY(SID, CID))";
+
     query.exec(q);
 
     query.prepare("INSERT INTO links (SID, CID) VALUES (:sid, :cid)");
